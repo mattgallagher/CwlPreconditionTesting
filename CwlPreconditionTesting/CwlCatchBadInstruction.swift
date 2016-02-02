@@ -71,14 +71,12 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 		try kernCheck { withUnsafeMutablePointer(&reply) {
 			mach_msg(UnsafeMutablePointer<mach_msg_header_t>($0), MACH_SEND_MSG, reply.Head.msgh_size, 0, UInt32(MACH_PORT_NULL), 0, UInt32(MACH_PORT_NULL))
 		} }
+	} catch let error as NSError where (error.domain == NSMachErrorDomain && (error.code == Int(MACH_RCV_PORT_CHANGED) || error.code == Int(MACH_RCV_INVALID_NAME))) {
+		// Port was already closed before we started or closed while we were listening.
+		// This means the block completed without raising an EXC_BAD_INSTRUCTION. Not a problem.
 	} catch {
-		if (error as NSError).domain != NSMachErrorDomain || ((error as NSError).code != Int(MACH_RCV_PORT_CHANGED) && (error as NSError).code != Int(MACH_RCV_INVALID_NAME)) {
-			// Should never be reached but this is testing code, don't try to recover, just abort
-			preconditionFailure("Mach port error: \(error)")
-		} else {
-			// Port was already closed before we started or closed while we were listening.
-			// This means the block completed without raising an EXC_BAD_INSTRUCTION. Not a problem.
-		}
+		// Should never be reached but this is testing code, don't try to recover, just abort
+		fatalError("Mach message error: \(error)")
 	}
 	
 	return nil
