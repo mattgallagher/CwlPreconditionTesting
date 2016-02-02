@@ -3,20 +3,24 @@ A Mach exception handler, written in Swift and Objective-C, that allows EXC_BAD_
 
 ## Usage
 
-The project containing this code is available on github: [mattgallagher/CwlPreconditionTesting](https://github.com/mattgallagher/CwlPreconditionTesting).
+The short version is:
+    
+1. `git clone https://github.com/mattgallagher/CwlPreconditionTesting.git`
+2. drag the "CwlPreconditionTesting.xcodeproj" file into your project's file tree in Xcode
+3. go to your testing target's Build Phase settings and under "Target Dependencies" press the "+" button and select the relevant "CwlPreconditionTesting" target ("_iOS" or "_OSX", depending on your testing target's SDK)
+4. write `import CwlPreconditionTesting` at the top of any test file where you want to use `catchBadInstruction` (Swift should handle the linkage automatically when you do this)
+5. use the `catchBadInstruction` function as shown in the [CwlCatchBadInstructionTests.swift tests file](https://github.com/mattgallagher/CwlPreconditionTesting/blob/master/CwlPreconditionTestingTests/CwlCatchBadInstructionTests.swift?ts=4)
+
+### Project details
 
 The "CwlPreconditionTesting.xcodeproj" contains two targets:
     
 * CwlPreconditionTesting_OSX
 * CwlPreconditionTesting_iOS
 
-both build a framework named "CwlPreconditionTesting.framework". When you link, be certain to select the "CwlPreconditionTesting.framework" from the appropriate target.
+both build a framework named "CwlPreconditionTesting.framework". If you're linking manually, be certain to select the "CwlPreconditionTesting.framework" from the appropriate target.
 
 Remember: the iOS build is useful only in the simulator. All Mach exception handling code will be conditionally excluded in any device build.
-
-### Framework usage
-
-To use the framework in your own testing targets, drag the "CwlPreconditionTesting.xcodeproj" file into your project's file tree in Xcode, go to your testing target's Build Phase settings and under "Link Binary with Libraries" press the "+" button and select the relevant "CwlPreconditionTesting.framework" (iOS or OSX, depending on your testing target's SDK).
 
 ### Static inclusion
 
