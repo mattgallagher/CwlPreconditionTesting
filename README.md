@@ -4,7 +4,7 @@ A Mach exception handler, written in Swift and Objective-C, that allows `EXC_BAD
 
 For an extended discussion of this code, please see the Cocoa with Love article:
 	
-	[Partial functions in Swift, Part 2: Catching precondition failures](http://cocoawithlove.com/blog/2016/02/02/partial-functions-part-two-catching-precondition-failures.html)
+[Partial functions in Swift, Part 2: Catching precondition failures](http://cocoawithlove.com/blog/2016/02/02/partial-functions-part-two-catching-precondition-failures.html)
 
 ## Usage
 
