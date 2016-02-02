@@ -25,12 +25,15 @@ private func raiseBadInstructionException() {
 
 @objc public class BadInstructionException: NSException {
 	static var name: String = "BadInstruction"
+
 	init() {
 		super.init(name: BadInstructionException.name, reason: nil, userInfo: nil)
 	}
+	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
+	
 	public static func catch_mach_exception_raise_state(exception_port: mach_port_t, exception: exception_type_t, code: UnsafePointer<mach_exception_data_type_t>, codeCnt: mach_msg_type_number_t, flavor: UnsafeMutablePointer<Int32>, old_state: UnsafePointer<natural_t>, old_stateCnt: mach_msg_type_number_t, new_state: thread_state_t, new_stateCnt: UnsafeMutablePointer<mach_msg_type_number_t>) -> kern_return_t {
 
 	#if arch(x86_64)
