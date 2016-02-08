@@ -68,3 +68,5 @@ Additionally, you'll need a standard Objective-C "Bridging header" for your test
 If you're running Swift on Linux or otherwise need to avoid Mach exceptions and the Objective-C runtime, there's a proof of concept sigaction and setjmp/longjmp implementation at the bottom of the CwlCatchException.swift file.
 
 Build the Swift code with `-DUSE_POSIX_SIGNALS` and either omit all the Objective-C .m and .h files or define "USE_POSIX_SIGNALS=1" in your build settings so they won't get in the way. You'll need to omit the mach_exc.defs and mach_excServer.c files.
+
+**Warning**: on OS X, this approach can't be used when lldb is attached since lldb's Mach exception handler blocks the SIGILL from ever occurring. The signal handler is also global (rather than correctly scoped to the catching thread) and non-reentrant (where the Mach exception handler is deterministic – aborts normally – for nested illegal instructions). On OS X (and the iOS simulator) the Mach exception handler is a better option.
