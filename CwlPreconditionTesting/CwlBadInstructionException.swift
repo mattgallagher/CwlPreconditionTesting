@@ -19,12 +19,15 @@
 
 import Foundation
 
+#if !USE_POSIX_SIGNALS
+
 private func raiseBadInstructionException() {
 	BadInstructionException().raise()
 }
 
+/// A simple NSException subclass. It's not required to subclass NSException (since the exception type is represented in the name) but this helps for identifying the exception through runtime type.
 @objc public class BadInstructionException: NSException {
-	static var name: String = "BadInstruction"
+	static var name: String = "com.cocoawithlove.BadInstruction"
 
 	init() {
 		super.init(name: BadInstructionException.name, reason: nil, userInfo: nil)
@@ -34,7 +37,8 @@ private func raiseBadInstructionException() {
 		super.init(coder: aDecoder)
 	}
 	
-	public static func catch_mach_exception_raise_state(exception_port: mach_port_t, exception: exception_type_t, code: UnsafePointer<mach_exception_data_type_t>, codeCnt: mach_msg_type_number_t, flavor: UnsafeMutablePointer<Int32>, old_state: UnsafePointer<natural_t>, old_stateCnt: mach_msg_type_number_t, new_state: thread_state_t, new_stateCnt: UnsafeMutablePointer<mach_msg_type_number_t>) -> kern_return_t {
+	/// An Objective-C callable function, invoked from the `mach_exc_server` callback function `catch_mach_exception_raise_state` to push the `raiseBadInstructionException` function onto the stack.
+	public class func catch_mach_exception_raise_state(exception_port: mach_port_t, exception: exception_type_t, code: UnsafePointer<mach_exception_data_type_t>, codeCnt: mach_msg_type_number_t, flavor: UnsafeMutablePointer<Int32>, old_state: UnsafePointer<natural_t>, old_stateCnt: mach_msg_type_number_t, new_state: thread_state_t, new_stateCnt: UnsafeMutablePointer<mach_msg_type_number_t>) -> kern_return_t {
 
 	#if arch(x86_64)
 		// Make sure we've been given enough memory
@@ -63,3 +67,11 @@ private func raiseBadInstructionException() {
 		return KERN_SUCCESS
 	}
 }
+
+#else
+
+/// Without Mach exceptions or the Objective-C runtime, there's nothing to put in the exception object. It's really just a boolean – either a SIGILL was caught or not.
+public class BadInstructionException {
+}
+
+#endif

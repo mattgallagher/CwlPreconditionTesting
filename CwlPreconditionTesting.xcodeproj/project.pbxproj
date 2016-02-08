@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90F356A1C66296900F2FAF9 /* mach_exc.defs in Sources */ = {isa = PBXBuildFile; fileRef = C98707901C3F8952009B413A /* mach_exc.defs */; settings = {ATTRIBUTES = (Server, ); }; };
 		C90FA2391C42980E00996A1F /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = C90FA2381C42980E00996A1F /* mach_excServer.c */; };
 		C90FA24E1C42A3EE00996A1F /* CwlPreconditionTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98707761C3F886F009B413A /* CwlPreconditionTesting.framework */; };
 		C90FA2511C43685D00996A1F /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604BFC1C40C1C5001A7517 /* CwlCatchBadInstruction.swift */; };
@@ -30,7 +31,6 @@
 		C97FFC541C45FD8C00AF48B3 /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = C97FFC4E1C45FD8C00AF48B3 /* CwlCatchException.m */; };
 		C97FFC551C45FD8C00AF48B3 /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97FFC4F1C45FD8C00AF48B3 /* CwlCatchException.swift */; };
 		C97FFC561C45FD8C00AF48B3 /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97FFC4F1C45FD8C00AF48B3 /* CwlCatchException.swift */; };
-		C98707911C3F8952009B413A /* mach_exc.defs in Sources */ = {isa = PBXBuildFile; fileRef = C98707901C3F8952009B413A /* mach_exc.defs */; settings = {ATTRIBUTES = (Server, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,14 +126,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C97FFC4C1C45FD8C00AF48B3 /* CwlCatchException */ = {
+		C97E27001C66F8EF00ABF734 /* CatchBadInstruction */ = {
+			isa = PBXGroup;
+			children = (
+				C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */,
+				C9604BFB1C40C1C5001A7517 /* CwlCatchBadInstruction.m */,
+				C9604BFC1C40C1C5001A7517 /* CwlCatchBadInstruction.swift */,
+			);
+			name = CatchBadInstruction;
+			sourceTree = "<group>";
+		};
+		C97E27011C6700DB00ABF734 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9604C2E1C40CAE7001A7517 /* CwlPreconditionTesting.h */,
+				C98707901C3F8952009B413A /* mach_exc.defs */,
+				C90FA2381C42980E00996A1F /* mach_excServer.c */,
+				C987077B1C3F886F009B413A /* Info.plist */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
+		C97FFC4C1C45FD8C00AF48B3 /* CatchException */ = {
 			isa = PBXGroup;
 			children = (
 				C97FFC4D1C45FD8C00AF48B3 /* CwlCatchException.h */,
 				C97FFC4E1C45FD8C00AF48B3 /* CwlCatchException.m */,
 				C97FFC4F1C45FD8C00AF48B3 /* CwlCatchException.swift */,
 			);
-			name = CwlCatchException;
+			name = CatchException;
 			path = CwlCatchException/CwlCatchException;
 			sourceTree = SOURCE_ROOT;
 		};
@@ -160,16 +181,11 @@
 		C98707781C3F886F009B413A /* CwlPreconditionTesting */ = {
 			isa = PBXGroup;
 			children = (
-				C98707901C3F8952009B413A /* mach_exc.defs */,
-				C90FA2381C42980E00996A1F /* mach_excServer.c */,
-				C987077B1C3F886F009B413A /* Info.plist */,
-				C9604C2E1C40CAE7001A7517 /* CwlPreconditionTesting.h */,
-				C9604C361C40CFE8001A7517 /* CwlBadInstructionException.swift */,
 				C9604C331C40CED5001A7517 /* CwlDarwinDefinitions.swift */,
-				C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */,
-				C9604BFB1C40C1C5001A7517 /* CwlCatchBadInstruction.m */,
-				C9604BFC1C40C1C5001A7517 /* CwlCatchBadInstruction.swift */,
-				C97FFC4C1C45FD8C00AF48B3 /* CwlCatchException */,
+				C9604C361C40CFE8001A7517 /* CwlBadInstructionException.swift */,
+				C97E27001C66F8EF00ABF734 /* CatchBadInstruction */,
+				C97FFC4C1C45FD8C00AF48B3 /* CatchException */,
+				C97E27011C6700DB00ABF734 /* Support Files */,
 			);
 			path = CwlPreconditionTesting;
 			sourceTree = "<group>";
@@ -351,9 +367,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9604C341C40CED5001A7517 /* CwlDarwinDefinitions.swift in Sources */,
+				C90F356A1C66296900F2FAF9 /* mach_exc.defs in Sources */,
 				C97FFC551C45FD8C00AF48B3 /* CwlCatchException.swift in Sources */,
 				C90FA2511C43685D00996A1F /* CwlCatchBadInstruction.swift in Sources */,
-				C98707911C3F8952009B413A /* mach_exc.defs in Sources */,
 				C9604C011C40C1C5001A7517 /* CwlCatchBadInstruction.m in Sources */,
 				C97FFC531C45FD8C00AF48B3 /* CwlCatchException.m in Sources */,
 				C90FA2521C43686200996A1F /* CwlBadInstructionException.swift in Sources */,

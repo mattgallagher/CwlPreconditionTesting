@@ -55,6 +55,7 @@ class CatchBadInstructionTests: XCTestCase {
 	}
 
 	func testExecTypesCountTuple() {
+	#if HAS_MACH_EXCEPTIONS
 		// I don't normally write a lot of internal logic tests (I believe in keeping tests at the interface level where possible) but it's important to confirm that creating an UnsafeMutablePointer to the zero-th index of a tuple properly edits the tuple in-place rather than copying the first element to another location and making the pointer to that other location. We need in-place behavior otherwise our code which passes a pointer to the zero-th element to the mach C functions would be memory unsafe.
 		// This code also confirms the length of the tuple is 14 elements and I haven't simply made a visually hard to spot typo in the execTypesCountTuple declaration.
 		var tuple = execTypesCountTuple<Int>()
@@ -90,5 +91,6 @@ class CatchBadInstructionTests: XCTestCase {
 		XCTAssert(tuple.value.11 == 12)
 		XCTAssert(tuple.value.12 == 13)
 		XCTAssert(tuple.value.13 == 14)
+	#endif
 	}
 }

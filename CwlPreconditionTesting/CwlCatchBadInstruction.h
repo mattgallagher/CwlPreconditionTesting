@@ -22,6 +22,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// The request_mach_exception_raise_t struct is passed to mach_msg which assumes its exact layout. To avoid problems with different layouts, we keep the definition in C rather than Swift.
 typedef struct
 {
 	mach_msg_header_t Head;
@@ -37,6 +38,7 @@ typedef struct
 	char padding[512];
 } request_mach_exception_raise_t;
 
+// The reply_mach_exception_raise_state_t struct is passed to mach_msg which assumes its exact layout. To avoid problems with different layouts, we keep the definition in C rather than Swift.
 typedef struct
 {
 	mach_msg_header_t Head;

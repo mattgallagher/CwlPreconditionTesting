@@ -29,7 +29,7 @@ Remember: the iOS build is useful only in the simulator. All Mach exception hand
 
 ### Static inclusion
 
-Due to the complications associated with needing to call into and out of Objective-C, static inclusion in other projects is not a single file nor a quick drag and drop. There's 6-8 files and you'll need to add some project settings.
+Due to the complications associated with needing to call into and out of Objective-C, static inclusion in other projects is not a single file nor a quick drag and drop. There's at least 7 files and you'll need to add some project settings.
 
 All of the following files:
 
@@ -40,9 +40,14 @@ All of the following files:
 * CwlCatchException.h
 * CwlCatchException.m
 
-need to be added to the testing target.
+and either:
 
-Your target will also need to have the following macro defined in the "Apple LLVM - Preprocessing" &rarr; "Preprocessor Macros" build setting:
+* $(SDKROOT)/usr/include/mach/mach_exc.defs
+* mach_excServer.c
+
+need to be added to the testing target for OS X projects or iOS projects, respectively.
+
+Your target will also need to have the following macros defined in the "Apple LLVM - Preprocessing" &rarr; "Preprocessor Macros" build setting:
     
     PRODUCT_NAME=$(PRODUCT_NAME)
 
@@ -57,3 +62,9 @@ Additionally, you'll need a standard Objective-C "Bridging header" for your test
 
 #import <CwlPreconditionTesting/CwlCatchException.h>
 ```
+
+### Using POSIX signals and setjmp/longjmp
+
+If you're running Swift on Linux or otherwise need to avoid Mach exceptions and the Objective-C runtime, there's a proof of concept sigaction and setjmp/longjmp implementation at the bottom of the CwlCatchException.swift file.
+
+Build the Swift code with `-DUSE_POSIX_SIGNALS` and either omit all the Objective-C .m and .h files or define "USE_POSIX_SIGNALS=1" in your build settings so they won't get in the way. You'll need to omit the mach_exc.defs and mach_excServer.c files.

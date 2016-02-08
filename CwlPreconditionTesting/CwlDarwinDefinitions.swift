@@ -19,7 +19,7 @@
 
 import Darwin
 
-#if arch(x86_64)
+#if !USE_POSIX_SIGNALS && arch(x86_64)
 
 // From /usr/include/mach/port.h
 // #define MACH_PORT_RIGHT_RECEIVE		((mach_port_right_t) 1)
