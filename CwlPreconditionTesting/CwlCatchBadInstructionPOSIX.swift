@@ -8,8 +8,7 @@
 
 import Foundation
 
-// ALTERNATIVE TO MACH EXCEPTIONS AND OBJECTIVE-C RUNTIME:
-// Use a SIGILL signal action and setenv/longjmp/
+// This file is an alternative implementation to CwlCatchBadInstruction.swift that uses a SIGILL signal action and setenv/longjmp instead of a Mach exception handler
 //
 // WARNING:
 // This code is quick and dirty. It's a proof of concept for using a SIGILL handler and setjmp/longjmp where Mach exceptions and the Obj-C runtime aren't available. I ran the automated tests when I first wrote this code but I don't personally use it at all so by the time you're reading this comment, it probably broke and I didn't notice.

@@ -19,14 +19,6 @@
 
 import Foundation
 
-// This file contains two different implementations for the `catchBadInstruction` function.
-//
-// The !USE_POSIX_SIGNALS configuration contains the default implementation. This implementation catches Mach BAD_INSTRUCTION_EXCEPTIONs as described on the Cocoa with Love post:
-//	http://cocoawithlove.com/blog/2016/02/02/partial-functions-part-two-catching-precondition-failures.html
-//
-// See the USE_POSIX_SIGNALS branch below for a version portable to systems without the Objective-C
-// runtime or Mach exceptions.
-
 #if arch(x86_64)
 
 private enum PthreadError: ErrorType { case Any }
