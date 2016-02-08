@@ -17,7 +17,7 @@
 //  OF THIS SOFTWARE.
 //
 
-#if !USE_POSIX_SIGNALS && defined(__x86_64__)
+#if defined(__x86_64__)
 
 #import "CwlCatchBadInstruction.h"
 

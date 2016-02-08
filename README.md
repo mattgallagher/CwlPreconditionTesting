@@ -65,8 +65,14 @@ Additionally, you'll need a standard Objective-C "Bridging header" for your test
 
 ### Using POSIX signals and setjmp/longjmp
 
-If you're running Swift on Linux or otherwise need to avoid Mach exceptions and the Objective-C runtime, there's a proof of concept sigaction and setjmp/longjmp implementation at the bottom of the CwlCatchException.swift file.
+For comparison or for anyone running this code on a platform without Mach exceptions or the Objective-C runtime, I've added a proof-of-concept implementation of `catchBadInstruction` that uses a POSIX SIGILL `sigaction` and `setjmp`/`longjmp` to perform the throw.
 
-Build the Swift code with `-DUSE_POSIX_SIGNALS` and either omit all the Objective-C .m and .h files or define "USE_POSIX_SIGNALS=1" in your build settings so they won't get in the way. You'll need to omit the mach_exc.defs and mach_excServer.c files.
+In Xcode, you can simply select the CwlPreconditionTesting_POSIX target (instead of the OSX or iOS targets). If you're building without Xcode: all you need is the CwlCatchBadInstructionPOSIX.swift file (compared to the Mach exception handler, the code is tiny doesn't have any weird Objective-C/MiG file dependencies).
 
-**Warning**: on OS X, this approach can't be used when lldb is attached since lldb's Mach exception handler blocks the SIGILL from ever occurring. The signal handler is also global (rather than correctly scoped to the catching thread) and non-reentrant (where the Mach exception handler is deterministic – aborts normally – for nested illegal instructions). On OS X (and the iOS simulator) the Mach exception handler is a better option.
+**Warning**: on OS X, this approach can't be used when lldb is attached since lldb's Mach exception handler blocks the SIGILL from ever occurring (I've disabled the "Debug Executable" setting for the tests in Xcode - re-enable it to witness the problem).
+
+Additional problems in decreasing severity include:
+
+* the signal handler is whole process (rather than correctly scoped to the thread where the "catch" occurs)
+* the signal handler doesn't deal with re-entrancy whereas the mach exception handler remains deterministic in the face of multiple fatal errors
+* the signal handler overwrites the "[red zone](https://en.wikipedia.org/wiki/Red_zone_(computing))" which is technically frowned upon in signal handlers (although unlikely to cause problems here)

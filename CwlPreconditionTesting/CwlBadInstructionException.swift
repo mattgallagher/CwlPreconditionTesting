@@ -19,8 +19,6 @@
 
 import Foundation
 
-#if !USE_POSIX_SIGNALS
-
 private func raiseBadInstructionException() {
 	BadInstructionException().raise()
 }
@@ -67,11 +65,3 @@ private func raiseBadInstructionException() {
 		return KERN_SUCCESS
 	}
 }
-
-#else
-
-/// Without Mach exceptions or the Objective-C runtime, there's nothing to put in the exception object. It's really just a boolean – either a SIGILL was caught or not.
-public class BadInstructionException {
-}
-
-#endif
