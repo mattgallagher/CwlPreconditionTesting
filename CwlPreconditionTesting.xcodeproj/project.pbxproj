@@ -97,9 +97,7 @@
 		C90FA2381C42980E00996A1F /* mach_excServer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mach_excServer.c; sourceTree = "<group>"; };
 		C92A97C71C68A44D008905C2 /* CwlCatchBadInstructionPOSIX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstructionPOSIX.swift; sourceTree = "<group>"; };
 		C92A97D91C68A4F3008905C2 /* CwlPreconditionTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CwlPreconditionTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C92A97DA1C68A4F4008905C2 /* CwlPreconditionTesting_OSX copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CwlPreconditionTesting_OSX copy-Info.plist"; path = "/Users/matt/Projects/CwlPreconditionTesting/CwlPreconditionTesting_OSX copy-Info.plist"; sourceTree = "<absolute>"; };
 		C92A97E61C68A515008905C2 /* CwlPreconditionTesting_POSIXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CwlPreconditionTesting_POSIXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C92A97E71C68A516008905C2 /* CwlPreconditionTesting_OSXTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CwlPreconditionTesting_OSXTests copy-Info.plist"; path = "/Users/matt/Projects/CwlPreconditionTesting/CwlPreconditionTesting_OSXTests copy-Info.plist"; sourceTree = "<absolute>"; };
 		C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwlCatchBadInstruction.h; sourceTree = "<group>"; };
 		C9604BFB1C40C1C5001A7517 /* CwlCatchBadInstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwlCatchBadInstruction.m; sourceTree = "<group>"; };
 		C9604BFC1C40C1C5001A7517 /* CwlCatchBadInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstruction.swift; sourceTree = "<group>"; };
@@ -207,8 +205,6 @@
 				C98707781C3F886F009B413A /* CwlPreconditionTesting */,
 				C98707841C3F886F009B413A /* CwlPreconditionTestingTests */,
 				C98707771C3F886F009B413A /* Products */,
-				C92A97DA1C68A4F4008905C2 /* CwlPreconditionTesting_OSX copy-Info.plist */,
-				C92A97E71C68A516008905C2 /* CwlPreconditionTesting_OSXTests copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -526,7 +522,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				INFOPLIST_FILE = "CwlPreconditionTesting_OSX copy-Info.plist";
+				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoawithlove.CwlPreconditionTesting;
@@ -545,7 +541,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "CwlPreconditionTesting_OSX copy-Info.plist";
+				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoawithlove.CwlPreconditionTesting;
@@ -558,7 +554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "CwlPreconditionTesting_OSXTests copy-Info.plist";
+				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoawithlove.CwlPreconditionTestingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -569,7 +565,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "CwlPreconditionTesting_OSXTests copy-Info.plist";
+				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoawithlove.CwlPreconditionTestingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
