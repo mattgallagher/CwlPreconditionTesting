@@ -1,5 +1,5 @@
 //
-//  CwlCatchBadInstruction-PosixAlternative.swift
+//  CwlCatchBadInstructionPOSIX.swift
 //  CwlPreconditionTesting
 //
 //  Created by Matt Gallagher on 8/02/2016.
@@ -26,9 +26,9 @@ import Foundation
 // Obvious limitations:
 //	* It doesn't work when debugging with lldb.
 //	* It doesn't scope correctly to the thread (it's global)
-//  * In violation of rules for signal handlers, it writes to the "red zone" on the stack
+//	* In violation of rules for signal handlers, it writes to the "red zone" on the stack
 //	* It isn't re-entrant
-//  * Plus all of the same caveats as the Mach exceptions version (doesn't play well with other handlers, probably leaks ARC memory, etc)
+//	* Plus all of the same caveats as the Mach exceptions version (doesn't play well with other handlers, probably leaks ARC memory, etc)
 // Treat it like a loaded shotgun. Don't point it at your face.
 
 private var env = jmp_buf(0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0)
