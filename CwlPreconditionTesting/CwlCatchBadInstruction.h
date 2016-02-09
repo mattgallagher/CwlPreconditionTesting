@@ -35,7 +35,9 @@ typedef struct
 	exception_type_t exception;
 	mach_msg_type_number_t codeCnt;
 	int64_t code[2];
-	char padding[512];
+	int flavor;
+	mach_msg_type_number_t old_stateCnt;
+	natural_t old_state[224];
 } request_mach_exception_raise_t;
 
 // The reply_mach_exception_raise_state_t struct is passed to mach_msg which assumes its exact layout. To avoid problems with different layouts, we keep the definition in C rather than Swift.
