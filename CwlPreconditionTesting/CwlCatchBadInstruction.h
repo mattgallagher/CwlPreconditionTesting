@@ -17,6 +17,8 @@
 //  OF THIS SOFTWARE.
 //
 
+#if defined(__x86_64__)
+
 #import <Foundation/Foundation.h>
 #import <mach/mach.h>
 
@@ -54,3 +56,5 @@ typedef struct
 extern boolean_t mach_exc_server(mach_msg_header_t *InHeadP, mach_msg_header_t *OutHeadP);
 
 NS_ASSUME_NONNULL_END
+
+#endif

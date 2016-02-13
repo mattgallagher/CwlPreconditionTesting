@@ -19,6 +19,8 @@
 
 import Foundation
 
+#if arch(x86_64)
+
 // This file is an alternative implementation to CwlCatchBadInstruction.swift that uses a SIGILL signal action and setenv/longjmp instead of a Mach exception handler and Objective-C exception raising.
 //
 // WARNING:
@@ -87,3 +89,5 @@ public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionEx
 	
 	return nil
 }
+
+#endif

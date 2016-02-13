@@ -19,6 +19,8 @@
 
 import Foundation
 
+#if arch(x86_64)
+
 private func raiseBadInstructionException() {
 	BadInstructionException().raise()
 }
@@ -38,7 +40,6 @@ private func raiseBadInstructionException() {
 	/// An Objective-C callable function, invoked from the `mach_exc_server` callback function `catch_mach_exception_raise_state` to push the `raiseBadInstructionException` function onto the stack.
 	public class func catch_mach_exception_raise_state(exception_port: mach_port_t, exception: exception_type_t, code: UnsafePointer<mach_exception_data_type_t>, codeCnt: mach_msg_type_number_t, flavor: UnsafeMutablePointer<Int32>, old_state: UnsafePointer<natural_t>, old_stateCnt: mach_msg_type_number_t, new_state: thread_state_t, new_stateCnt: UnsafeMutablePointer<mach_msg_type_number_t>) -> kern_return_t {
 
-	#if arch(x86_64)
 		// Make sure we've been given enough memory
 		if old_stateCnt != x86_THREAD_STATE64_COUNT || new_stateCnt.memory < x86_THREAD_STATE64_COUNT {
 			return KERN_INVALID_ARGUMENT
@@ -60,8 +61,9 @@ private func raiseBadInstructionException() {
 		// Write the new thread state
 		UnsafeMutablePointer<x86_thread_state64_t>(new_state).memory = state
 		new_stateCnt.memory = x86_THREAD_STATE64_COUNT
-	#endif
 	
 		return KERN_SUCCESS
 	}
 }
+
+#endif
