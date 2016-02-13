@@ -53,44 +53,4 @@ class CatchBadInstructionTests: XCTestCase {
 		XCTAssert(exception2 == nil)
 	#endif
 	}
-
-	func testExecTypesCountTuple() {
-	#if arch(x86_64)
-		// I don't normally write a lot of internal logic tests (I believe in keeping tests at the interface level where possible) but it's important to confirm that creating an UnsafeMutablePointer to the zero-th index of a tuple properly edits the tuple in-place rather than copying the first element to another location and making the pointer to that other location. We need in-place behavior otherwise our code which passes a pointer to the zero-th element to the mach C functions would be memory unsafe.
-		// This code also confirms the length of the tuple is 14 elements and I haven't simply made a visually hard to spot typo in the execTypesCountTuple declaration.
-		var tuple = execTypesCountTuple<Int>()
-		XCTAssert(sizeofValue(tuple) == sizeof(Int) * 14)
-		withUnsafeMutablePointer(&tuple.value.0) { v in
-			let fullTuple = UnsafeMutablePointer<(Int, Int, Int, Int, Int, Int, Int, Int, Int, Int, Int, Int, Int, Int)>(v)
-			fullTuple.memory.0 = 1
-			fullTuple.memory.1 = 2
-			fullTuple.memory.2 = 3
-			fullTuple.memory.3 = 4
-			fullTuple.memory.4 = 5
-			fullTuple.memory.5 = 6
-			fullTuple.memory.6 = 7
-			fullTuple.memory.7 = 8
-			fullTuple.memory.8 = 9
-			fullTuple.memory.9 = 10
-			fullTuple.memory.10 = 11
-			fullTuple.memory.11 = 12
-			fullTuple.memory.12 = 13
-			fullTuple.memory.13 = 14
-		}
-		XCTAssert(tuple.value.0 == 1)
-		XCTAssert(tuple.value.1 == 2)
-		XCTAssert(tuple.value.2 == 3)
-		XCTAssert(tuple.value.3 == 4)
-		XCTAssert(tuple.value.4 == 5)
-		XCTAssert(tuple.value.5 == 6)
-		XCTAssert(tuple.value.6 == 7)
-		XCTAssert(tuple.value.7 == 8)
-		XCTAssert(tuple.value.8 == 9)
-		XCTAssert(tuple.value.9 == 10)
-		XCTAssert(tuple.value.10 == 11)
-		XCTAssert(tuple.value.11 == 12)
-		XCTAssert(tuple.value.12 == 13)
-		XCTAssert(tuple.value.13 == 14)
-	#endif
-	}
 }
