@@ -20,7 +20,7 @@
 #import "CwlCatchException.h"
 
 __attribute__((visibility("hidden")))
-NSException* catchExceptionOfType(Class __nonnull type, __attribute__((noescape)) void (^ __nonnull inBlock)()) {
+NSException* catchExceptionOfKind(Class __nonnull type, __attribute__((noescape)) void (^ __nonnull inBlock)()) {
 	@try {
 		inBlock();
 	} @catch (NSException *exception)	{

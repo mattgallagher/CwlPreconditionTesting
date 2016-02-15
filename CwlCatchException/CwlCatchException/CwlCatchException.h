@@ -26,4 +26,4 @@ FOUNDATION_EXPORT double CwlCatchExceptionVersionNumber;
 FOUNDATION_EXPORT const unsigned char CwlCatchExceptionVersionString[];
 
 __attribute__((visibility("hidden")))
-NSException* __nullable catchExceptionOfType(Class __nonnull type, __attribute__((noescape)) void (^ __nonnull inBlock)());
+NSException* __nullable catchExceptionOfKind(Class __nonnull type, __attribute__((noescape)) void (^ __nonnull inBlock)());
