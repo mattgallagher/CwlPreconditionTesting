@@ -68,7 +68,7 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 		if !handledfirstException {
 			// Use the MiG generated server to invoke our handler for the request and fill in the rest of the reply structure
 			guard withUnsafeMutablePointers(&request, &reply, {
-				mach_exc_server(UnsafeMutablePointer<mach_msg_header_t>($0), UnsafeMutablePointer<mach_msg_header_t>($1))
+				mach_exc_server(UnsafeMutablePointer($0), UnsafeMutablePointer($1))
 			}) != 0 else { throw MachExcServer.Any }
 			
 			handledfirstException = true
@@ -79,7 +79,7 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 
 		// Send the reply
 		try kernCheck { withUnsafeMutablePointer(&reply) {
-			mach_msg(UnsafeMutablePointer<mach_msg_header_t>($0), MACH_SEND_MSG, reply.Head.msgh_size, 0, UInt32(MACH_PORT_NULL), 0, UInt32(MACH_PORT_NULL))
+			mach_msg(UnsafeMutablePointer($0), MACH_SEND_MSG, reply.Head.msgh_size, 0, UInt32(MACH_PORT_NULL), 0, UInt32(MACH_PORT_NULL))
 		} }
 	} while true } catch let error as NSError where (error.domain == NSMachErrorDomain && (error.code == Int(MACH_RCV_PORT_CHANGED) || error.code == Int(MACH_RCV_INVALID_NAME))) {
 		// Port was already closed before we started or closed while we were listening.
@@ -121,22 +121,14 @@ public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionEx
 			mach_port_insert_right(mach_task_self_, context.currentExceptionPort, context.currentExceptionPort, MACH_MSG_TYPE_MAKE_SEND)
 		}
 		
-		try kernCheck {
-			withUnsafeMutablePointers(&context.masks, &context.ports, &context.behaviors) { (m, p, b) in
-				withUnsafeMutablePointer(&context.flavors) {
-					// 3. Apply the mach port as the handler for this thread
-					thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, context.currentExceptionPort, Int32(bitPattern: UInt32(EXCEPTION_STATE) | MACH_EXCEPTION_CODES), x86_THREAD_STATE64, UnsafeMutablePointer<exception_mask_t>(m), &context.count, UnsafeMutablePointer<mach_port_t>(p), UnsafeMutablePointer<exception_behavior_t>(b), UnsafeMutablePointer<thread_state_flavor_t>($0))
-				}
-			}
-		}
-		defer {
-			withUnsafeMutablePointers(&context.masks, &context.ports, &context.behaviors) { (m, p, b) in
-				withUnsafeMutablePointer(&context.flavors) {
-					// 6. Unapply the mach port
-					thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, 0, EXCEPTION_DEFAULT, THREAD_STATE_NONE, UnsafeMutablePointer<exception_mask_t>(m), &context.count, UnsafeMutablePointer<mach_port_t>(p), UnsafeMutablePointer<exception_behavior_t>(b), UnsafeMutablePointer<thread_state_flavor_t>($0))
-				}
-			}
-		}
+		try kernCheck { withUnsafeMutablePointers(&context.masks, &context.ports, &context.behaviors) { (m, p, b) in withUnsafeMutablePointer(&context.flavors) {
+			// 3. Apply the mach port as the handler for this thread
+			thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, context.currentExceptionPort, Int32(bitPattern: UInt32(EXCEPTION_STATE) | MACH_EXCEPTION_CODES), x86_THREAD_STATE64, UnsafeMutablePointer<exception_mask_t>(m), &context.count, UnsafeMutablePointer<mach_port_t>(p), UnsafeMutablePointer<exception_behavior_t>(b), UnsafeMutablePointer<thread_state_flavor_t>($0))
+		} } }
+		defer { withUnsafeMutablePointers(&context.masks, &context.ports, &context.behaviors) { (m, p, b) in withUnsafeMutablePointer(&context.flavors) {
+			// 6. Unapply the mach port
+			thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, 0, EXCEPTION_DEFAULT, THREAD_STATE_NONE, UnsafeMutablePointer<exception_mask_t>(m), &context.count, UnsafeMutablePointer<mach_port_t>(p), UnsafeMutablePointer<exception_behavior_t>(b), UnsafeMutablePointer<thread_state_flavor_t>($0))
+		} } }
 		
 		try withUnsafeMutablePointer(&context) { c throws in
 			// 4. Create the thread
