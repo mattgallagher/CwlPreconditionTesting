@@ -50,11 +50,11 @@ let EXCEPTION_DEFAULT: Int32 = 1
 let THREAD_STATE_NONE: Int32 = 13
 let x86_THREAD_STATE64_COUNT = UInt32(sizeof (x86_thread_state64_t) / sizeof (Int32))
 
-public struct execTypesCountTuple<T: IntegerLiteralConvertible> {
+struct execTypesCountTuple<T: IntegerLiteralConvertible> {
 	// From /usr/include/mach/i386/exception.h
 	// #define EXC_TYPES_COUNT 14 /* incl. illegal exception 0 */
-	public var value: (T,T,T,T,T,T,T,T,T,T,T,T,T,T) = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-	public init() {
+	var value: (T,T,T,T,T,T,T,T,T,T,T,T,T,T) = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+	init() {
 	}
 }
 
