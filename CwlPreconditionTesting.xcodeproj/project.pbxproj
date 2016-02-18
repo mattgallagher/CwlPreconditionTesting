@@ -641,7 +641,6 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-D SKIPTUPLETEST";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -656,7 +655,6 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				OTHER_SWIFT_FLAGS = "-D SKIPTUPLETEST";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -760,7 +758,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				OTHER_SWIFT_FLAGS = "-D SKIPTUPLETEST";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoawithlove.CwlPreconditionTestingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -772,7 +769,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				OTHER_SWIFT_FLAGS = "-D SKIPTUPLETEST";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoawithlove.CwlPreconditionTestingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
