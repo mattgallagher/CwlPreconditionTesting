@@ -69,7 +69,9 @@ For comparison or for anyone running this code on a platform without Mach except
 
 In Xcode, you can simply select the CwlPreconditionTesting_POSIX target (instead of the OSX or iOS targets). If you're building without Xcode: all you need is the CwlCatchBadInstructionPOSIX.swift file (compared to the Mach exception handler, the code is tiny doesn't have any weird Objective-C/MiG file dependencies).
 
-**Warning**: on OS X, this approach can't be used when lldb is attached since lldb's Mach exception handler blocks the SIGILL from ever occurring (I've disabled the "Debug Executable" setting for the tests in Xcode - re-enable it to witness the problem).
+**Warning No. 1**: on OS X, this approach can't be used when lldb is attached since lldb's Mach exception handler blocks the SIGILL from ever occurring (I've disabled the "Debug Executable" setting for the tests in Xcode - re-enable it to witness the problem).
+
+**Warning No. 2**: if you're switching between the CwlPreconditionTesting_OSX and CwlPreconditionTesting_POSIX targets, Xcode (as of Xcode 7.2.1) will not detect the change and will not remove the old framework correctly so you'll need to *clean your project* otherwise the old framework will hang around.
 
 Additional problems in decreasing severity include:
 

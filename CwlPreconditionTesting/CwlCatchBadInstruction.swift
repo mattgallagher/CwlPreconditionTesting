@@ -94,7 +94,7 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 
 /// Run the provided block. If a mach "BAD_INSTRUCTION" exception is raised, catch it and return a BadInstructionException (which captures stack information about the throw site, if desired). Otherwise return nil.
 /// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a "BAD_INSTRUCTION" exception is raised, the block will be exited before completion via Objective-C exception. The risks associated with an Objective-C exception apply here: most Swift/Objective-C functions are *not* exception-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
-public func catchBadInstruction(block: () -> Void) -> BadInstructionException? {
+public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionException? {
 	var context = MachContext()
 	var result: BadInstructionException? = nil
 	do {
@@ -122,12 +122,20 @@ public func catchBadInstruction(block: () -> Void) -> BadInstructionException? {
 		}
 		
 		try kernCheck {
-			// 3. Apply the mach port as the handler for this thread
-			thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, context.currentExceptionPort, Int32(bitPattern: UInt32(EXCEPTION_STATE) | MACH_EXCEPTION_CODES), x86_THREAD_STATE64, &context.masks.value.0, &context.count, &context.ports.value.0, &context.behaviors.value.0, &context.flavors.value.0)
+			withUnsafeMutablePointers(&context.masks, &context.ports, &context.behaviors) { (m, p, b) in
+				withUnsafeMutablePointer(&context.flavors) {
+					// 3. Apply the mach port as the handler for this thread
+					thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, context.currentExceptionPort, Int32(bitPattern: UInt32(EXCEPTION_STATE) | MACH_EXCEPTION_CODES), x86_THREAD_STATE64, UnsafeMutablePointer<exception_mask_t>(m), &context.count, UnsafeMutablePointer<mach_port_t>(p), UnsafeMutablePointer<exception_behavior_t>(b), UnsafeMutablePointer<thread_state_flavor_t>($0))
+				}
+			}
 		}
 		defer {
-			// 6. Unapply the mach port
-			thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, 0, EXCEPTION_DEFAULT, THREAD_STATE_NONE, &context.masks.value.0, &context.count, &context.ports.value.0, &context.behaviors.value.0, &context.flavors.value.0)
+			withUnsafeMutablePointers(&context.masks, &context.ports, &context.behaviors) { (m, p, b) in
+				withUnsafeMutablePointer(&context.flavors) {
+					// 6. Unapply the mach port
+					thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, 0, EXCEPTION_DEFAULT, THREAD_STATE_NONE, UnsafeMutablePointer<exception_mask_t>(m), &context.count, UnsafeMutablePointer<mach_port_t>(p), UnsafeMutablePointer<exception_behavior_t>(b), UnsafeMutablePointer<thread_state_flavor_t>($0))
+				}
+			}
 		}
 		
 		try withUnsafeMutablePointer(&context) { c throws in

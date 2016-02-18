@@ -19,6 +19,8 @@
 
 import Foundation
 
+#if arch(x86_64)
+
 // This file is an alternative implementation to CwlCatchBadInstruction.swift that uses a SIGILL signal action and setenv/longjmp instead of a Mach exception handler and Objective-C exception raising.
 //
 // WARNING:
@@ -58,7 +60,7 @@ public class BadInstructionException {
 
 /// Run the provided block. If a POSIX SIGILL is received, handle it and return a BadInstructionException (which is just an empty object in this POSIX signal version). Otherwise return nil.
 /// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a SIGILL is received, the block will be interrupted using a C `longjmp`. The risks associated with abrupt jumps apply here: most Swift functions are *not* interrupt-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
-public func catchBadInstruction(block: () -> Void) -> BadInstructionException? {
+public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionException? {
 	// Construct the signal action
 	var sigActionPrev = sigaction()
 	let action = __sigaction_u(__sa_sigaction: sigIllHandler)
@@ -87,3 +89,5 @@ public func catchBadInstruction(block: () -> Void) -> BadInstructionException? {
 	
 	return nil
 }
+
+#endif
