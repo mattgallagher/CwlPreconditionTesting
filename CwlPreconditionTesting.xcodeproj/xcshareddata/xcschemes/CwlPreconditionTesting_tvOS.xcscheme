@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "96ACCC581C6E8BBE00FE0B1B"
-               BuildableName = "CwlPreconditionTesting_tvOS.framework"
+               BuildableName = "CwlPreconditionTesting.framework"
                BlueprintName = "CwlPreconditionTesting_tvOS"
                ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
             </BuildableReference>
@@ -24,8 +24,8 @@
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96ACCC581C6E8BBE00FE0B1B"
-            BuildableName = "CwlPreconditionTesting_tvOS.framework"
+            BuildableName = "CwlPreconditionTesting.framework"
             BlueprintName = "CwlPreconditionTesting_tvOS"
             ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96ACCC581C6E8BBE00FE0B1B"
-            BuildableName = "CwlPreconditionTesting_tvOS.framework"
+            BuildableName = "CwlPreconditionTesting.framework"
             BlueprintName = "CwlPreconditionTesting_tvOS"
             ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96ACCC581C6E8BBE00FE0B1B"
-            BuildableName = "CwlPreconditionTesting_tvOS.framework"
+            BuildableName = "CwlPreconditionTesting.framework"
             BlueprintName = "CwlPreconditionTesting_tvOS"
             ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
          </BuildableReference>
