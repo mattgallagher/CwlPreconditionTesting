@@ -50,7 +50,7 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 	var reply = reply_mach_exception_raise_state_t()
 	
 	var handledfirstException = false
-	do { repeat {
+	repeat { do {
 		// Request the next mach message from the port
 		request.Head.msgh_local_port = context.currentExceptionPort
 		request.Head.msgh_size = UInt32(sizeofValue(request))
@@ -81,15 +81,14 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 		try kernCheck { withUnsafeMutablePointer(&reply) {
 			mach_msg(UnsafeMutablePointer($0), MACH_SEND_MSG, reply.Head.msgh_size, 0, UInt32(MACH_PORT_NULL), 0, UInt32(MACH_PORT_NULL))
 		} }
-	} while true } catch let error as NSError where (error.domain == NSMachErrorDomain && (error.code == Int(MACH_RCV_PORT_CHANGED) || error.code == Int(MACH_RCV_INVALID_NAME))) {
+	} catch let error as NSError where (error.domain == NSMachErrorDomain && (error.code == Int(MACH_RCV_PORT_CHANGED) || error.code == Int(MACH_RCV_INVALID_NAME))) {
 		// Port was already closed before we started or closed while we were listening.
-		// This means the block completed without raising an EXC_BAD_INSTRUCTION. Not a problem.
+		// This means the controlling thread shut down.
+		return nil
 	} catch {
 		// Should never be reached but this is testing code, don't try to recover, just abort
 		fatalError("Mach message error: \(error)")
-	}
-	
-	return nil
+	} } while true
 }
 
 /// Run the provided block. If a mach "BAD_INSTRUCTION" exception is raised, catch it and return a BadInstructionException (which captures stack information about the throw site, if desired). Otherwise return nil.
