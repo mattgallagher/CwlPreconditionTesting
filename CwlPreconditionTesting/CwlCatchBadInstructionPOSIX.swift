@@ -26,11 +26,11 @@ import Foundation
 // WARNING:
 // This code is quick and dirty. It's a proof of concept for using a SIGILL handler and setjmp/longjmp where Mach exceptions and the Obj-C runtime aren't available. I ran the automated tests when I first wrote this code but I don't personally use it at all so by the time you're reading this comment, it probably broke and I didn't notice.
 // Obvious limitations:
-//	* It doesn't work when debugging with lldb.
-//	* It doesn't scope correctly to the thread (it's global)
-//	* In violation of rules for signal handlers, it writes to the "red zone" on the stack
-//	* It isn't re-entrant
-//	* Plus all of the same caveats as the Mach exceptions version (doesn't play well with other handlers, probably leaks ARC memory, etc)
+//  * It doesn't work when debugging with lldb.
+//  * It doesn't scope correctly to the thread (it's global)
+//  * In violation of rules for signal handlers, it writes to the "red zone" on the stack
+//  * It isn't re-entrant
+//  * Plus all of the same caveats as the Mach exceptions version (doesn't play well with other handlers, probably leaks ARC memory, etc)
 // Treat it like a loaded shotgun. Don't point it at your face.
 
 private var env = jmp_buf(0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,0,0,0,0)
@@ -60,6 +60,8 @@ public class BadInstructionException {
 
 /// Run the provided block. If a POSIX SIGILL is received, handle it and return a BadInstructionException (which is just an empty object in this POSIX signal version). Otherwise return nil.
 /// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a SIGILL is received, the block will be interrupted using a C `longjmp`. The risks associated with abrupt jumps apply here: most Swift functions are *not* interrupt-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
+/// - parameter block: a function without parameters that will be run
+/// - returns: if an SIGILL is raised during the execution of `block` then a BadInstructionException will be returned, otherwise `nil`.
 public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionException? {
 	// Construct the signal action
 	var sigActionPrev = sigaction()

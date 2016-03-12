@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 NSException* catchExceptionOfKind(Class __nonnull type, __attribute__((noescape)) void (^ __nonnull inBlock)()) {
 	@try {
 		inBlock();
-	} @catch (NSException *exception)	{
+	} @catch (NSException *exception) {
 		if ([exception isKindOfClass:type]) {
 			return exception;
 		} else {

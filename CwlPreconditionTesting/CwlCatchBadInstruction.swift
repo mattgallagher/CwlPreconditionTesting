@@ -93,6 +93,8 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 
 /// Run the provided block. If a mach "BAD_INSTRUCTION" exception is raised, catch it and return a BadInstructionException (which captures stack information about the throw site, if desired). Otherwise return nil.
 /// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a "BAD_INSTRUCTION" exception is raised, the block will be exited before completion via Objective-C exception. The risks associated with an Objective-C exception apply here: most Swift/Objective-C functions are *not* exception-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
+/// - parameter block: a function without parameters that will be run
+/// - returns: if an EXC_BAD_INSTRUCTION is raised during the execution of `block` then a BadInstructionException will be returned, otherwise `nil`.
 public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionException? {
 	var context = MachContext()
 	var result: BadInstructionException? = nil
