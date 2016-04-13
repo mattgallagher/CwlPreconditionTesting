@@ -22,8 +22,8 @@ import Foundation
 
 #if arch(x86_64)
 
-private enum PthreadError: ErrorType { case Any }
-private enum MachExcServer: ErrorType { case Any }
+private enum PthreadError: ErrorType { case Code(Int32) }
+private enum MachExcServer: ErrorType { case Code(kern_return_t) }
 
 /// A quick function for converting Mach error results into Swift errors
 private func kernCheck(f: () -> Int32) throws {
@@ -70,7 +70,7 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 			// Use the MiG generated server to invoke our handler for the request and fill in the rest of the reply structure
 			guard withUnsafeMutablePointers(&request, &reply, {
 				mach_exc_server(UnsafeMutablePointer($0), UnsafeMutablePointer($1))
-			}) != 0 else { throw MachExcServer.Any }
+			}) != 0 else { throw MachExcServer.Code(reply.RetCode) }
 			
 			handledfirstException = true
 		} else {
@@ -134,7 +134,8 @@ public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionEx
 		
 		try withUnsafeMutablePointer(&context) { c throws in
 			// 4. Create the thread
-			guard pthread_create(&handlerThread, nil, machMessageHandler, c) == 0 else { throw PthreadError.Any }
+			let e = pthread_create(&handlerThread, nil, machMessageHandler, c)
+			guard e == 0 else { throw PthreadError.Code(e) }
 			
 			// 5. Run the block
 			result = BadInstructionException.catchException(block)
