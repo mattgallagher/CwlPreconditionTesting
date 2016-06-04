@@ -22,8 +22,8 @@ import Foundation
 
 #if arch(x86_64)
 
-private enum PthreadError: ErrorType { case Code(Int32) }
-private enum MachExcServer: ErrorType { case Code(kern_return_t) }
+private enum PthreadError: ErrorProtocol { case Code(Int32) }
+private enum MachExcServer: ErrorProtocol { case Code(kern_return_t) }
 
 /// A quick function for converting Mach error results into Swift errors
 private func kernCheck(f: () -> Int32) throws {
@@ -41,12 +41,13 @@ private struct MachContext {
     var behaviors = execTypesCountTuple<exception_behavior_t>()
     var flavors = execTypesCountTuple<thread_state_flavor_t>()
 	var currentExceptionPort: mach_port_t = 0
-	var handlerThread: pthread_t = nil
+	var handlerThread: pthread_t? = nil
 }
 
 /// A function for receiving mach messages and parsing the first with mach_exc_server (and if any others are received, throwing them away).
-private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void> {
-	let context = UnsafeMutablePointer<MachContext>(arg).memory
+private func machMessageHandler(arg: UnsafeMutablePointer<Void>?) -> UnsafeMutablePointer<Void>? {
+	guard let a = arg else { return nil }
+	let context = UnsafeMutablePointer<MachContext>(a).pointee
 	var request = request_mach_exception_raise_t()
 	var reply = reply_mach_exception_raise_state_t()
 	
@@ -60,7 +61,7 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 		} }
 		
 		// Prepare the reply structure
-		reply.Head.msgh_bits = MACH_MSGH_BITS(MACH_MSGH_BITS_REMOTE(request.Head.msgh_bits), 0)
+		reply.Head.msgh_bits = MACH_MSGH_BITS(remote: MACH_MSGH_BITS_REMOTE(bits: request.Head.msgh_bits), 0)
 		reply.Head.msgh_local_port = UInt32(MACH_PORT_NULL)
 		reply.Head.msgh_remote_port = request.Head.msgh_remote_port
 		reply.Head.msgh_size = UInt32(sizeofValue(reply))
@@ -96,11 +97,11 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>) -> UnsafeMutabl
 /// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a "BAD_INSTRUCTION" exception is raised, the block will be exited before completion via Objective-C exception. The risks associated with an Objective-C exception apply here: most Swift/Objective-C functions are *not* exception-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
 /// - parameter block: a function without parameters that will be run
 /// - returns: if an EXC_BAD_INSTRUCTION is raised during the execution of `block` then a BadInstructionException will be returned, otherwise `nil`.
-public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionException? {
+public func catchBadInstruction(block: @noescape() -> Void) -> BadInstructionException? {
 	var context = MachContext()
 	var result: BadInstructionException? = nil
 	do {
-		var handlerThread: pthread_t = nil
+		var handlerThread: pthread_t? = nil
 		defer {
             // 8. Wait for the thread to terminate *if* we actually made it to the creation point
             // The mach port should be destroyed *before* calling pthread_join to avoid a deadlock.
@@ -127,18 +128,19 @@ public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionEx
 			// 3. Apply the mach port as the handler for this thread
 			thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, context.currentExceptionPort, Int32(bitPattern: UInt32(EXCEPTION_STATE) | MACH_EXCEPTION_CODES), x86_THREAD_STATE64, UnsafeMutablePointer<exception_mask_t>(m), &context.count, UnsafeMutablePointer<mach_port_t>(p), UnsafeMutablePointer<exception_behavior_t>(b), UnsafeMutablePointer<thread_state_flavor_t>($0))
 		} } }
-		defer { withUnsafeMutablePointers(&context.masks, &context.ports, &context.behaviors) { (m, p, b) in withUnsafeMutablePointer(&context.flavors) {
+		defer { withUnsafeMutablePointers(&context.masks, &context.ports, &context.behaviors) { (m, p, b) in withUnsafeMutablePointer(&context.flavors) { fs -> Void in
 			// 6. Unapply the mach port
-			thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, 0, EXCEPTION_DEFAULT, THREAD_STATE_NONE, UnsafeMutablePointer<exception_mask_t>(m), &context.count, UnsafeMutablePointer<mach_port_t>(p), UnsafeMutablePointer<exception_behavior_t>(b), UnsafeMutablePointer<thread_state_flavor_t>($0))
+			thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, 0, EXCEPTION_DEFAULT, THREAD_STATE_NONE, UnsafeMutablePointer<exception_mask_t>(m), &context.count, UnsafeMutablePointer<mach_port_t>(p), UnsafeMutablePointer<exception_behavior_t>(b), UnsafeMutablePointer<thread_state_flavor_t>(fs))
 		} } }
 		
+
 		try withUnsafeMutablePointer(&context) { c throws in
 			// 4. Create the thread
 			let e = pthread_create(&handlerThread, nil, machMessageHandler, c)
 			guard e == 0 else { throw PthreadError.Code(e) }
 			
 			// 5. Run the block
-			result = BadInstructionException.catchException(block)
+			result = catchException(inBlock: block)
 		}
 	} catch {
 		// Should never be reached but this is testing code, don't try to recover, just abort

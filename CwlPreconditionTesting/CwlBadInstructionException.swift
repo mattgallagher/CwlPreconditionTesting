@@ -39,29 +39,33 @@ private func raiseBadInstructionException() {
 	}
 	
 	/// An Objective-C callable function, invoked from the `mach_exc_server` callback function `catch_mach_exception_raise_state` to push the `raiseBadInstructionException` function onto the stack.
-	public class func catch_mach_exception_raise_state(exception_port: mach_port_t, exception: exception_type_t, code: UnsafePointer<mach_exception_data_type_t>, codeCnt: mach_msg_type_number_t, flavor: UnsafeMutablePointer<Int32>, old_state: UnsafePointer<natural_t>, old_stateCnt: mach_msg_type_number_t, new_state: thread_state_t, new_stateCnt: UnsafeMutablePointer<mach_msg_type_number_t>) -> kern_return_t {
+	public class func catch_mach_exception_raise_state(_ exception_port: mach_port_t, exception: exception_type_t, code: UnsafePointer<mach_exception_data_type_t>, codeCnt: mach_msg_type_number_t, flavor: UnsafeMutablePointer<Int32>, old_state: UnsafePointer<natural_t>, old_stateCnt: mach_msg_type_number_t, new_state: thread_state_t, new_stateCnt: UnsafeMutablePointer<mach_msg_type_number_t>) -> kern_return_t {
 
 		// Make sure we've been given enough memory
-		if old_stateCnt != x86_THREAD_STATE64_COUNT || new_stateCnt.memory < x86_THREAD_STATE64_COUNT {
+		if old_stateCnt != x86_THREAD_STATE64_COUNT || new_stateCnt.pointee < x86_THREAD_STATE64_COUNT {
 			return KERN_INVALID_ARGUMENT
 		}
 		
 		// Read the old thread state
-		var state = UnsafePointer<x86_thread_state64_t>(old_state).memory
+		var state = UnsafePointer<x86_thread_state64_t>(old_state).pointee
 
 		// 1. Decrement the stack pointer
 		state.__rsp -= __uint64_t(sizeof(Int))
 		
 		// 2. Save the old Instruction Pointer to the stack.
-		UnsafeMutablePointer<__uint64_t>(bitPattern: UInt(state.__rsp)).memory = state.__rip
+		if let pointer = UnsafeMutablePointer<__uint64_t>(bitPattern: UInt(state.__rsp)) {
+			pointer.pointee = state.__rip
+		} else {
+			return KERN_INVALID_ARGUMENT
+		}
 
 		// 3. Set the Instruction Pointer to the new function's address
 		var f: @convention(c) () -> Void = raiseBadInstructionException
-		withUnsafePointer(&f) { state.__rip = UnsafePointer<__uint64_t>($0).memory }
+		withUnsafePointer(&f) { state.__rip = UnsafePointer<__uint64_t>($0).pointee }
 		
 		// Write the new thread state
-		UnsafeMutablePointer<x86_thread_state64_t>(new_state).memory = state
-		new_stateCnt.memory = x86_THREAD_STATE64_COUNT
+		UnsafeMutablePointer<x86_thread_state64_t>(new_state).pointee = state
+		new_stateCnt.pointee = x86_THREAD_STATE64_COUNT
 	
 		return KERN_SUCCESS
 	}
