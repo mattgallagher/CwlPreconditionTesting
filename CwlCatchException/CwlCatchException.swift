@@ -21,6 +21,6 @@
 import Foundation
 
 // We can't simply cast to Self? in the catchInBlock method so we need this generic function wrapper to do the conversion for us. Mildly annoying.
-public func catchException<T: NSException>(inBlock: @noescape () -> Void) -> T? {
-	return catchExceptionOfKind(T.self, inBlock) as? T
+public func catchException<T: NSException>(in block: @noescape () -> Void) -> T? {
+	return catchExceptionOfKind(T.self, block) as? T
 }
