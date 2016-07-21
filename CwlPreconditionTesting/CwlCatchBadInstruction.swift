@@ -22,11 +22,11 @@ import Foundation
 
 #if arch(x86_64)
 
-private enum PthreadError: ErrorProtocol { case Code(Int32) }
-private enum MachExcServer: ErrorProtocol { case Code(kern_return_t) }
+private enum PthreadError: ErrorProtocol { case code(Int32) }
+private enum MachExcServer: ErrorProtocol { case code(kern_return_t) }
 
 /// A quick function for converting Mach error results into Swift errors
-private func kernCheck(f: () -> Int32) throws {
+private func kernCheck(_ f: () -> Int32) throws {
 	let r = f()
 	guard r == KERN_SUCCESS else {
 		throw NSError(domain: NSMachErrorDomain, code: Int(r), userInfo: nil)
@@ -45,9 +45,8 @@ private struct MachContext {
 }
 
 /// A function for receiving mach messages and parsing the first with mach_exc_server (and if any others are received, throwing them away).
-private func machMessageHandler(arg: UnsafeMutablePointer<Void>?) -> UnsafeMutablePointer<Void>? {
-	guard let a = arg else { return nil }
-	let context = UnsafeMutablePointer<MachContext>(a).pointee
+private func machMessageHandler(_ arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void>? {
+	let context = UnsafeMutablePointer<MachContext>(arg).pointee
 	var request = request_mach_exception_raise_t()
 	var reply = reply_mach_exception_raise_state_t()
 	
@@ -61,7 +60,7 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>?) -> UnsafeMutab
 		} }
 		
 		// Prepare the reply structure
-		reply.Head.msgh_bits = MACH_MSGH_BITS(remote: MACH_MSGH_BITS_REMOTE(bits: request.Head.msgh_bits), 0)
+		reply.Head.msgh_bits = MACH_MSGH_BITS(MACH_MSGH_BITS_REMOTE(request.Head.msgh_bits), 0)
 		reply.Head.msgh_local_port = UInt32(MACH_PORT_NULL)
 		reply.Head.msgh_remote_port = request.Head.msgh_remote_port
 		reply.Head.msgh_size = UInt32(sizeofValue(reply))
@@ -71,7 +70,7 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>?) -> UnsafeMutab
 			// Use the MiG generated server to invoke our handler for the request and fill in the rest of the reply structure
 			guard withUnsafeMutablePointers(&request, &reply, {
 				mach_exc_server(UnsafeMutablePointer($0), UnsafeMutablePointer($1))
-			}) != 0 else { throw MachExcServer.Code(reply.RetCode) }
+			}) != 0 else { throw MachExcServer.code(reply.RetCode) }
 			
 			handledfirstException = true
 		} else {
@@ -97,7 +96,7 @@ private func machMessageHandler(arg: UnsafeMutablePointer<Void>?) -> UnsafeMutab
 /// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a "BAD_INSTRUCTION" exception is raised, the block will be exited before completion via Objective-C exception. The risks associated with an Objective-C exception apply here: most Swift/Objective-C functions are *not* exception-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
 /// - parameter block: a function without parameters that will be run
 /// - returns: if an EXC_BAD_INSTRUCTION is raised during the execution of `block` then a BadInstructionException will be returned, otherwise `nil`.
-public func catchBadInstruction(block: @noescape() -> Void) -> BadInstructionException? {
+public func catchBadInstruction(_ block: @noescape() -> Void) -> BadInstructionException? {
 	var context = MachContext()
 	var result: BadInstructionException? = nil
 	do {
@@ -106,7 +105,7 @@ public func catchBadInstruction(block: @noescape() -> Void) -> BadInstructionExc
             // 8. Wait for the thread to terminate *if* we actually made it to the creation point
             // The mach port should be destroyed *before* calling pthread_join to avoid a deadlock.
 			if handlerThread != nil {
-				pthread_join(handlerThread, nil)
+				pthread_join(handlerThread!, nil)
 			}
 		}
 
@@ -137,10 +136,10 @@ public func catchBadInstruction(block: @noescape() -> Void) -> BadInstructionExc
 		try withUnsafeMutablePointer(&context) { c throws in
 			// 4. Create the thread
 			let e = pthread_create(&handlerThread, nil, machMessageHandler, c)
-			guard e == 0 else { throw PthreadError.Code(e) }
+			guard e == 0 else { throw PthreadError.code(e) }
 			
 			// 5. Run the block
-			result = catchException(inBlock: block)
+			result = catchException(in: block)
 		}
 	} catch {
 		// Should never be reached but this is testing code, don't try to recover, just abort

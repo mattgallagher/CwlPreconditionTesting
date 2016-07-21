@@ -468,7 +468,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Matt Gallagher ( http://cocoawithlove.com )";
 				TargetAttributes = {
 					96ACCC471C6E8A7C00FE0B1B = {
@@ -485,6 +485,7 @@
 					};
 					C98707751C3F886F009B413A = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0800;
 					};
 					C987077F1C3F886F009B413A = {
 						CreatedOnToolsVersion = 7.2;
@@ -656,6 +657,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -695,6 +697,7 @@
 				PRODUCT_NAME = CwlPreconditionTesting;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 				VALIDATE_PRODUCT = YES;
@@ -736,6 +739,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-POSIX";
 				PRODUCT_NAME = CwlPreconditionTesting;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -758,6 +762,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-POSIXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -805,6 +810,7 @@
 				PRODUCT_NAME = CwlPreconditionTesting;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -833,6 +839,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -942,6 +949,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-OSX";
 				PRODUCT_NAME = CwlPreconditionTesting;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -965,6 +973,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-OSX";
 				PRODUCT_NAME = CwlPreconditionTesting;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -987,6 +997,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};

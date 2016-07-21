@@ -31,7 +31,7 @@ private func raiseBadInstructionException() {
 	static var name: String = "com.cocoawithlove.BadInstruction"
 
 	init() {
-		super.init(name: BadInstructionException.name, reason: nil, userInfo: nil)
+		super.init(name: NSExceptionName(rawValue: BadInstructionException.name), reason: nil, userInfo: nil)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -50,7 +50,7 @@ private func raiseBadInstructionException() {
 		var state = UnsafePointer<x86_thread_state64_t>(old_state).pointee
 
 		// 1. Decrement the stack pointer
-		state.__rsp -= __uint64_t(sizeof(Int))
+		state.__rsp -= __uint64_t(sizeof(Int.self))
 		
 		// 2. Save the old Instruction Pointer to the stack.
 		if let pointer = UnsafeMutablePointer<__uint64_t>(bitPattern: UInt(state.__rsp)) {
