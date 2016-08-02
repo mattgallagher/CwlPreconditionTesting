@@ -22,8 +22,8 @@ import Foundation
 
 #if arch(x86_64)
 
-private enum PthreadError: ErrorProtocol { case code(Int32) }
-private enum MachExcServer: ErrorProtocol { case code(kern_return_t) }
+private enum PthreadError: Error { case code(Int32) }
+private enum MachExcServer: Error { case code(kern_return_t) }
 
 /// A quick function for converting Mach error results into Swift errors
 private func kernCheck(_ f: () -> Int32) throws {
