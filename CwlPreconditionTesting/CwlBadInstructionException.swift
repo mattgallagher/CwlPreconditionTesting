@@ -47,10 +47,10 @@ private func raiseBadInstructionException() {
 		}
 		
 		// Read the old thread state
-		var state = UnsafePointer<x86_thread_state64_t>(old_state).pointee
+		var state = old_state.withMemoryRebound(to: x86_thread_state64_t.self, capacity: 1) { return $0.pointee }
 
 		// 1. Decrement the stack pointer
-		state.__rsp -= __uint64_t(sizeof(Int.self))
+		state.__rsp -= __uint64_t(MemoryLayout<Int>.size)
 		
 		// 2. Save the old Instruction Pointer to the stack.
 		if let pointer = UnsafeMutablePointer<__uint64_t>(bitPattern: UInt(state.__rsp)) {
@@ -61,10 +61,12 @@ private func raiseBadInstructionException() {
 
 		// 3. Set the Instruction Pointer to the new function's address
 		var f: @convention(c) () -> Void = raiseBadInstructionException
-		withUnsafePointer(&f) { state.__rip = UnsafePointer<__uint64_t>($0).pointee }
+		withUnsafePointer(to: &f) {
+			state.__rip = $0.withMemoryRebound(to: __uint64_t.self, capacity: 1) { return $0.pointee }
+		}
 		
 		// Write the new thread state
-		UnsafeMutablePointer<x86_thread_state64_t>(new_state).pointee = state
+		new_state.withMemoryRebound(to: x86_thread_state64_t.self, capacity: 1) { $0.pointee = state }
 		new_stateCnt.pointee = x86_THREAD_STATE64_COUNT
 	
 		return KERN_SUCCESS

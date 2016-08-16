@@ -49,8 +49,9 @@ let EXCEPTION_DEFAULT: Int32 = 1
 // #define x86_THREAD_STATE64_COUNT	((mach_msg_type_number_t) \
 //		( sizeof (x86_thread_state64_t) / sizeof (int) ))
 let THREAD_STATE_NONE: Int32 = 13
-let x86_THREAD_STATE64_COUNT = UInt32(sizeof (x86_thread_state64_t.self) / sizeof (Int32.self))
+let x86_THREAD_STATE64_COUNT = UInt32(MemoryLayout<x86_thread_state64_t>.size / MemoryLayout<Int32>.size)
 
+let EXC_TYPES_COUNT = 14
 struct execTypesCountTuple<T: ExpressibleByIntegerLiteral> {
 	// From /usr/include/mach/i386/exception.h
 	// #define EXC_TYPES_COUNT 14 /* incl. illegal exception 0 */
