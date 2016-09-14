@@ -43,6 +43,26 @@ import Foundation
 		}
 	}
 	
+	extension request_mach_exception_raise_t {
+		mutating func withMsgHeaderPointer<R>(in block: (UnsafeMutablePointer<mach_msg_header_t>) -> R) -> R {
+			return withUnsafeMutablePointer(to: &self) { p -> R in
+				return p.withMemoryRebound(to: mach_msg_header_t.self, capacity: 1) { ptr -> R in
+					return block(ptr)
+				}
+			}
+		}
+	}
+	
+	extension reply_mach_exception_raise_state_t {
+		mutating func withMsgHeaderPointer<R>(in block: (UnsafeMutablePointer<mach_msg_header_t>) -> R) -> R {
+			return withUnsafeMutablePointer(to: &self) { p -> R in
+				return p.withMemoryRebound(to: mach_msg_header_t.self, capacity: 1) { ptr -> R in
+					return block(ptr)
+				}
+			}
+		}
+	}
+	
 	/// A structure used to store context associated with the Mach message port
 	private struct MachContext {
 		var masks = execTypesCountTuple<exception_mask_t>()
@@ -77,9 +97,9 @@ import Foundation
 			// Request the next mach message from the port
 			request.Head.msgh_local_port = context.currentExceptionPort
 			request.Head.msgh_size = UInt32(MemoryLayout<request_mach_exception_raise_t>.size)
-			try kernCheck { withUnsafeMutablePointer(to: &request) { $0.withMemoryRebound(to: mach_msg_header_t.self, capacity: 0) {
-				mach_msg($0, MACH_RCV_MSG | MACH_RCV_INTERRUPT, 0, request.Head.msgh_size, context.currentExceptionPort, 0, UInt32(MACH_PORT_NULL))
-			} } }
+			try kernCheck { request.withMsgHeaderPointer { requestPtr in
+				mach_msg(requestPtr, MACH_RCV_MSG | MACH_RCV_INTERRUPT, 0, request.Head.msgh_size, context.currentExceptionPort, 0, UInt32(MACH_PORT_NULL))
+			} }
 			
 			// Prepare the reply structure
 			reply.Head.msgh_bits = MACH_MSGH_BITS(MACH_MSGH_BITS_REMOTE(request.Head.msgh_bits), 0)
@@ -90,9 +110,9 @@ import Foundation
 			
 			if !handledfirstException {
 				// Use the MiG generated server to invoke our handler for the request and fill in the rest of the reply structure
-				guard withUnsafeMutablePointer(to: &request, { $0.withMemoryRebound(to: mach_msg_header_t.self, capacity: 0) { reqPtr in withUnsafeMutablePointer(to: &reply) { $0.withMemoryRebound(to: mach_msg_header_t.self, capacity: 0) { repPtr in
-					mach_exc_server(reqPtr, repPtr)
-				} } } }) != 0 else { throw MachExcServer.code(reply.RetCode) }
+				guard request.withMsgHeaderPointer(in: { requestPtr in reply.withMsgHeaderPointer { replyPtr in
+					mach_exc_server(requestPtr, replyPtr)
+				} }) != 0 else { throw MachExcServer.code(reply.RetCode) }
 				
 				handledfirstException = true
 			} else {
@@ -101,9 +121,9 @@ import Foundation
 			}
 			
 			// Send the reply
-			try kernCheck { withUnsafeMutablePointer(to: &reply) { $0.withMemoryRebound(to: mach_msg_header_t.self, capacity: 0) { repPtr in
-				mach_msg(repPtr, MACH_SEND_MSG, reply.Head.msgh_size, 0, UInt32(MACH_PORT_NULL), 0, UInt32(MACH_PORT_NULL))
-			} } }
+			try kernCheck { reply.withMsgHeaderPointer { replyPtr in
+				mach_msg(replyPtr, MACH_SEND_MSG, reply.Head.msgh_size, 0, UInt32(MACH_PORT_NULL), 0, UInt32(MACH_PORT_NULL))
+			} }
 		} catch let error as NSError where (error.domain == NSMachErrorDomain && (error.code == Int(MACH_RCV_PORT_CHANGED) || error.code == Int(MACH_RCV_INVALID_NAME))) {
 			// Port was already closed before we started or closed while we were listening.
 			// This means the controlling thread shut down.
@@ -118,7 +138,7 @@ import Foundation
 	/// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a "BAD_INSTRUCTION" exception is raised, the block will be exited before completion via Objective-C exception. The risks associated with an Objective-C exception apply here: most Swift/Objective-C functions are *not* exception-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
 	/// - parameter block: a function without parameters that will be run
 	/// - returns: if an EXC_BAD_INSTRUCTION is raised during the execution of `block` then a BadInstructionException will be returned, otherwise `nil`.
-	public func catchBadInstruction(_ block: () -> Void) -> BadInstructionException? {
+	public func catchBadInstruction(in block: () -> Void) -> BadInstructionException? {
 		var context = MachContext()
 		var result: BadInstructionException? = nil
 		do {
