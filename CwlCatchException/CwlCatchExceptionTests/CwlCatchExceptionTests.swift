@@ -27,35 +27,35 @@ class ExceptionSubclass: NSException {
 class CatchExceptionTests: XCTestCase {
 	func testCatchException() {
 		// If no exception is thrown, result must be nil
-		let noException = NSException.catchException {}
+		let noException = catchException {}
 		XCTAssert(noException == nil)
 		
 		// An exception thrown should be caught by a "catch" of the same type
-		let exceptionA = NSException.catchException {
-			NSException(name: "a", reason: "b", userInfo: nil).raise()
+		let exceptionA = catchException {
+			NSException(name: NSExceptionName("a"), reason: "b", userInfo: nil).raise()
 		}
 		XCTAssert(exceptionA != nil)
-		XCTAssert(exceptionA!.name == "a")
+		XCTAssert(exceptionA!.name == NSExceptionName("a"))
 		XCTAssert(exceptionA!.reason == "b")
 		
 		// An exception thrown should *not* be caught by a "catch" of a subtype
 		var exceptionC: NSException? = nil
-		let exceptionB = NSException.catchException {
+		let exceptionB = catchException {
 			exceptionC = ExceptionSubclass.catchException {
-				NSException(name: "c", reason: "d", userInfo: nil).raise()
+				NSException(name: NSExceptionName("c"), reason: "d", userInfo: nil).raise()
 			}
 		}
 		XCTAssert(exceptionB != nil)
-		XCTAssert(exceptionB!.name == "c")
+		XCTAssert(exceptionB!.name == NSExceptionName("c"))
 		XCTAssert(exceptionB!.reason == "d")
 		XCTAssert(exceptionC == nil)
 		
 		// An exception thrown should be caught by a "catch" of a supertype
-		let exceptionD = NSException.catchException {
-			ExceptionSubclass(name: "e", reason: "f", userInfo: nil).raise()
+		let exceptionD = catchException {
+			ExceptionSubclass(name: NSExceptionName("e"), reason: "f", userInfo: nil).raise()
 		}
 		XCTAssert(exceptionD != nil)
-		XCTAssert(exceptionD!.name == "e")
+		XCTAssert(exceptionD!.name == NSExceptionName("e"))
 		XCTAssert(exceptionD!.reason == "f")
 	}
 }
