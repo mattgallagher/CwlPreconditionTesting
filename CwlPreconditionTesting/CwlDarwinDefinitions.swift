@@ -33,8 +33,8 @@ let MACH_PORT_RIGHT_RECEIVE: mach_port_right_t = 1
 // #define MACH_MSGH_BITS(remote, local)  /* legacy */		\
 // 		((remote) | ((local) << 8))
 let MACH_MSG_TYPE_MAKE_SEND: UInt32 = 20
-func MACH_MSGH_BITS_REMOTE(bits: UInt32) -> UInt32 { return bits & UInt32(MACH_MSGH_BITS_REMOTE_MASK) }
-func MACH_MSGH_BITS(remote: UInt32, _ local: UInt32) -> UInt32 { return ((remote) | ((local) << 8)) }
+func MACH_MSGH_BITS_REMOTE(_ bits: UInt32) -> UInt32 { return bits & UInt32(MACH_MSGH_BITS_REMOTE_MASK) }
+func MACH_MSGH_BITS(_ remote: UInt32, _ local: UInt32) -> UInt32 { return ((remote) | ((local) << 8)) }
 
 // From /usr/include/mach/exception_types.h
 // #define EXC_BAD_INSTRUCTION	2	/* Instruction failed */
@@ -49,9 +49,10 @@ let EXCEPTION_DEFAULT: Int32 = 1
 // #define x86_THREAD_STATE64_COUNT	((mach_msg_type_number_t) \
 //		( sizeof (x86_thread_state64_t) / sizeof (int) ))
 let THREAD_STATE_NONE: Int32 = 13
-let x86_THREAD_STATE64_COUNT = UInt32(sizeof (x86_thread_state64_t) / sizeof (Int32))
+let x86_THREAD_STATE64_COUNT = UInt32(MemoryLayout<x86_thread_state64_t>.size / MemoryLayout<Int32>.size)
 
-struct execTypesCountTuple<T: IntegerLiteralConvertible> {
+let EXC_TYPES_COUNT = 14
+struct execTypesCountTuple<T: ExpressibleByIntegerLiteral> {
 	// From /usr/include/mach/i386/exception.h
 	// #define EXC_TYPES_COUNT 14 /* incl. illegal exception 0 */
 	var value: (T,T,T,T,T,T,T,T,T,T,T,T,T,T) = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
