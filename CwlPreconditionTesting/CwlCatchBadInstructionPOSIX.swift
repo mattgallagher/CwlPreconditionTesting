@@ -40,19 +40,23 @@ private func triggerLongJmp() {
 	longjmp(&env.0, 1)
 }
 
-private func sigIllHandler(code: Int32, info: UnsafeMutablePointer<__siginfo>, uap: UnsafeMutablePointer<Void>) -> Void {
-	let context = UnsafeMutablePointer<ucontext64_t>(uap)
+private func sigIllHandler(code: Int32, info: UnsafeMutablePointer<__siginfo>?, uap: UnsafeMutableRawPointer?) -> Void {
+	if let context = uap?.assumingMemoryBound(to: ucontext64_t.self) {
+		// 1. Decrement the stack pointer
+		context.pointee.uc_mcontext64.pointee.__ss.__rsp -= __uint64_t(MemoryLayout<Int>.size)
 
-	// 1. Decrement the stack pointer
-	context.memory.uc_mcontext64.memory.__ss.__rsp -= __uint64_t(sizeof(Int))
+		// 2. Save the old Instruction Pointer to the stack.
+		let rsp = context.pointee.uc_mcontext64.pointee.__ss.__rsp
+		if let ump = UnsafeMutablePointer<__uint64_t>(bitPattern: UInt(rsp)) {
+			ump.pointee = rsp
+		}
 
-	// 2. Save the old Instruction Pointer to the stack.
-	let rsp = context.memory.uc_mcontext64.memory.__ss.__rsp
-	UnsafeMutablePointer<__uint64_t>(bitPattern: UInt(rsp)).memory = rsp
-
-	// 3. Set the Instruction Pointer to the new function's address
-	var f: @convention(c) () -> Void = triggerLongJmp
-	withUnsafePointer(&f) { context.memory.uc_mcontext64.memory.__ss.__rip = UnsafePointer<__uint64_t>($0).memory }
+		// 3. Set the Instruction Pointer to the new function's address
+		var f: @convention(c) () -> Void = triggerLongJmp
+		withUnsafePointer(to: &f) {	$0.withMemoryRebound(to: __uint64_t.self, capacity: 1) { ptr in
+			context.pointee.uc_mcontext64.pointee.__ss.__rip = ptr.pointee
+		} }
+	}
 }
 
 /// Without Mach exceptions or the Objective-C runtime, there's nothing to put in the exception object. It's really just a boolean – either a SIGILL was caught or not.
@@ -63,7 +67,7 @@ public class BadInstructionException {
 /// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a SIGILL is received, the block will be interrupted using a C `longjmp`. The risks associated with abrupt jumps apply here: most Swift functions are *not* interrupt-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
 /// - parameter block: a function without parameters that will be run
 /// - returns: if an SIGILL is raised during the execution of `block` then a BadInstructionException will be returned, otherwise `nil`.
-public func catchBadInstruction(@noescape block: () -> Void) -> BadInstructionException? {
+public func catchBadInstruction( block: () -> Void) -> BadInstructionException? {
 	// Construct the signal action
 	var sigActionPrev = sigaction()
 	let action = __sigaction_u(__sa_sigaction: sigIllHandler)
