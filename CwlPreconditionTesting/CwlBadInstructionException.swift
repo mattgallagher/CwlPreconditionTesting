@@ -67,10 +67,10 @@ private func raiseBadInstructionException() {
 			// Write the new thread state
 			new_state.withMemoryRebound(to: x86_thread_state64_t.self, capacity: 1) { $0.pointee = state }
 			new_stateCnt.pointee = x86_THREAD_STATE64_COUNT
+
+			return KERN_SUCCESS
 		#else
 			fatalError("Unavailable for this CPU architecture")
 		#endif
-		
-		return KERN_SUCCESS
 	}
 }
