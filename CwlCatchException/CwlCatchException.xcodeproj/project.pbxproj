@@ -40,7 +40,7 @@
 		C90FA1AC1C41E48100996A1F /* CwlCatchException.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CwlCatchException.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90FA1AF1C41E48100996A1F /* CwlCatchException.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CwlCatchException.h; sourceTree = "<group>"; };
 		C90FA1B11C41E48100996A1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C90FA1B61C41E48100996A1F /* CwlCatchException_OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CwlCatchException_OSXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90FA1B61C41E48100996A1F /* CwlCatchException_macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CwlCatchException_macOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90FA1BB1C41E48100996A1F /* CwlCatchExceptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlCatchExceptionTests.swift; sourceTree = "<group>"; };
 		C90FA1BD1C41E48100996A1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C90FA1F71C42071A00996A1F /* CwlCatchException.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CwlCatchException.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				C90FA1AC1C41E48100996A1F /* CwlCatchException.framework */,
-				C90FA1B61C41E48100996A1F /* CwlCatchException_OSXTests.xctest */,
+				C90FA1B61C41E48100996A1F /* CwlCatchException_macOSTests.xctest */,
 				C90FA1F71C42071A00996A1F /* CwlCatchException.framework */,
 				C90FA2001C42071A00996A1F /* CwlCatchException_iOSTests.xctest */,
 			);
@@ -145,9 +145,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		C90FA1AB1C41E48100996A1F /* CwlCatchException_OSX */ = {
+		C90FA1AB1C41E48100996A1F /* CwlCatchException_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C90FA1C01C41E48100996A1F /* Build configuration list for PBXNativeTarget "CwlCatchException_OSX" */;
+			buildConfigurationList = C90FA1C01C41E48100996A1F /* Build configuration list for PBXNativeTarget "CwlCatchException_macOS" */;
 			buildPhases = (
 				C90FA1A71C41E48100996A1F /* Sources */,
 				C90FA1A81C41E48100996A1F /* Frameworks */,
@@ -158,14 +158,14 @@
 			);
 			dependencies = (
 			);
-			name = CwlCatchException_OSX;
+			name = CwlCatchException_macOS;
 			productName = CwlCatchException;
 			productReference = C90FA1AC1C41E48100996A1F /* CwlCatchException.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C90FA1B51C41E48100996A1F /* CwlCatchException_OSXTests */ = {
+		C90FA1B51C41E48100996A1F /* CwlCatchException_macOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C90FA1C31C41E48100996A1F /* Build configuration list for PBXNativeTarget "CwlCatchException_OSXTests" */;
+			buildConfigurationList = C90FA1C31C41E48100996A1F /* Build configuration list for PBXNativeTarget "CwlCatchException_macOSTests" */;
 			buildPhases = (
 				C90FA1B21C41E48100996A1F /* Sources */,
 				C90FA1B31C41E48100996A1F /* Frameworks */,
@@ -176,9 +176,9 @@
 			dependencies = (
 				C90FA1B91C41E48100996A1F /* PBXTargetDependency */,
 			);
-			name = CwlCatchException_OSXTests;
+			name = CwlCatchException_macOSTests;
 			productName = CwlCatchExceptionTests;
-			productReference = C90FA1B61C41E48100996A1F /* CwlCatchException_OSXTests.xctest */;
+			productReference = C90FA1B61C41E48100996A1F /* CwlCatchException_macOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		C90FA1F61C42071A00996A1F /* CwlCatchException_iOS */ = {
@@ -237,9 +237,11 @@
 					};
 					C90FA1F61C42071A00996A1F = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 					C90FA1FF1C42071A00996A1F = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -255,8 +257,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C90FA1AB1C41E48100996A1F /* CwlCatchException_OSX */,
-				C90FA1B51C41E48100996A1F /* CwlCatchException_OSXTests */,
+				C90FA1AB1C41E48100996A1F /* CwlCatchException_macOS */,
+				C90FA1B51C41E48100996A1F /* CwlCatchException_macOSTests */,
 				C90FA1F61C42071A00996A1F /* CwlCatchException_iOS */,
 				C90FA1FF1C42071A00996A1F /* CwlCatchException_iOSTests */,
 			);
@@ -334,7 +336,7 @@
 /* Begin PBXTargetDependency section */
 		C90FA1B91C41E48100996A1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C90FA1AB1C41E48100996A1F /* CwlCatchException_OSX */;
+			target = C90FA1AB1C41E48100996A1F /* CwlCatchException_macOS */;
 			targetProxy = C90FA1B81C41E48100996A1F /* PBXContainerItemProxy */;
 		};
 		C90FA2031C42071A00996A1F /* PBXTargetDependency */ = {
@@ -523,6 +525,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -544,6 +547,7 @@
 				PRODUCT_NAME = CwlCatchException;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -559,6 +563,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlCatchException-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -572,6 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlCatchException-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -588,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C90FA1C01C41E48100996A1F /* Build configuration list for PBXNativeTarget "CwlCatchException_OSX" */ = {
+		C90FA1C01C41E48100996A1F /* Build configuration list for PBXNativeTarget "CwlCatchException_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C90FA1C11C41E48100996A1F /* Debug */,
@@ -597,7 +603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C90FA1C31C41E48100996A1F /* Build configuration list for PBXNativeTarget "CwlCatchException_OSXTests" */ = {
+		C90FA1C31C41E48100996A1F /* Build configuration list for PBXNativeTarget "CwlCatchException_macOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C90FA1C41C41E48100996A1F /* Debug */,

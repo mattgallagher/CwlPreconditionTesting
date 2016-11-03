@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C90FA1AB1C41E48100996A1F"
                BuildableName = "CwlCatchException.framework"
-               BlueprintName = "CwlCatchException_OSX"
+               BlueprintName = "CwlCatchException_macOS"
                ReferencedContainer = "container:CwlCatchException.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C90FA1B51C41E48100996A1F"
-               BuildableName = "CwlCatchException_OSXTests.xctest"
-               BlueprintName = "CwlCatchException_OSXTests"
+               BuildableName = "CwlCatchException_macOSTests.xctest"
+               BlueprintName = "CwlCatchException_macOSTests"
                ReferencedContainer = "container:CwlCatchException.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C90FA1AB1C41E48100996A1F"
             BuildableName = "CwlCatchException.framework"
-            BlueprintName = "CwlCatchException_OSX"
+            BlueprintName = "CwlCatchException_macOS"
             ReferencedContainer = "container:CwlCatchException.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C90FA1AB1C41E48100996A1F"
             BuildableName = "CwlCatchException.framework"
-            BlueprintName = "CwlCatchException_OSX"
+            BlueprintName = "CwlCatchException_macOS"
             ReferencedContainer = "container:CwlCatchException.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,7 +84,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C90FA1AB1C41E48100996A1F"
             BuildableName = "CwlCatchException.framework"
-            BlueprintName = "CwlCatchException_OSX"
+            BlueprintName = "CwlCatchException_macOS"
             ReferencedContainer = "container:CwlCatchException.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
