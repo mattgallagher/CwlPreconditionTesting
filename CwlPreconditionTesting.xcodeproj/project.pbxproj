@@ -24,8 +24,6 @@
 		C92A97DF1C68A515008905C2 /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C061C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift */; };
 		C92A97E81C68A52F008905C2 /* CwlCatchBadInstructionPOSIX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92A97C71C68A44D008905C2 /* CwlCatchBadInstructionPOSIX.swift */; };
 		C92A97EB1C68A5B5008905C2 /* CwlPreconditionTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92A97D91C68A4F3008905C2 /* CwlPreconditionTesting.framework */; };
-		C9492B371DC9F23C0050FBD0 /* CwlCatchExceptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9492B341DC9F1D30050FBD0 /* CwlCatchExceptionTests.swift */; };
-		C9492B381DC9F23D0050FBD0 /* CwlCatchExceptionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9492B341DC9F1D30050FBD0 /* CwlCatchExceptionTests.swift */; };
 		C9604C001C40C1C5001A7517 /* CwlCatchBadInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9604C011C40C1C5001A7517 /* CwlCatchBadInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9604BFB1C40C1C5001A7517 /* CwlCatchBadInstruction.m */; };
 		C9604C081C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C061C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift */; };
@@ -115,7 +113,6 @@
 		C92A97C71C68A44D008905C2 /* CwlCatchBadInstructionPOSIX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstructionPOSIX.swift; sourceTree = "<group>"; };
 		C92A97D91C68A4F3008905C2 /* CwlPreconditionTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CwlPreconditionTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92A97E61C68A515008905C2 /* CwlPreconditionTesting_POSIXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CwlPreconditionTesting_POSIXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9492B341DC9F1D30050FBD0 /* CwlCatchExceptionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlCatchExceptionTests.swift; sourceTree = "<group>"; };
 		C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwlCatchBadInstruction.h; sourceTree = "<group>"; };
 		C9604BFB1C40C1C5001A7517 /* CwlCatchBadInstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwlCatchBadInstruction.m; sourceTree = "<group>"; };
 		C9604BFC1C40C1C5001A7517 /* CwlCatchBadInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstruction.swift; sourceTree = "<group>"; };
@@ -271,7 +268,6 @@
 		C98707841C3F886F009B413A /* CwlPreconditionTestingTests */ = {
 			isa = PBXGroup;
 			children = (
-				C9492B341DC9F1D30050FBD0 /* CwlCatchExceptionTests.swift */,
 				C9604C061C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift */,
 				C98707871C3F886F009B413A /* Info.plist */,
 			);
@@ -588,7 +584,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9492B371DC9F23C0050FBD0 /* CwlCatchExceptionTests.swift in Sources */,
 				C9604CA11C40DE1F001A7517 /* CwlCatchBadInstructionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,7 +606,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9492B381DC9F23D0050FBD0 /* CwlCatchExceptionTests.swift in Sources */,
 				C9604C081C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
