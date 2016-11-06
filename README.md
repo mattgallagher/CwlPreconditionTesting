@@ -10,11 +10,13 @@ For an extended discussion of this code, please see the Cocoa with Love article:
 
 The short version is:
     
-1. `git clone https://github.com/mattgallagher/CwlPreconditionTesting.git`
-2. drag the "CwlPreconditionTesting.xcodeproj" file into your project's file tree in Xcode
-3. go to your testing target's Build Phase settings and under "Target Dependencies" press the "+" button and select the relevant "CwlPreconditionTesting" target ("_iOS" or "_OSX", depending on your testing target's SDK)
-4. write `import CwlPreconditionTesting` at the top of any test file where you want to use `catchBadInstruction` (Swift should handle the linkage automatically when you do this)
-5. use the `catchBadInstruction` function as shown in the [CwlCatchBadInstructionTests.swift tests file](https://github.com/mattgallagher/CwlPreconditionTesting/blob/master/CwlPreconditionTestingTests/CwlCatchBadInstructionTests.swift?ts=4)
+1. In a subdirectory of your project's directory, run `git clone https://github.com/mattgallagher/CwlPreconditionTesting.git`
+2. Drag the "CwlPreconditionTesting.xcodeproj" file from the Finder into your project's file tree in Xcode
+3. Click on your project in the file tree to access project settings and click on the target to which you want to add CwlUtils.
+4. Click on the "Build Phases" tab and if you don't already have a "Copy Files" build phase with a "Destination: Frameworks", add one using the "+" in the top left of the tab.
+5. Still on the "Build Phases" tab, add "CwlPreconditionTesting.framework" to the "Copy Files, Destination: Frameworks" step. NOTE: there may be multiple "CwlPreconditionTesting.framework" files in the list, including one for macOS and one for iOS. You should select the "CwlPreconditionTesting.framework" that appears *above* the corresponding CwlPreconditionTesting macOS or iOS testing target.
+6. *Optional step*: Adding the "CwlPreconditionTesting.xcodeproj" file to your project's file tree will also add all of its schemes to your scheme list in Xcode. You can hide these from your scheme list from the menubar by selecting "Product" -> "Scheme" -> "Manage Schemes" (or typing Command-Shift-,) and unselecting the checkboxes in the "Show" column next to the CwlPreconditionTesting scheme names.
+7. In Swift files where you want to use CwlPreconditionTesting code, write `import CwlPreconditionTesting` at the top.
 
 ### Project details
 
