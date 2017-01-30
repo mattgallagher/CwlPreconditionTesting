@@ -1,6 +1,6 @@
 //
-//  CwlCatchException.m
-//  CwlAssertionTesting
+//  CwlPreconditionTesting.h
+//  CwlPreconditionTesting
 //
 //  Created by Matt Gallagher on 2016/01/10.
 //  Copyright © 2016 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.
@@ -18,18 +18,13 @@
 //  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
 
-#import "CwlCatchException.h"
+#import <Foundation/Foundation.h>
 
-__attribute__((visibility("hidden")))
-NSException* catchExceptionOfKind(Class __nonnull type, __attribute__((noescape)) void (^ __nonnull inBlock)()) {
-	@try {
-		inBlock();
-	} @catch (NSException *exception) {
-		if ([exception isKindOfClass:type]) {
-			return exception;
-		} else {
-			@throw;
-		}
-	}
-	return nil;
-}
+//! Project version number for CwlUtils.
+FOUNDATION_EXPORT double CwlPreconditionTestingVersionNumber;
+
+//! Project version string for CwlUtils.
+FOUNDATION_EXPORT const unsigned char CwlAssertingTestingVersionString[];
+
+#import "CwlMachBadInstructionHandler.h"
+#import "CwlCatchException.h"

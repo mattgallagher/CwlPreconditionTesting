@@ -1,5 +1,5 @@
 //
-//  CwlCatchBadInstructionPOSIX.swift
+//  CwlCatchBadInstructionPosix.swift
 //  CwlPreconditionTesting
 //
 //  Created by Matt Gallagher on 8/02/2016.

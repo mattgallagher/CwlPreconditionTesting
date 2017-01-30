@@ -7,42 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		964965E71C765BF900B9B621 /* CwlCatchBadInstructionPOSIX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92A97C71C68A44D008905C2 /* CwlCatchBadInstructionPOSIX.swift */; };
-		96ACCC521C6E8AE000FE0B1B /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C061C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift */; };
 		96ACCC611C6E8BFD00FE0B1B /* CwlPreconditionTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ACCC591C6E8BBE00FE0B1B /* CwlPreconditionTesting.framework */; };
-		96ACCC6B1C6E8CB000FE0B1B /* CwlCatchBadInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		96ACCC6C1C6E8CB300FE0B1B /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = C97FFC4D1C45FD8C00AF48B3 /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		96ACCC6D1C6E8CB600FE0B1B /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = C9604C2E1C40CAE7001A7517 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C90F356A1C66296900F2FAF9 /* mach_exc.defs in Sources */ = {isa = PBXBuildFile; fileRef = C98707901C3F8952009B413A /* mach_exc.defs */; settings = {ATTRIBUTES = (Server, ); }; };
-		C90FA2391C42980E00996A1F /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = C90FA2381C42980E00996A1F /* mach_excServer.c */; };
 		C90FA24E1C42A3EE00996A1F /* CwlPreconditionTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98707761C3F886F009B413A /* CwlPreconditionTesting.framework */; };
-		C90FA2511C43685D00996A1F /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604BFC1C40C1C5001A7517 /* CwlCatchBadInstruction.swift */; };
-		C90FA2521C43686200996A1F /* CwlBadInstructionException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C361C40CFE8001A7517 /* CwlBadInstructionException.swift */; };
-		C92A97D31C68A4F3008905C2 /* CwlCatchBadInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C92A97D41C68A4F3008905C2 /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = C97FFC4D1C45FD8C00AF48B3 /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C92A97D51C68A4F3008905C2 /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = C9604C2E1C40CAE7001A7517 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C92A97DF1C68A515008905C2 /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C061C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift */; };
-		C92A97E81C68A52F008905C2 /* CwlCatchBadInstructionPOSIX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92A97C71C68A44D008905C2 /* CwlCatchBadInstructionPOSIX.swift */; };
 		C92A97EB1C68A5B5008905C2 /* CwlPreconditionTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92A97D91C68A4F3008905C2 /* CwlPreconditionTesting.framework */; };
-		C9604C001C40C1C5001A7517 /* CwlCatchBadInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9604C011C40C1C5001A7517 /* CwlCatchBadInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9604BFB1C40C1C5001A7517 /* CwlCatchBadInstruction.m */; };
-		C9604C081C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C061C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift */; };
-		C9604C2F1C40CAE7001A7517 /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = C9604C2E1C40CAE7001A7517 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9604C341C40CED5001A7517 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C331C40CED5001A7517 /* CwlDarwinDefinitions.swift */; };
+		C958F0F21E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F0F11E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift */; };
+		C958F0F31E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F0F11E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift */; };
+		C958F0F41E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F0F11E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift */; };
+		C958F0F51E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F0F11E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift */; };
+		C958F1061E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C958F0F91E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m */; };
+		C958F1071E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C958F0F91E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m */; };
+		C958F1081E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C958F0F91E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m */; };
+		C958F1091E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C958F0F91E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m */; };
+		C958F1131E3F698C008BE8E0 /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = C958F0FD1E3F698C008BE8E0 /* mach_excServer.c */; };
+		C958F1161E3F698C008BE8E0 /* CwlBadInstructionException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F0FF1E3F698C008BE8E0 /* CwlBadInstructionException.swift */; };
+		C958F1171E3F698C008BE8E0 /* CwlBadInstructionException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F0FF1E3F698C008BE8E0 /* CwlBadInstructionException.swift */; };
+		C958F11A1E3F698C008BE8E0 /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F1001E3F698C008BE8E0 /* CwlCatchBadInstruction.swift */; };
+		C958F11B1E3F698C008BE8E0 /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F1001E3F698C008BE8E0 /* CwlCatchBadInstruction.swift */; };
+		C958F11E1E3F698C008BE8E0 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F1011E3F698C008BE8E0 /* CwlDarwinDefinitions.swift */; };
+		C958F11F1E3F698C008BE8E0 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F1011E3F698C008BE8E0 /* CwlDarwinDefinitions.swift */; };
+		C958F13C1E3F6D8F008BE8E0 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = C958F0FB1E3F698C008BE8E0 /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C958F13E1E3F6D90008BE8E0 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = C958F0FB1E3F698C008BE8E0 /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C958F1401E3F6D91008BE8E0 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = C958F0FB1E3F698C008BE8E0 /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C958F1421E3F6D91008BE8E0 /* CwlMachBadInstructionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = C958F0FB1E3F698C008BE8E0 /* CwlMachBadInstructionHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C958F1441E3F6DEA008BE8E0 /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = C958F0FC1E3F698C008BE8E0 /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C958F1451E3F6DEB008BE8E0 /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = C958F0FC1E3F698C008BE8E0 /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C958F1461E3F6DEC008BE8E0 /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = C958F0FC1E3F698C008BE8E0 /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C958F1471E3F6DEC008BE8E0 /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = C958F0FC1E3F698C008BE8E0 /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9604C8A1C40DD9A001A7517 /* CwlPreconditionTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9604C801C40DD9A001A7517 /* CwlPreconditionTesting.framework */; };
-		C9604C981C40DE06001A7517 /* CwlBadInstructionException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C361C40CFE8001A7517 /* CwlBadInstructionException.swift */; };
-		C9604C991C40DE06001A7517 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C331C40CED5001A7517 /* CwlDarwinDefinitions.swift */; };
-		C9604C9A1C40DE06001A7517 /* CwlCatchBadInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9604BFB1C40C1C5001A7517 /* CwlCatchBadInstruction.m */; };
-		C9604C9B1C40DE06001A7517 /* CwlCatchBadInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604BFC1C40C1C5001A7517 /* CwlCatchBadInstruction.swift */; };
-		C9604C9E1C40DE0C001A7517 /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = C9604C2E1C40CAE7001A7517 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9604C9F1C40DE0C001A7517 /* CwlCatchBadInstruction.h in Headers */ = {isa = PBXBuildFile; fileRef = C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9604CA11C40DE1F001A7517 /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9604C061C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift */; };
-		C97FFC511C45FD8C00AF48B3 /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = C97FFC4D1C45FD8C00AF48B3 /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C97FFC521C45FD8C00AF48B3 /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = C97FFC4D1C45FD8C00AF48B3 /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C97FFC531C45FD8C00AF48B3 /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = C97FFC4E1C45FD8C00AF48B3 /* CwlCatchException.m */; };
-		C97FFC541C45FD8C00AF48B3 /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = C97FFC4E1C45FD8C00AF48B3 /* CwlCatchException.m */; };
-		C97FFC551C45FD8C00AF48B3 /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97FFC4F1C45FD8C00AF48B3 /* CwlCatchException.swift */; };
-		C97FFC561C45FD8C00AF48B3 /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97FFC4F1C45FD8C00AF48B3 /* CwlCatchException.swift */; };
+		C9BBAF981E4211E800B76AEC /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBAF931E4211E800B76AEC /* CwlCatchException.swift */; };
+		C9BBAF991E4211E800B76AEC /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBAF931E4211E800B76AEC /* CwlCatchException.swift */; };
+		C9BBAF9A1E4211E800B76AEC /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBAF951E4211E800B76AEC /* CwlCatchException.m */; };
+		C9BBAF9B1E4211E800B76AEC /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBAF951E4211E800B76AEC /* CwlCatchException.m */; };
+		C9BBAF9C1E4211E800B76AEC /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BBAF971E4211E800B76AEC /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9BBAF9D1E4211E800B76AEC /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BBAF971E4211E800B76AEC /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9BBAF9E1E42194800B76AEC /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BBAF971E4211E800B76AEC /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9BBAF9F1E42195200B76AEC /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBAF951E4211E800B76AEC /* CwlCatchException.m */; };
+		C9BBAFA01E42195500B76AEC /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBAF931E4211E800B76AEC /* CwlCatchException.swift */; };
+		C9BBAFA11E42195900B76AEC /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BBAF951E4211E800B76AEC /* CwlCatchException.m */; };
+		C9BBAFA21E42195B00B76AEC /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BBAF931E4211E800B76AEC /* CwlCatchException.swift */; };
+		C9BBAFA31E42195E00B76AEC /* CwlCatchException.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BBAF971E4211E800B76AEC /* CwlCatchException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9BF46791E4575FB0040A183 /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BF46781E4575E80040A183 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9BF467A1E4575FC0040A183 /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BF46781E4575E80040A183 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9BF467B1E4575FC0040A183 /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BF46781E4575E80040A183 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9BF467C1E4575FD0040A183 /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BF46781E4575E80040A183 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9BF467D1E4576090040A183 /* CwlCatchBadInstructionPosix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF46761E4575E80040A183 /* CwlCatchBadInstructionPosix.swift */; };
+		C9BF467E1E4576090040A183 /* CwlCatchBadInstructionPosix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF46761E4575E80040A183 /* CwlCatchBadInstructionPosix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,27 +119,27 @@
 /* Begin PBXFileReference section */
 		96ACCC481C6E8A7C00FE0B1B /* CwlPreconditionTesting_tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CwlPreconditionTesting_tvOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96ACCC591C6E8BBE00FE0B1B /* CwlPreconditionTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CwlPreconditionTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C90FA2381C42980E00996A1F /* mach_excServer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mach_excServer.c; sourceTree = "<group>"; };
-		C92A97C71C68A44D008905C2 /* CwlCatchBadInstructionPOSIX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstructionPOSIX.swift; sourceTree = "<group>"; };
 		C92A97D91C68A4F3008905C2 /* CwlPreconditionTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CwlPreconditionTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C92A97E61C68A515008905C2 /* CwlPreconditionTesting_POSIXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CwlPreconditionTesting_POSIXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwlCatchBadInstruction.h; sourceTree = "<group>"; };
-		C9604BFB1C40C1C5001A7517 /* CwlCatchBadInstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwlCatchBadInstruction.m; sourceTree = "<group>"; };
-		C9604BFC1C40C1C5001A7517 /* CwlCatchBadInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstruction.swift; sourceTree = "<group>"; };
-		C9604C061C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstructionTests.swift; sourceTree = "<group>"; };
-		C9604C2E1C40CAE7001A7517 /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwlPreconditionTesting.h; sourceTree = "<group>"; };
-		C9604C331C40CED5001A7517 /* CwlDarwinDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlDarwinDefinitions.swift; sourceTree = "<group>"; };
-		C9604C361C40CFE8001A7517 /* CwlBadInstructionException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlBadInstructionException.swift; sourceTree = "<group>"; };
+		C958F0EE1E3F6967008BE8E0 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		C958F0F11E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstructionTests.swift; sourceTree = "<group>"; };
+		C958F0F91E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwlMachBadInstructionHandler.m; sourceTree = "<group>"; };
+		C958F0FB1E3F698C008BE8E0 /* CwlMachBadInstructionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwlMachBadInstructionHandler.h; sourceTree = "<group>"; };
+		C958F0FC1E3F698C008BE8E0 /* mach_excServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mach_excServer.h; sourceTree = "<group>"; };
+		C958F0FD1E3F698C008BE8E0 /* mach_excServer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mach_excServer.c; sourceTree = "<group>"; };
+		C958F0FF1E3F698C008BE8E0 /* CwlBadInstructionException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlBadInstructionException.swift; sourceTree = "<group>"; };
+		C958F1001E3F698C008BE8E0 /* CwlCatchBadInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstruction.swift; sourceTree = "<group>"; };
+		C958F1011E3F698C008BE8E0 /* CwlDarwinDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlDarwinDefinitions.swift; sourceTree = "<group>"; };
 		C9604C801C40DD9A001A7517 /* CwlPreconditionTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CwlPreconditionTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9604C891C40DD9A001A7517 /* CwlPreconditionTesting_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CwlPreconditionTesting_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C97FFC4D1C45FD8C00AF48B3 /* CwlCatchException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwlCatchException.h; sourceTree = "<group>"; };
-		C97FFC4E1C45FD8C00AF48B3 /* CwlCatchException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwlCatchException.m; sourceTree = "<group>"; };
-		C97FFC4F1C45FD8C00AF48B3 /* CwlCatchException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlCatchException.swift; sourceTree = "<group>"; };
 		C98707761C3F886F009B413A /* CwlPreconditionTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CwlPreconditionTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C987077B1C3F886F009B413A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C98707801C3F886F009B413A /* CwlPreconditionTesting_macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CwlPreconditionTesting_macOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C98707871C3F886F009B413A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C98707901C3F8952009B413A /* mach_exc.defs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.mig; name = mach_exc.defs; path = usr/include/mach/mach_exc.defs; sourceTree = SDKROOT; };
+		C9BBAF931E4211E800B76AEC /* CwlCatchException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlCatchException.swift; sourceTree = "<group>"; };
+		C9BBAF951E4211E800B76AEC /* CwlCatchException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwlCatchException.m; sourceTree = "<group>"; };
+		C9BBAF971E4211E800B76AEC /* CwlCatchException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwlCatchException.h; sourceTree = "<group>"; };
+		C9BF46761E4575E80040A183 /* CwlCatchBadInstructionPosix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CwlCatchBadInstructionPosix.swift; sourceTree = "<group>"; };
+		C9BF46781E4575E80040A183 /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CwlPreconditionTesting.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,44 +206,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C97E27001C66F8EF00ABF734 /* CatchBadInstruction */ = {
+		C958F0EF1E3F6977008BE8E0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C9604BFA1C40C1C5001A7517 /* CwlCatchBadInstruction.h */,
-				C9604BFB1C40C1C5001A7517 /* CwlCatchBadInstruction.m */,
-				C9604BFC1C40C1C5001A7517 /* CwlCatchBadInstruction.swift */,
-				C92A97C71C68A44D008905C2 /* CwlCatchBadInstructionPOSIX.swift */,
+				C958F0F01E3F6977008BE8E0 /* CwlPreconditionTestingTests */,
 			);
-			name = CatchBadInstruction;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		C97E27011C6700DB00ABF734 /* Support Files */ = {
+		C958F0F01E3F6977008BE8E0 /* CwlPreconditionTestingTests */ = {
 			isa = PBXGroup;
 			children = (
-				C9604C2E1C40CAE7001A7517 /* CwlPreconditionTesting.h */,
+				C958F0F11E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift */,
+			);
+			path = CwlPreconditionTestingTests;
+			sourceTree = "<group>";
+		};
+		C958F0F61E3F698C008BE8E0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C958F0F81E3F698C008BE8E0 /* CwlMachBadInstructionHandler */,
+				C958F0FE1E3F698C008BE8E0 /* CwlPreconditionTesting */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C958F0F81E3F698C008BE8E0 /* CwlMachBadInstructionHandler */ = {
+			isa = PBXGroup;
+			children = (
+				C958F0F91E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m */,
+				C958F0FA1E3F698C008BE8E0 /* include */,
+				C958F0FD1E3F698C008BE8E0 /* mach_excServer.c */,
 				C98707901C3F8952009B413A /* mach_exc.defs */,
-				C90FA2381C42980E00996A1F /* mach_excServer.c */,
-				C987077B1C3F886F009B413A /* Info.plist */,
 			);
-			name = "Support Files";
+			path = CwlMachBadInstructionHandler;
 			sourceTree = "<group>";
 		};
-		C97FFC4C1C45FD8C00AF48B3 /* CatchException */ = {
+		C958F0FA1E3F698C008BE8E0 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				C97FFC4D1C45FD8C00AF48B3 /* CwlCatchException.h */,
-				C97FFC4E1C45FD8C00AF48B3 /* CwlCatchException.m */,
-				C97FFC4F1C45FD8C00AF48B3 /* CwlCatchException.swift */,
+				C958F0FB1E3F698C008BE8E0 /* CwlMachBadInstructionHandler.h */,
+				C958F0FC1E3F698C008BE8E0 /* mach_excServer.h */,
 			);
-			name = CatchException;
-			path = CwlCatchException/CwlCatchException;
-			sourceTree = SOURCE_ROOT;
+			path = include;
+			sourceTree = "<group>";
+		};
+		C958F0FE1E3F698C008BE8E0 /* CwlPreconditionTesting */ = {
+			isa = PBXGroup;
+			children = (
+				C9BF46781E4575E80040A183 /* CwlPreconditionTesting.h */,
+				C958F0FF1E3F698C008BE8E0 /* CwlBadInstructionException.swift */,
+				C958F1001E3F698C008BE8E0 /* CwlCatchBadInstruction.swift */,
+				C9BF46761E4575E80040A183 /* CwlCatchBadInstructionPosix.swift */,
+				C958F1011E3F698C008BE8E0 /* CwlDarwinDefinitions.swift */,
+			);
+			path = CwlPreconditionTesting;
+			sourceTree = "<group>";
+		};
+		C958F1221E3F6A43008BE8E0 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				C9BBAF921E4211E800B76AEC /* CwlCatchException */,
+				C9BBAF941E4211E800B76AEC /* CwlCatchExceptionSupport */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
 		};
 		C987076C1C3F886F009B413A = {
 			isa = PBXGroup;
 			children = (
-				C98707781C3F886F009B413A /* CwlPreconditionTesting */,
-				C98707841C3F886F009B413A /* CwlPreconditionTestingTests */,
+				C958F0EE1E3F6967008BE8E0 /* Package.swift */,
+				C958F0F61E3F698C008BE8E0 /* Sources */,
+				C958F0EF1E3F6977008BE8E0 /* Tests */,
+				C958F1221E3F6A43008BE8E0 /* Dependencies */,
 				C98707771C3F886F009B413A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -253,25 +298,31 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C98707781C3F886F009B413A /* CwlPreconditionTesting */ = {
+		C9BBAF921E4211E800B76AEC /* CwlCatchException */ = {
 			isa = PBXGroup;
 			children = (
-				C9604C331C40CED5001A7517 /* CwlDarwinDefinitions.swift */,
-				C9604C361C40CFE8001A7517 /* CwlBadInstructionException.swift */,
-				C97E27001C66F8EF00ABF734 /* CatchBadInstruction */,
-				C97FFC4C1C45FD8C00AF48B3 /* CatchException */,
-				C97E27011C6700DB00ABF734 /* Support Files */,
+				C9BBAF931E4211E800B76AEC /* CwlCatchException.swift */,
 			);
-			path = CwlPreconditionTesting;
+			name = CwlCatchException;
+			path = .build/cwl_symlinks/CwlCatchException/Sources/CwlCatchException;
 			sourceTree = "<group>";
 		};
-		C98707841C3F886F009B413A /* CwlPreconditionTestingTests */ = {
+		C9BBAF941E4211E800B76AEC /* CwlCatchExceptionSupport */ = {
 			isa = PBXGroup;
 			children = (
-				C9604C061C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift */,
-				C98707871C3F886F009B413A /* Info.plist */,
+				C9BBAF951E4211E800B76AEC /* CwlCatchException.m */,
+				C9BBAF961E4211E800B76AEC /* include */,
 			);
-			path = CwlPreconditionTestingTests;
+			name = CwlCatchExceptionSupport;
+			path = .build/cwl_symlinks/CwlCatchException/Sources/CwlCatchExceptionSupport;
+			sourceTree = "<group>";
+		};
+		C9BBAF961E4211E800B76AEC /* include */ = {
+			isa = PBXGroup;
+			children = (
+				C9BBAF971E4211E800B76AEC /* CwlCatchException.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,9 +332,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96ACCC6B1C6E8CB000FE0B1B /* CwlCatchBadInstruction.h in Headers */,
-				96ACCC6C1C6E8CB300FE0B1B /* CwlCatchException.h in Headers */,
-				96ACCC6D1C6E8CB600FE0B1B /* CwlPreconditionTesting.h in Headers */,
+				C958F13C1E3F6D8F008BE8E0 /* CwlMachBadInstructionHandler.h in Headers */,
+				C958F1441E3F6DEA008BE8E0 /* mach_excServer.h in Headers */,
+				C9BF46791E4575FB0040A183 /* CwlPreconditionTesting.h in Headers */,
+				C9BBAFA31E42195E00B76AEC /* CwlCatchException.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,9 +343,21 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C92A97D31C68A4F3008905C2 /* CwlCatchBadInstruction.h in Headers */,
-				C92A97D41C68A4F3008905C2 /* CwlCatchException.h in Headers */,
-				C92A97D51C68A4F3008905C2 /* CwlPreconditionTesting.h in Headers */,
+				C958F13E1E3F6D90008BE8E0 /* CwlMachBadInstructionHandler.h in Headers */,
+				C958F1451E3F6DEB008BE8E0 /* mach_excServer.h in Headers */,
+				C9BF467A1E4575FC0040A183 /* CwlPreconditionTesting.h in Headers */,
+				C9BBAF9E1E42194800B76AEC /* CwlCatchException.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C958F13A1E3F6D0E008BE8E0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C958F1421E3F6D91008BE8E0 /* CwlMachBadInstructionHandler.h in Headers */,
+				C9BBAF9C1E4211E800B76AEC /* CwlCatchException.h in Headers */,
+				C958F1471E3F6DEC008BE8E0 /* mach_excServer.h in Headers */,
+				C9BF467C1E4575FD0040A183 /* CwlPreconditionTesting.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,19 +365,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9604C9F1C40DE0C001A7517 /* CwlCatchBadInstruction.h in Headers */,
-				C97FFC521C45FD8C00AF48B3 /* CwlCatchException.h in Headers */,
-				C9604C9E1C40DE0C001A7517 /* CwlPreconditionTesting.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C98707731C3F886F009B413A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C9604C001C40C1C5001A7517 /* CwlCatchBadInstruction.h in Headers */,
-				C97FFC511C45FD8C00AF48B3 /* CwlCatchException.h in Headers */,
-				C9604C2F1C40CAE7001A7517 /* CwlPreconditionTesting.h in Headers */,
+				C958F1401E3F6D91008BE8E0 /* CwlMachBadInstructionHandler.h in Headers */,
+				C9BBAF9D1E4211E800B76AEC /* CwlCatchException.h in Headers */,
+				C958F1461E3F6DEC008BE8E0 /* mach_excServer.h in Headers */,
+				C9BF467B1E4575FC0040A183 /* CwlPreconditionTesting.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,10 +397,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96ACCC5E1C6E8BBE00FE0B1B /* Build configuration list for PBXNativeTarget "CwlPreconditionTesting_tvOS" */;
 			buildPhases = (
+				C9D2B18F1E3F704A00012854 /* ShellScript */,
 				96ACCC541C6E8BBE00FE0B1B /* Sources */,
 				96ACCC551C6E8BBE00FE0B1B /* Frameworks */,
 				96ACCC561C6E8BBE00FE0B1B /* Headers */,
-				96ACCC571C6E8BBE00FE0B1B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -360,6 +415,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C92A97D61C68A4F3008905C2 /* Build configuration list for PBXNativeTarget "CwlPreconditionTesting_POSIX" */;
 			buildPhases = (
+				C9D2B18E1E3F703100012854 /* ShellScript */,
 				C92A97C91C68A4F3008905C2 /* Sources */,
 				C92A97D11C68A4F3008905C2 /* Frameworks */,
 				C92A97D21C68A4F3008905C2 /* Headers */,
@@ -395,6 +451,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9604C951C40DD9A001A7517 /* Build configuration list for PBXNativeTarget "CwlPreconditionTesting_iOS" */;
 			buildPhases = (
+				C9D2B18D1E3F702700012854 /* ShellScript */,
 				C9604C7B1C40DD9A001A7517 /* Sources */,
 				C9604C7C1C40DD9A001A7517 /* Frameworks */,
 				C9604C7D1C40DD9A001A7517 /* Headers */,
@@ -430,9 +487,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C987078A1C3F886F009B413A /* Build configuration list for PBXNativeTarget "CwlPreconditionTesting_macOS" */;
 			buildPhases = (
+				C9D2B18C1E3F700D00012854 /* ShellScript */,
 				C98707711C3F886F009B413A /* Sources */,
 				C98707721C3F886F009B413A /* Frameworks */,
-				C98707731C3F886F009B413A /* Headers */,
+				C958F13A1E3F6D0E008BE8E0 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -524,21 +582,81 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		96ACCC571C6E8BBE00FE0B1B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C9D2B18C1E3F700D00012854 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+				"$(SRCROOT)/Package.swift",
+			);
+			outputPaths = (
+				"$(SRCROOT)/.build/cwl_symlinks/CwlCatchException",
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/xcrun --sdk macosx swift";
+			shellScript = "//\n//  CwlPackageFetch.swift\n//  CwlPackageFetch\n//\n//  Created by Matt Gallagher on 2017/01/31.\n//  Copyright © 2017 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.\n//\n//  Permission to use, copy, modify, and/or distribute this software for any\n//  purpose with or without fee is hereby granted, provided that the above\n//  copyright notice and this permission notice appear in all copies.\n//\n//  THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\n//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n//\n\nimport Foundation\n\n/// Launch a process and run to completion, returning the standard out on success.\nfunc launch(_ command: String, _ arguments: [String], directory: String? = nil) -> String? {\n\tlet proc = Process()\n\tproc.launchPath = command\n\tproc.arguments = arguments\n\t_ = directory.map { proc.currentDirectoryPath = $0 }\n\tlet pipe = Pipe()\n\tproc.standardOutput = pipe\n\tproc.launch()\n\tlet result = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!\n\tproc.waitUntilExit()\n\treturn proc.terminationStatus != 0 ? nil : result\n}\n\nlet srcRoot = ProcessInfo.processInfo.environment[\"SRCROOT\"]!\n\n// STEP 1: use `swift package fetch` to get all dependencies\nprint(launch(\"/usr/bin/swift\", [\"package\", \"fetch\"], directory: srcRoot)!)\n\n// Create a symlink only if it is not already present and pointing to the destination\nlet symlinksPath = \"\\(srcRoot)/.build/cwl_symlinks\"\nfunc createSymlink(srcRoot: String, name: String, destination: String) throws {\n\tlet location = \"\\(symlinksPath)/\\(name)\"\n\tlet link = \"../../\\(destination)\"\n\tif (try? FileManager.default.destinationOfSymbolicLink(atPath: location)) != link {\n\t\t_ = try? FileManager.default.removeItem(atPath: location)\n\t\ttry FileManager.default.createSymbolicLink(atPath: location, withDestinationPath:\n\t\t\tlink)\n\t\tprint(\"Created symbolic link: \\(location) -> \\(link)\")\n\t}\n}\n\n// Recursively parse the dependency graph JSON, creating symlinks in our own location\nfunc createSymlinks(srcRoot: String, description: Dictionary<String, Any>, topLevelPath: String) throws {\n\tguard let dependencies = description[\"dependencies\"] as? [Dictionary<String, Any>] else { return }\n\tfor dependency in dependencies {\n\t\tlet path = dependency[\"path\"] as! String\n\t\tlet relativePath = path.substring(from: path.range(of: topLevelPath)!.upperBound)\n\t\tlet name = dependency[\"name\"] as! String\n\t\ttry createSymlink(srcRoot: srcRoot, name: name, destination: relativePath)\n\t\ttry createSymlinks(srcRoot: srcRoot, description: dependency, topLevelPath: topLevelPath)\n\t}\n}\n\n// STEP 2: create symlinks from fetched locations to somewhere stable\nlet descriptionString = launch(\"/usr/bin/swift\", [\"package\", \"show-dependencies\", \"--format\", \"json\"], directory: srcRoot)!\nlet descriptionData = descriptionString.data(using: .utf8)!\nlet description = try JSONSerialization.jsonObject(with: descriptionData, options: []) as! Dictionary<String, Any>\nlet topLevelPath = (description[\"path\"] as! String) + \"/\"\ndo {\n   try FileManager.default.createDirectory(atPath: symlinksPath, withIntermediateDirectories: true, attributes: nil)\n\ttry createSymlinks(srcRoot: srcRoot, description: description, topLevelPath: topLevelPath)\n\tprint(\"Complete.\")\n} catch {\n\tprint(error)\n}\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		C9D2B18D1E3F702700012854 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Package.swift",
+			);
+			outputPaths = (
+				"$(SRCROOT)/.build/cwl_symlinks/CwlCatchException",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/xcrun --sdk macosx swift";
+			shellScript = "//\n//  CwlPackageFetch.swift\n//  CwlPackageFetch\n//\n//  Created by Matt Gallagher on 2017/01/31.\n//  Copyright © 2017 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.\n//\n//  Permission to use, copy, modify, and/or distribute this software for any\n//  purpose with or without fee is hereby granted, provided that the above\n//  copyright notice and this permission notice appear in all copies.\n//\n//  THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\n//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n//\n\nimport Foundation\n\n/// Launch a process and run to completion, returning the standard out on success.\nfunc launch(_ command: String, _ arguments: [String], directory: String? = nil) -> String? {\n\tlet proc = Process()\n\tproc.launchPath = command\n\tproc.arguments = arguments\n\t_ = directory.map { proc.currentDirectoryPath = $0 }\n\tlet pipe = Pipe()\n\tproc.standardOutput = pipe\n\tproc.launch()\n\tlet result = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!\n\tproc.waitUntilExit()\n\treturn proc.terminationStatus != 0 ? nil : result\n}\n\nlet srcRoot = ProcessInfo.processInfo.environment[\"SRCROOT\"]!\n\n// STEP 1: use `swift package fetch` to get all dependencies\nprint(launch(\"/usr/bin/swift\", [\"package\", \"fetch\"], directory: srcRoot)!)\n\n// Create a symlink only if it is not already present and pointing to the destination\nlet symlinksPath = \"\\(srcRoot)/.build/cwl_symlinks\"\nfunc createSymlink(srcRoot: String, name: String, destination: String) throws {\n\tlet location = \"\\(symlinksPath)/\\(name)\"\n\tlet link = \"../../\\(destination)\"\n\tif (try? FileManager.default.destinationOfSymbolicLink(atPath: location)) != link {\n\t\t_ = try? FileManager.default.removeItem(atPath: location)\n\t\ttry FileManager.default.createSymbolicLink(atPath: location, withDestinationPath:\n\t\t\tlink)\n\t\tprint(\"Created symbolic link: \\(location) -> \\(link)\")\n\t}\n}\n\n// Recursively parse the dependency graph JSON, creating symlinks in our own location\nfunc createSymlinks(srcRoot: String, description: Dictionary<String, Any>, topLevelPath: String) throws {\n\tguard let dependencies = description[\"dependencies\"] as? [Dictionary<String, Any>] else { return }\n\tfor dependency in dependencies {\n\t\tlet path = dependency[\"path\"] as! String\n\t\tlet relativePath = path.substring(from: path.range(of: topLevelPath)!.upperBound)\n\t\tlet name = dependency[\"name\"] as! String\n\t\ttry createSymlink(srcRoot: srcRoot, name: name, destination: relativePath)\n\t\ttry createSymlinks(srcRoot: srcRoot, description: dependency, topLevelPath: topLevelPath)\n\t}\n}\n\n// STEP 2: create symlinks from fetched locations to somewhere stable\nlet descriptionString = launch(\"/usr/bin/swift\", [\"package\", \"show-dependencies\", \"--format\", \"json\"], directory: srcRoot)!\nlet descriptionData = descriptionString.data(using: .utf8)!\nlet description = try JSONSerialization.jsonObject(with: descriptionData, options: []) as! Dictionary<String, Any>\nlet topLevelPath = (description[\"path\"] as! String) + \"/\"\ndo {\n   try FileManager.default.createDirectory(atPath: symlinksPath, withIntermediateDirectories: true, attributes: nil)\n\ttry createSymlinks(srcRoot: srcRoot, description: description, topLevelPath: topLevelPath)\n\tprint(\"Complete.\")\n} catch {\n\tprint(error)\n}\n";
+			showEnvVarsInLog = 0;
+		};
+		C9D2B18E1E3F703100012854 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Package.swift",
+			);
+			outputPaths = (
+				"$(SRCROOT)/.build/cwl_symlinks/CwlCatchException",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/xcrun --sdk macosx swift";
+			shellScript = "//\n//  CwlPackageFetch.swift\n//  CwlPackageFetch\n//\n//  Created by Matt Gallagher on 2017/01/31.\n//  Copyright © 2017 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.\n//\n//  Permission to use, copy, modify, and/or distribute this software for any\n//  purpose with or without fee is hereby granted, provided that the above\n//  copyright notice and this permission notice appear in all copies.\n//\n//  THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\n//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n//\n\nimport Foundation\n\n/// Launch a process and run to completion, returning the standard out on success.\nfunc launch(_ command: String, _ arguments: [String], directory: String? = nil) -> String? {\n\tlet proc = Process()\n\tproc.launchPath = command\n\tproc.arguments = arguments\n\t_ = directory.map { proc.currentDirectoryPath = $0 }\n\tlet pipe = Pipe()\n\tproc.standardOutput = pipe\n\tproc.launch()\n\tlet result = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!\n\tproc.waitUntilExit()\n\treturn proc.terminationStatus != 0 ? nil : result\n}\n\nlet srcRoot = ProcessInfo.processInfo.environment[\"SRCROOT\"]!\n\n// STEP 1: use `swift package fetch` to get all dependencies\nprint(launch(\"/usr/bin/swift\", [\"package\", \"fetch\"], directory: srcRoot)!)\n\n// Create a symlink only if it is not already present and pointing to the destination\nlet symlinksPath = \"\\(srcRoot)/.build/cwl_symlinks\"\nfunc createSymlink(srcRoot: String, name: String, destination: String) throws {\n\tlet location = \"\\(symlinksPath)/\\(name)\"\n\tlet link = \"../../\\(destination)\"\n\tif (try? FileManager.default.destinationOfSymbolicLink(atPath: location)) != link {\n\t\t_ = try? FileManager.default.removeItem(atPath: location)\n\t\ttry FileManager.default.createSymbolicLink(atPath: location, withDestinationPath:\n\t\t\tlink)\n\t\tprint(\"Created symbolic link: \\(location) -> \\(link)\")\n\t}\n}\n\n// Recursively parse the dependency graph JSON, creating symlinks in our own location\nfunc createSymlinks(srcRoot: String, description: Dictionary<String, Any>, topLevelPath: String) throws {\n\tguard let dependencies = description[\"dependencies\"] as? [Dictionary<String, Any>] else { return }\n\tfor dependency in dependencies {\n\t\tlet path = dependency[\"path\"] as! String\n\t\tlet relativePath = path.substring(from: path.range(of: topLevelPath)!.upperBound)\n\t\tlet name = dependency[\"name\"] as! String\n\t\ttry createSymlink(srcRoot: srcRoot, name: name, destination: relativePath)\n\t\ttry createSymlinks(srcRoot: srcRoot, description: dependency, topLevelPath: topLevelPath)\n\t}\n}\n\n// STEP 2: create symlinks from fetched locations to somewhere stable\nlet descriptionString = launch(\"/usr/bin/swift\", [\"package\", \"show-dependencies\", \"--format\", \"json\"], directory: srcRoot)!\nlet descriptionData = descriptionString.data(using: .utf8)!\nlet description = try JSONSerialization.jsonObject(with: descriptionData, options: []) as! Dictionary<String, Any>\nlet topLevelPath = (description[\"path\"] as! String) + \"/\"\ndo {\n   try FileManager.default.createDirectory(atPath: symlinksPath, withIntermediateDirectories: true, attributes: nil)\n\ttry createSymlinks(srcRoot: srcRoot, description: description, topLevelPath: topLevelPath)\n\tprint(\"Complete.\")\n} catch {\n\tprint(error)\n}\n";
+			showEnvVarsInLog = 0;
+		};
+		C9D2B18F1E3F704A00012854 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Package.swift",
+			);
+			outputPaths = (
+				"$(SRCROOT)/.build/cwl_symlinks/CwlCatchException",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/usr/bin/xcrun --sdk macosx swift";
+			shellScript = "//\n//  CwlPackageFetch.swift\n//  CwlPackageFetch\n//\n//  Created by Matt Gallagher on 2017/01/31.\n//  Copyright © 2017 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.\n//\n//  Permission to use, copy, modify, and/or distribute this software for any\n//  purpose with or without fee is hereby granted, provided that the above\n//  copyright notice and this permission notice appear in all copies.\n//\n//  THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\n//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n//\n\nimport Foundation\n\n/// Launch a process and run to completion, returning the standard out on success.\nfunc launch(_ command: String, _ arguments: [String], directory: String? = nil) -> String? {\n\tlet proc = Process()\n\tproc.launchPath = command\n\tproc.arguments = arguments\n\t_ = directory.map { proc.currentDirectoryPath = $0 }\n\tlet pipe = Pipe()\n\tproc.standardOutput = pipe\n\tproc.launch()\n\tlet result = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!\n\tproc.waitUntilExit()\n\treturn proc.terminationStatus != 0 ? nil : result\n}\n\nlet srcRoot = ProcessInfo.processInfo.environment[\"SRCROOT\"]!\n\n// STEP 1: use `swift package fetch` to get all dependencies\nprint(launch(\"/usr/bin/swift\", [\"package\", \"fetch\"], directory: srcRoot)!)\n\n// Create a symlink only if it is not already present and pointing to the destination\nlet symlinksPath = \"\\(srcRoot)/.build/cwl_symlinks\"\nfunc createSymlink(srcRoot: String, name: String, destination: String) throws {\n\tlet location = \"\\(symlinksPath)/\\(name)\"\n\tlet link = \"../../\\(destination)\"\n\tif (try? FileManager.default.destinationOfSymbolicLink(atPath: location)) != link {\n\t\t_ = try? FileManager.default.removeItem(atPath: location)\n\t\ttry FileManager.default.createSymbolicLink(atPath: location, withDestinationPath:\n\t\t\tlink)\n\t\tprint(\"Created symbolic link: \\(location) -> \\(link)\")\n\t}\n}\n\n// Recursively parse the dependency graph JSON, creating symlinks in our own location\nfunc createSymlinks(srcRoot: String, description: Dictionary<String, Any>, topLevelPath: String) throws {\n\tguard let dependencies = description[\"dependencies\"] as? [Dictionary<String, Any>] else { return }\n\tfor dependency in dependencies {\n\t\tlet path = dependency[\"path\"] as! String\n\t\tlet relativePath = path.substring(from: path.range(of: topLevelPath)!.upperBound)\n\t\tlet name = dependency[\"name\"] as! String\n\t\ttry createSymlink(srcRoot: srcRoot, name: name, destination: relativePath)\n\t\ttry createSymlinks(srcRoot: srcRoot, description: dependency, topLevelPath: topLevelPath)\n\t}\n}\n\n// STEP 2: create symlinks from fetched locations to somewhere stable\nlet descriptionString = launch(\"/usr/bin/swift\", [\"package\", \"show-dependencies\", \"--format\", \"json\"], directory: srcRoot)!\nlet descriptionData = descriptionString.data(using: .utf8)!\nlet description = try JSONSerialization.jsonObject(with: descriptionData, options: []) as! Dictionary<String, Any>\nlet topLevelPath = (description[\"path\"] as! String) + \"/\"\ndo {\n   try FileManager.default.createDirectory(atPath: symlinksPath, withIntermediateDirectories: true, attributes: nil)\n\ttry createSymlinks(srcRoot: srcRoot, description: description, topLevelPath: topLevelPath)\n\tprint(\"Complete.\")\n} catch {\n\tprint(error)\n}\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		96ACCC441C6E8A7C00FE0B1B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96ACCC521C6E8AE000FE0B1B /* CwlCatchBadInstructionTests.swift in Sources */,
+				C958F0F51E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +664,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				964965E71C765BF900B9B621 /* CwlCatchBadInstructionPOSIX.swift in Sources */,
+				C958F1091E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m in Sources */,
+				C9BF467E1E4576090040A183 /* CwlCatchBadInstructionPosix.swift in Sources */,
+				C9BBAFA11E42195900B76AEC /* CwlCatchException.m in Sources */,
+				C9BBAFA21E42195B00B76AEC /* CwlCatchException.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,7 +675,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C92A97E81C68A52F008905C2 /* CwlCatchBadInstructionPOSIX.swift in Sources */,
+				C958F1081E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m in Sources */,
+				C9BF467D1E4576090040A183 /* CwlCatchBadInstructionPosix.swift in Sources */,
+				C9BBAF9F1E42195200B76AEC /* CwlCatchException.m in Sources */,
+				C9BBAFA01E42195500B76AEC /* CwlCatchException.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +686,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C92A97DF1C68A515008905C2 /* CwlCatchBadInstructionTests.swift in Sources */,
+				C958F0F41E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,13 +694,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9604C991C40DE06001A7517 /* CwlDarwinDefinitions.swift in Sources */,
-				C97FFC561C45FD8C00AF48B3 /* CwlCatchException.swift in Sources */,
-				C9604C9A1C40DE06001A7517 /* CwlCatchBadInstruction.m in Sources */,
-				C9604C981C40DE06001A7517 /* CwlBadInstructionException.swift in Sources */,
-				C90FA2391C42980E00996A1F /* mach_excServer.c in Sources */,
-				C97FFC541C45FD8C00AF48B3 /* CwlCatchException.m in Sources */,
-				C9604C9B1C40DE06001A7517 /* CwlCatchBadInstruction.swift in Sources */,
+				C9BBAF9B1E4211E800B76AEC /* CwlCatchException.m in Sources */,
+				C958F11B1E3F698C008BE8E0 /* CwlCatchBadInstruction.swift in Sources */,
+				C958F1071E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m in Sources */,
+				C9BBAF991E4211E800B76AEC /* CwlCatchException.swift in Sources */,
+				C958F1131E3F698C008BE8E0 /* mach_excServer.c in Sources */,
+				C958F1171E3F698C008BE8E0 /* CwlBadInstructionException.swift in Sources */,
+				C958F11F1E3F698C008BE8E0 /* CwlDarwinDefinitions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,7 +708,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9604CA11C40DE1F001A7517 /* CwlCatchBadInstructionTests.swift in Sources */,
+				C958F0F31E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,13 +716,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9604C341C40CED5001A7517 /* CwlDarwinDefinitions.swift in Sources */,
+				C9BBAF9A1E4211E800B76AEC /* CwlCatchException.m in Sources */,
+				C958F11A1E3F698C008BE8E0 /* CwlCatchBadInstruction.swift in Sources */,
 				C90F356A1C66296900F2FAF9 /* mach_exc.defs in Sources */,
-				C97FFC551C45FD8C00AF48B3 /* CwlCatchException.swift in Sources */,
-				C90FA2511C43685D00996A1F /* CwlCatchBadInstruction.swift in Sources */,
-				C9604C011C40C1C5001A7517 /* CwlCatchBadInstruction.m in Sources */,
-				C97FFC531C45FD8C00AF48B3 /* CwlCatchException.m in Sources */,
-				C90FA2521C43686200996A1F /* CwlBadInstructionException.swift in Sources */,
+				C9BBAF981E4211E800B76AEC /* CwlCatchException.swift in Sources */,
+				C958F1061E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m in Sources */,
+				C958F1161E3F698C008BE8E0 /* CwlBadInstructionException.swift in Sources */,
+				C958F11E1E3F698C008BE8E0 /* CwlDarwinDefinitions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +730,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9604C081C40C1CF001A7517 /* CwlCatchBadInstructionTests.swift in Sources */,
+				C958F0F21E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,7 +763,7 @@
 		96ACCC4D1C6E8A7C00FE0B1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
+				INFOPLIST_FILE = Tests/CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,7 +776,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_NS_ASSERTIONS = NO;
-				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
+				INFOPLIST_FILE = Tests/CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -671,7 +795,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
+				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-tvOS";
@@ -692,7 +816,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
-				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
+				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-tvOS";
@@ -716,7 +840,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
+				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-POSIX";
@@ -735,7 +859,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
+				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-POSIX";
@@ -749,7 +873,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
+				INFOPLIST_FILE = Tests/CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-POSIXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -760,7 +884,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
+				INFOPLIST_FILE = Tests/CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-POSIXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -780,7 +904,7 @@
 					"$(inherited)",
 					"PRODUCT_NAME=$(PRODUCT_NAME)",
 				);
-				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
+				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -804,7 +928,7 @@
 					"$(inherited)",
 					"PRODUCT_NAME=$(PRODUCT_NAME)",
 				);
-				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
+				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -822,7 +946,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
+				INFOPLIST_FILE = Tests/CwlPreconditionTestingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-iOSTests";
@@ -835,7 +959,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
+				INFOPLIST_FILE = Tests/CwlPreconditionTestingTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-iOSTests";
@@ -951,7 +1075,7 @@
 					"$(inherited)",
 					"PRODUCT_NAME=$(PRODUCT_NAME)",
 				);
-				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
+				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-macOS";
@@ -975,7 +1099,7 @@
 					"$(inherited)",
 					"PRODUCT_NAME=$(PRODUCT_NAME)",
 				);
-				INFOPLIST_FILE = CwlPreconditionTesting/Info.plist;
+				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-macOS";
@@ -990,7 +1114,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
+				INFOPLIST_FILE = Tests/CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1001,7 +1125,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = CwlPreconditionTestingTests/Info.plist;
+				INFOPLIST_FILE = Tests/CwlPreconditionTestingTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-macOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -39,15 +39,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C92A97C81C68A4F3008905C2"
-            BuildableName = "CwlPreconditionTesting.framework"
-            BlueprintName = "CwlPreconditionTesting_POSIX"
-            ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

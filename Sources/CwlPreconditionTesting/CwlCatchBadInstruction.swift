@@ -20,6 +20,11 @@
 
 import Foundation
 
+#if SWIFT_PACKAGE
+import CwlCatchException
+import CwlMachBadInstructionHandler
+#endif
+
 #if arch(x86_64)
 	
 	private enum PthreadError: Error { case code(Int32) }

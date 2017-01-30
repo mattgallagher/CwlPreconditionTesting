@@ -1,5 +1,5 @@
 //
-//  CwlCatchBadInstruction.m
+//  CwlMachBadExceptionHandler.m
 //  CwlPreconditionTesting
 //
 //  Created by Matt Gallagher on 2016/01/10.
@@ -20,19 +20,18 @@
 
 #if defined(__x86_64__)
 
-#import "CwlCatchBadInstruction.h"
+#import "CwlMachBadInstructionHandler.h"
 
-// Assuming the "PRODUCT_NAME" macro is defined, this will create the name of the Swift generated header file
-#define STRINGIZE_NO_EXPANSION(A) #A
-#define STRINGIZE_WITH_EXPANSION(A) STRINGIZE_NO_EXPANSION(A)
-#define SWIFT_INCLUDE STRINGIZE_WITH_EXPANSION(PRODUCT_NAME-Swift.h)
-
-// Include the Swift generated header file
-#import SWIFT_INCLUDE
+@protocol BadInstructionReply <NSObject>
++ (NSNumber *)receiveReply:(NSValue *)value;
+@end
 
 /// A basic function that receives callbacks from mach_exc_server and relays them to the Swift implemented BadInstructionException.catch_mach_exception_raise_state.
 kern_return_t catch_mach_exception_raise_state(mach_port_t exception_port, exception_type_t exception, const mach_exception_data_t code, mach_msg_type_number_t codeCnt, int *flavor, const thread_state_t old_state, mach_msg_type_number_t old_stateCnt, thread_state_t new_state, mach_msg_type_number_t *new_stateCnt) {
-    return [BadInstructionException catch_mach_exception_raise_state:exception_port exception:exception code:code codeCnt:codeCnt flavor:flavor old_state:old_state old_stateCnt:old_stateCnt new_state:new_state new_stateCnt:new_stateCnt];
+	bad_instruction_exception_reply_t reply = { exception_port, exception, code, codeCnt, flavor, old_state, old_stateCnt, new_state, new_stateCnt };
+	Class badInstructionClass = NSClassFromString(@"BadInstructionException");
+	NSValue *value = [NSValue valueWithBytes:&reply objCType:@encode(bad_instruction_exception_reply_t)];
+	return [[badInstructionClass performSelector:@selector(receiveReply:) withObject:value] intValue];
 }
 
 // The mach port should be configured so that this function is never used.
