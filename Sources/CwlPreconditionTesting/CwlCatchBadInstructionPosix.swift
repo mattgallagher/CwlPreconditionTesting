@@ -98,9 +98,10 @@ import Foundation
 			let e = pthread_create(&handlerThread, nil, blockHandler, blockPtr)
 			precondition(e == 0, "Unable to create thread")
 
-			// Convert the result. It will be either `nil` or bitPattern 1
+			// Wait for completion and get the result. It will be either `nil` or bitPattern 1
 			var rawResult: UnsafeMutableRawPointer? = nil
-			pthread_join(handlerThread!, &rawResult)
+			let e2 = pthread_join(handlerThread!, &rawResult)
+			precondition(e2 == 0, "Thread join failed")
 			return Int(bitPattern: rawResult) != 0
 		}
 		
