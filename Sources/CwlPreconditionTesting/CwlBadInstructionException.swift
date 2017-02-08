@@ -21,7 +21,7 @@
 import Foundation
 
 #if SWIFT_PACKAGE
-import CwlMachBadInstructionHandler
+	import CwlMachBadInstructionHandler
 #endif
 
 private func raiseBadInstructionException() {
@@ -52,7 +52,7 @@ public class BadInstructionException: NSException {
 			let old_stateCnt: mach_msg_type_number_t = reply.old_stateCnt
 			let new_state: thread_state_t = reply.new_state!
 			let new_stateCnt: UnsafeMutablePointer<mach_msg_type_number_t> = reply.new_stateCnt!
-
+			
 			// Make sure we've been given enough memory
 			if old_stateCnt != x86_THREAD_STATE64_COUNT || new_stateCnt.pointee < x86_THREAD_STATE64_COUNT {
 				return NSNumber(value: KERN_INVALID_ARGUMENT)
@@ -80,7 +80,7 @@ public class BadInstructionException: NSException {
 			// Write the new thread state
 			new_state.withMemoryRebound(to: x86_thread_state64_t.self, capacity: 1) { $0.pointee = state }
 			new_stateCnt.pointee = x86_THREAD_STATE64_COUNT
-
+			
 			return NSNumber(value: KERN_SUCCESS)
 		#else
 			fatalError("Unavailable for this CPU architecture")

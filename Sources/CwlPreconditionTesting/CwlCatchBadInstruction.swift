@@ -21,8 +21,8 @@
 import Foundation
 
 #if SWIFT_PACKAGE
-import CwlCatchException
-import CwlMachBadInstructionHandler
+	import CwlCatchException
+	import CwlMachBadInstructionHandler
 #endif
 
 #if arch(x86_64)
@@ -194,6 +194,6 @@ import CwlMachBadInstructionHandler
 		}
 		return result
 	}
-
+	
 #endif
 
