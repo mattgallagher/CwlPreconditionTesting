@@ -34,50 +34,26 @@ import Foundation
 	//  * Plus all of the same caveats as the Mach exceptions version (doesn't play well with other handlers, probably leaks ARC memory, etc)
 	// Treat it like a loaded shotgun. Don't point it at your face.
 	
-	// State used by the signal handler
-	private var savedContext = __darwin_x86_thread_state64()
-	private var badInstructionReceived = false
-	
-	// This function is used to
 	@inline(never)
-	private func springboardFunction(block: () -> Void) {
-		// Immediately raise the action so we can save as much of the thread state as possible
-		savedContext = __darwin_x86_thread_state64()
-		pthread_kill(pthread_self(), SIGILL)
-
-		block()
-	}
-
-	@inline(never)
-	private func dummyFunction() {
+	private func callThreadExit() {
+		pthread_exit(UnsafeMutableRawPointer(bitPattern: 1))
 	}
 	
 	private func sigIllHandler(code: Int32, info: UnsafeMutablePointer<__siginfo>?, uap: UnsafeMutableRawPointer?) -> Void {
 		guard let context = uap?.assumingMemoryBound(to: ucontext64_t.self) else { return }
 
-		if savedContext.__rbp == 0 {
-			savedContext = context.pointee.uc_mcontext64.pointee.__ss
-			return
+		// 1. Decrement the stack pointer
+		context.pointee.uc_mcontext64.pointee.__ss.__rsp -= __uint64_t(MemoryLayout<Int>.size)
+
+		// 2. Save the old Instruction Pointer to the stack.
+		let rsp = context.pointee.uc_mcontext64.pointee.__ss.__rsp
+		if let ump = UnsafeMutablePointer<__uint64_t>(bitPattern: UInt(rsp)) {
+			ump.pointee = rsp
 		}
-		
-		badInstructionReceived = true
-		
-		// We need to skip over two stack frames to unwind the stack past springboardFunction
-		var framePointer = UnsafeMutablePointer<UInt64>(bitPattern: UInt(savedContext.__rbp))!
-		framePointer = UnsafeMutablePointer<UInt64>(bitPattern: UInt(framePointer.pointee))!
 
-		// Restore most of the context from the saved value
-		context.pointee.uc_mcontext64.pointee.__ss = savedContext
-		
-		// Set the stack pointer to the location containing the saved address
-		context.pointee.uc_mcontext64.pointee.__ss.__rsp = UInt64(UInt(bitPattern: framePointer.advanced(by: 1)))
-
-		// Set the frame pointer to the value saved immediately after the return address
-		context.pointee.uc_mcontext64.pointee.__ss.__rbp = framePointer.pointee
-		
-		// Jump to the dummyFunction. It should return to the springboardFunction's caller.
-		var f: @convention(c) () -> Void = dummyFunction
-		withUnsafePointer(to: &f) { $0.withMemoryRebound(to: __uint64_t.self, capacity: 1) { ptr in
+		// 3. Set the Instruction Pointer to the new function's address
+		var f: @convention(c) () -> Void = callThreadExit
+		withUnsafePointer(to: &f) {	$0.withMemoryRebound(to: __uint64_t.self, capacity: 1) { ptr in
 			context.pointee.uc_mcontext64.pointee.__ss.__rip = ptr.pointee
 		} }
 	}
@@ -86,32 +62,48 @@ import Foundation
 	public class BadInstructionException {
 	}
 	
+
+	private func blockHandler(_ arg: UnsafeMutableRawPointer) -> UnsafeMutableRawPointer? {
+		let block = arg.assumingMemoryBound(to: (() -> Void).self).pointee
+		block()
+		return nil
+	}
+	
 	/// Run the provided block. If a POSIX SIGILL is received, handle it and return a BadInstructionException (which is just an empty object in this POSIX signal version). Otherwise return nil.
 	/// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a SIGILL is received, the block will be interrupted using a C `longjmp`. The risks associated with abrupt jumps apply here: most Swift functions are *not* interrupt-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
 	/// - parameter block: a function without parameters that will be run
 	/// - returns: if an SIGILL is raised during the execution of `block` then a BadInstructionException will be returned, otherwise `nil`.
-	public func catchBadInstruction(block: () -> Void) -> BadInstructionException? {
+	public func catchBadInstruction(block: @escaping () -> Void) -> BadInstructionException? {
 		// Construct the signal action
 		var sigActionPrev = sigaction()
 		let action = __sigaction_u(__sa_sigaction: sigIllHandler)
 		var sigActionNew = sigaction(__sigaction_u: action, sa_mask: sigset_t(), sa_flags: SA_SIGINFO)
-		
-		badInstructionReceived = false
 		
 		// Install the signal action
 		if sigaction(SIGILL, &sigActionNew, &sigActionPrev) != 0 {
 			fatalError("Sigaction error: \(errno)")
 		}
 		
-		// Run the block
-		springboardFunction(block: block)
-		
-		// Restore the previous signal action
-		if sigaction(SIGILL, &sigActionPrev, nil) != 0 {
-			fatalError("Sigaction error: \(errno)")
+		defer {
+			// Restore the previous signal action
+			if sigaction(SIGILL, &sigActionPrev, nil) != 0 {
+				fatalError("Sigaction error: \(errno)")
+			}
 		}
 
-		return badInstructionReceived ? BadInstructionException() : nil
+		// Run the block
+		var b = block
+		let caught: Bool = withUnsafeMutablePointer(to: &b) { blockPtr in
+			var handlerThread: pthread_t? = nil
+			let e = pthread_create(&handlerThread, nil, blockHandler, blockPtr)
+			precondition(e == 0, "Unable to create thread")
+
+			var rawResult: UnsafeMutableRawPointer? = nil
+			pthread_join(handlerThread!, &rawResult)
+			return Int(bitPattern: rawResult) != 0
+		}
+		
+		return caught ? BadInstructionException() : nil
 	}
 	
 #endif
