@@ -34,11 +34,12 @@ import Foundation
 	//  * Plus all of the same caveats as the Mach exceptions version (doesn't play well with other handlers, probably leaks ARC memory, etc)
 	// Treat it like a loaded shotgun. Don't point it at your face.
 	
-	@inline(never)
+	// This function is called from the signal handler to shut down the thread and return 1 (indicating a SIGILL was received).
 	private func callThreadExit() {
 		pthread_exit(UnsafeMutableRawPointer(bitPattern: 1))
 	}
 	
+	// When called, this signal handler simulates a function call to `callThreadExit`
 	private func sigIllHandler(code: Int32, info: UnsafeMutablePointer<__siginfo>?, uap: UnsafeMutableRawPointer?) -> Void {
 		guard let context = uap?.assumingMemoryBound(to: ucontext64_t.self) else { return }
 
@@ -62,10 +63,9 @@ import Foundation
 	public class BadInstructionException {
 	}
 	
-
+	/// This function is the start point for the thread that contains `block` and its stack, so at the end (precondition or not) we can throw the stack away.
 	private func blockHandler(_ arg: UnsafeMutableRawPointer) -> UnsafeMutableRawPointer? {
-		let block = arg.assumingMemoryBound(to: (() -> Void).self).pointee
-		block()
+		(arg.assumingMemoryBound(to: (() -> Void).self).pointee)()
 		return nil
 	}
 	
@@ -91,13 +91,14 @@ import Foundation
 			}
 		}
 
-		// Run the block
 		var b = block
 		let caught: Bool = withUnsafeMutablePointer(to: &b) { blockPtr in
+			// Run the block on its own thread
 			var handlerThread: pthread_t? = nil
 			let e = pthread_create(&handlerThread, nil, blockHandler, blockPtr)
 			precondition(e == 0, "Unable to create thread")
 
+			// Convert the result. It will be either `nil` or bitPattern 1
 			var rawResult: UnsafeMutableRawPointer? = nil
 			pthread_join(handlerThread!, &rawResult)
 			return Int(bitPattern: rawResult) != 0
