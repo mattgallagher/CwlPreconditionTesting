@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		C945D7AA1E50333A009AFB8E /* FetchDependencies */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C945D7AB1E50333A009AFB8E /* Build configuration list for PBXAggregateTarget "FetchDependencies" */;
+			buildPhases = (
+				C945D7AE1E503344009AFB8E /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = FetchDependencies;
+			productName = FetchDependencies;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		96ACCC611C6E8BFD00FE0B1B /* CwlPreconditionTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ACCC591C6E8BBE00FE0B1B /* CwlPreconditionTesting.framework */; };
 		C90F356A1C66296900F2FAF9 /* mach_exc.defs in Sources */ = {isa = PBXBuildFile; fileRef = C98707901C3F8952009B413A /* mach_exc.defs */; settings = {ATTRIBUTES = (Server, ); }; };
@@ -69,6 +83,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = C92A97C81C68A4F3008905C2;
 			remoteInfo = CwlPreconditionTesting_POSIX;
+		};
+		C945D7AF1E503351009AFB8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C987076D1C3F886F009B413A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C945D7AA1E50333A009AFB8E;
+			remoteInfo = FetchDependencies;
+		};
+		C945D7B11E503384009AFB8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C987076D1C3F886F009B413A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C945D7AA1E50333A009AFB8E;
+			remoteInfo = FetchDependencies;
+		};
+		C945D7B31E50338B009AFB8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C987076D1C3F886F009B413A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C945D7AA1E50333A009AFB8E;
+			remoteInfo = FetchDependencies;
+		};
+		C945D7B51E503393009AFB8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C987076D1C3F886F009B413A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C945D7AA1E50333A009AFB8E;
+			remoteInfo = FetchDependencies;
 		};
 		C9604C8B1C40DD9A001A7517 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -397,7 +439,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96ACCC5E1C6E8BBE00FE0B1B /* Build configuration list for PBXNativeTarget "CwlPreconditionTesting_tvOS" */;
 			buildPhases = (
-				C9D2B18F1E3F704A00012854 /* ShellScript */,
 				96ACCC541C6E8BBE00FE0B1B /* Sources */,
 				96ACCC551C6E8BBE00FE0B1B /* Frameworks */,
 				96ACCC561C6E8BBE00FE0B1B /* Headers */,
@@ -405,6 +446,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C945D7B61E503393009AFB8E /* PBXTargetDependency */,
 			);
 			name = CwlPreconditionTesting_tvOS;
 			productName = tvframework;
@@ -415,7 +457,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C92A97D61C68A4F3008905C2 /* Build configuration list for PBXNativeTarget "CwlPreconditionTesting_POSIX" */;
 			buildPhases = (
-				C9D2B18E1E3F703100012854 /* ShellScript */,
 				C92A97C91C68A4F3008905C2 /* Sources */,
 				C92A97D11C68A4F3008905C2 /* Frameworks */,
 				C92A97D21C68A4F3008905C2 /* Headers */,
@@ -423,6 +464,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C945D7B41E50338B009AFB8E /* PBXTargetDependency */,
 			);
 			name = CwlPreconditionTesting_POSIX;
 			productName = CwlPreconditionTesting;
@@ -451,7 +493,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9604C951C40DD9A001A7517 /* Build configuration list for PBXNativeTarget "CwlPreconditionTesting_iOS" */;
 			buildPhases = (
-				C9D2B18D1E3F702700012854 /* ShellScript */,
 				C9604C7B1C40DD9A001A7517 /* Sources */,
 				C9604C7C1C40DD9A001A7517 /* Frameworks */,
 				C9604C7D1C40DD9A001A7517 /* Headers */,
@@ -459,6 +500,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C945D7B21E503384009AFB8E /* PBXTargetDependency */,
 			);
 			name = CwlPreconditionTesting_iOS;
 			productName = CwlPreconditionTesting_iOS;
@@ -487,7 +529,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C987078A1C3F886F009B413A /* Build configuration list for PBXNativeTarget "CwlPreconditionTesting_macOS" */;
 			buildPhases = (
-				C9D2B18C1E3F700D00012854 /* ShellScript */,
 				C98707711C3F886F009B413A /* Sources */,
 				C98707721C3F886F009B413A /* Frameworks */,
 				C958F13A1E3F6D0E008BE8E0 /* Headers */,
@@ -495,6 +536,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C945D7B01E503351009AFB8E /* PBXTargetDependency */,
 			);
 			name = CwlPreconditionTesting_macOS;
 			productName = CwlPreconditionTesting;
@@ -535,6 +577,11 @@
 					96ACCC581C6E8BBE00FE0B1B = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
+					C945D7AA1E50333A009AFB8E = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = S7YQ892G6G;
+						ProvisioningStyle = Automatic;
+					};
 					C9604C7F1C40DD9A001A7517 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -562,6 +609,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				C945D7AA1E50333A009AFB8E /* FetchDependencies */,
 				C98707751C3F886F009B413A /* CwlPreconditionTesting_macOS */,
 				C987077F1C3F886F009B413A /* CwlPreconditionTesting_macOSTests */,
 				C9604C7F1C40DD9A001A7517 /* CwlPreconditionTesting_iOS */,
@@ -585,7 +633,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C9D2B18C1E3F700D00012854 /* ShellScript */ = {
+		C945D7AE1E503344009AFB8E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -597,57 +645,8 @@
 				"$(SRCROOT)/.build/cwl_symlinks/CwlCatchException",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "//\n//  CwlPackageFetch.swift\n//  CwlPackageFetch\n//\n//  Created by Matt Gallagher on 2017/01/31.\n//  Copyright © 2017 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.\n//\n//  Permission to use, copy, modify, and/or distribute this software for any\n//  purpose with or without fee is hereby granted, provided that the above\n//  copyright notice and this permission notice appear in all copies.\n//\n//  THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\n//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n//\n\nimport Foundation\n\n/// Launch a process and run to completion, returning the standard out on success.\nfunc launch(_ command: String, _ arguments: [String], directory: String? = nil) -> String? {\n\tlet proc = Process()\n\tproc.launchPath = command\n\tproc.arguments = arguments\n\t_ = directory.map { proc.currentDirectoryPath = $0 }\n\tlet pipe = Pipe()\n\tproc.standardOutput = pipe\n\tproc.launch()\n\tlet result = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!\n\tproc.waitUntilExit()\n\treturn proc.terminationStatus != 0 ? nil : result\n}\n\nlet srcRoot = ProcessInfo.processInfo.environment[\"SRCROOT\"]!\n\n// STEP 1: use `swift package fetch` to get all dependencies\nprint(launch(\"/usr/bin/swift\", [\"package\", \"fetch\"], directory: srcRoot)!)\n\n// Create a symlink only if it is not already present and pointing to the destination\nlet symlinksPath = \"\\(srcRoot)/.build/cwl_symlinks\"\nfunc createSymlink(srcRoot: String, name: String, destination: String) throws {\n\tlet location = \"\\(symlinksPath)/\\(name)\"\n\tlet link = \"../../\\(destination)\"\n\tif (try? FileManager.default.destinationOfSymbolicLink(atPath: location)) != link {\n\t\t_ = try? FileManager.default.removeItem(atPath: location)\n\t\ttry FileManager.default.createSymbolicLink(atPath: location, withDestinationPath:\n\t\t\tlink)\n\t\tprint(\"Created symbolic link: \\(location) -> \\(link)\")\n\t}\n}\n\n// Recursively parse the dependency graph JSON, creating symlinks in our own location\nfunc createSymlinks(srcRoot: String, description: Dictionary<String, Any>, topLevelPath: String) throws {\n\tguard let dependencies = description[\"dependencies\"] as? [Dictionary<String, Any>] else { return }\n\tfor dependency in dependencies {\n\t\tlet path = dependency[\"path\"] as! String\n\t\tlet relativePath = path.substring(from: path.range(of: topLevelPath)!.upperBound)\n\t\tlet name = dependency[\"name\"] as! String\n\t\ttry createSymlink(srcRoot: srcRoot, name: name, destination: relativePath)\n\t\ttry createSymlinks(srcRoot: srcRoot, description: dependency, topLevelPath: topLevelPath)\n\t}\n}\n\n// STEP 2: create symlinks from fetched locations to somewhere stable\nlet descriptionString = launch(\"/usr/bin/swift\", [\"package\", \"show-dependencies\", \"--format\", \"json\"], directory: srcRoot)!\nlet descriptionData = descriptionString.data(using: .utf8)!\nlet description = try JSONSerialization.jsonObject(with: descriptionData, options: []) as! Dictionary<String, Any>\nlet topLevelPath = (description[\"path\"] as! String) + \"/\"\ndo {\n   try FileManager.default.createDirectory(atPath: symlinksPath, withIntermediateDirectories: true, attributes: nil)\n\ttry createSymlinks(srcRoot: srcRoot, description: description, topLevelPath: topLevelPath)\n\tprint(\"Complete.\")\n} catch {\n\tprint(error)\n}\n";
-			showEnvVarsInLog = 0;
-		};
-		C9D2B18D1E3F702700012854 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Package.swift",
-			);
-			outputPaths = (
-				"$(SRCROOT)/.build/cwl_symlinks/CwlCatchException",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "//\n//  CwlPackageFetch.swift\n//  CwlPackageFetch\n//\n//  Created by Matt Gallagher on 2017/01/31.\n//  Copyright © 2017 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.\n//\n//  Permission to use, copy, modify, and/or distribute this software for any\n//  purpose with or without fee is hereby granted, provided that the above\n//  copyright notice and this permission notice appear in all copies.\n//\n//  THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\n//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n//\n\nimport Foundation\n\n/// Launch a process and run to completion, returning the standard out on success.\nfunc launch(_ command: String, _ arguments: [String], directory: String? = nil) -> String? {\n\tlet proc = Process()\n\tproc.launchPath = command\n\tproc.arguments = arguments\n\t_ = directory.map { proc.currentDirectoryPath = $0 }\n\tlet pipe = Pipe()\n\tproc.standardOutput = pipe\n\tproc.launch()\n\tlet result = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!\n\tproc.waitUntilExit()\n\treturn proc.terminationStatus != 0 ? nil : result\n}\n\nlet srcRoot = ProcessInfo.processInfo.environment[\"SRCROOT\"]!\n\n// STEP 1: use `swift package fetch` to get all dependencies\nprint(launch(\"/usr/bin/swift\", [\"package\", \"fetch\"], directory: srcRoot)!)\n\n// Create a symlink only if it is not already present and pointing to the destination\nlet symlinksPath = \"\\(srcRoot)/.build/cwl_symlinks\"\nfunc createSymlink(srcRoot: String, name: String, destination: String) throws {\n\tlet location = \"\\(symlinksPath)/\\(name)\"\n\tlet link = \"../../\\(destination)\"\n\tif (try? FileManager.default.destinationOfSymbolicLink(atPath: location)) != link {\n\t\t_ = try? FileManager.default.removeItem(atPath: location)\n\t\ttry FileManager.default.createSymbolicLink(atPath: location, withDestinationPath:\n\t\t\tlink)\n\t\tprint(\"Created symbolic link: \\(location) -> \\(link)\")\n\t}\n}\n\n// Recursively parse the dependency graph JSON, creating symlinks in our own location\nfunc createSymlinks(srcRoot: String, description: Dictionary<String, Any>, topLevelPath: String) throws {\n\tguard let dependencies = description[\"dependencies\"] as? [Dictionary<String, Any>] else { return }\n\tfor dependency in dependencies {\n\t\tlet path = dependency[\"path\"] as! String\n\t\tlet relativePath = path.substring(from: path.range(of: topLevelPath)!.upperBound)\n\t\tlet name = dependency[\"name\"] as! String\n\t\ttry createSymlink(srcRoot: srcRoot, name: name, destination: relativePath)\n\t\ttry createSymlinks(srcRoot: srcRoot, description: dependency, topLevelPath: topLevelPath)\n\t}\n}\n\n// STEP 2: create symlinks from fetched locations to somewhere stable\nlet descriptionString = launch(\"/usr/bin/swift\", [\"package\", \"show-dependencies\", \"--format\", \"json\"], directory: srcRoot)!\nlet descriptionData = descriptionString.data(using: .utf8)!\nlet description = try JSONSerialization.jsonObject(with: descriptionData, options: []) as! Dictionary<String, Any>\nlet topLevelPath = (description[\"path\"] as! String) + \"/\"\ndo {\n   try FileManager.default.createDirectory(atPath: symlinksPath, withIntermediateDirectories: true, attributes: nil)\n\ttry createSymlinks(srcRoot: srcRoot, description: description, topLevelPath: topLevelPath)\n\tprint(\"Complete.\")\n} catch {\n\tprint(error)\n}\n";
-			showEnvVarsInLog = 0;
-		};
-		C9D2B18E1E3F703100012854 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Package.swift",
-			);
-			outputPaths = (
-				"$(SRCROOT)/.build/cwl_symlinks/CwlCatchException",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "//\n//  CwlPackageFetch.swift\n//  CwlPackageFetch\n//\n//  Created by Matt Gallagher on 2017/01/31.\n//  Copyright © 2017 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.\n//\n//  Permission to use, copy, modify, and/or distribute this software for any\n//  purpose with or without fee is hereby granted, provided that the above\n//  copyright notice and this permission notice appear in all copies.\n//\n//  THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\n//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n//\n\nimport Foundation\n\n/// Launch a process and run to completion, returning the standard out on success.\nfunc launch(_ command: String, _ arguments: [String], directory: String? = nil) -> String? {\n\tlet proc = Process()\n\tproc.launchPath = command\n\tproc.arguments = arguments\n\t_ = directory.map { proc.currentDirectoryPath = $0 }\n\tlet pipe = Pipe()\n\tproc.standardOutput = pipe\n\tproc.launch()\n\tlet result = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!\n\tproc.waitUntilExit()\n\treturn proc.terminationStatus != 0 ? nil : result\n}\n\nlet srcRoot = ProcessInfo.processInfo.environment[\"SRCROOT\"]!\n\n// STEP 1: use `swift package fetch` to get all dependencies\nprint(launch(\"/usr/bin/swift\", [\"package\", \"fetch\"], directory: srcRoot)!)\n\n// Create a symlink only if it is not already present and pointing to the destination\nlet symlinksPath = \"\\(srcRoot)/.build/cwl_symlinks\"\nfunc createSymlink(srcRoot: String, name: String, destination: String) throws {\n\tlet location = \"\\(symlinksPath)/\\(name)\"\n\tlet link = \"../../\\(destination)\"\n\tif (try? FileManager.default.destinationOfSymbolicLink(atPath: location)) != link {\n\t\t_ = try? FileManager.default.removeItem(atPath: location)\n\t\ttry FileManager.default.createSymbolicLink(atPath: location, withDestinationPath:\n\t\t\tlink)\n\t\tprint(\"Created symbolic link: \\(location) -> \\(link)\")\n\t}\n}\n\n// Recursively parse the dependency graph JSON, creating symlinks in our own location\nfunc createSymlinks(srcRoot: String, description: Dictionary<String, Any>, topLevelPath: String) throws {\n\tguard let dependencies = description[\"dependencies\"] as? [Dictionary<String, Any>] else { return }\n\tfor dependency in dependencies {\n\t\tlet path = dependency[\"path\"] as! String\n\t\tlet relativePath = path.substring(from: path.range(of: topLevelPath)!.upperBound)\n\t\tlet name = dependency[\"name\"] as! String\n\t\ttry createSymlink(srcRoot: srcRoot, name: name, destination: relativePath)\n\t\ttry createSymlinks(srcRoot: srcRoot, description: dependency, topLevelPath: topLevelPath)\n\t}\n}\n\n// STEP 2: create symlinks from fetched locations to somewhere stable\nlet descriptionString = launch(\"/usr/bin/swift\", [\"package\", \"show-dependencies\", \"--format\", \"json\"], directory: srcRoot)!\nlet descriptionData = descriptionString.data(using: .utf8)!\nlet description = try JSONSerialization.jsonObject(with: descriptionData, options: []) as! Dictionary<String, Any>\nlet topLevelPath = (description[\"path\"] as! String) + \"/\"\ndo {\n   try FileManager.default.createDirectory(atPath: symlinksPath, withIntermediateDirectories: true, attributes: nil)\n\ttry createSymlinks(srcRoot: srcRoot, description: description, topLevelPath: topLevelPath)\n\tprint(\"Complete.\")\n} catch {\n\tprint(error)\n}\n";
-			showEnvVarsInLog = 0;
-		};
-		C9D2B18F1E3F704A00012854 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Package.swift",
-			);
-			outputPaths = (
-				"$(SRCROOT)/.build/cwl_symlinks/CwlCatchException",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/usr/bin/xcrun --sdk macosx swift";
-			shellScript = "//\n//  CwlPackageFetch.swift\n//  CwlPackageFetch\n//\n//  Created by Matt Gallagher on 2017/01/31.\n//  Copyright © 2017 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.\n//\n//  Permission to use, copy, modify, and/or distribute this software for any\n//  purpose with or without fee is hereby granted, provided that the above\n//  copyright notice and this permission notice appear in all copies.\n//\n//  THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\n//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n//\n\nimport Foundation\n\n/// Launch a process and run to completion, returning the standard out on success.\nfunc launch(_ command: String, _ arguments: [String], directory: String? = nil) -> String? {\n\tlet proc = Process()\n\tproc.launchPath = command\n\tproc.arguments = arguments\n\t_ = directory.map { proc.currentDirectoryPath = $0 }\n\tlet pipe = Pipe()\n\tproc.standardOutput = pipe\n\tproc.launch()\n\tlet result = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8)!\n\tproc.waitUntilExit()\n\treturn proc.terminationStatus != 0 ? nil : result\n}\n\nlet srcRoot = ProcessInfo.processInfo.environment[\"SRCROOT\"]!\n\n// STEP 1: use `swift package fetch` to get all dependencies\nprint(launch(\"/usr/bin/swift\", [\"package\", \"fetch\"], directory: srcRoot)!)\n\n// Create a symlink only if it is not already present and pointing to the destination\nlet symlinksPath = \"\\(srcRoot)/.build/cwl_symlinks\"\nfunc createSymlink(srcRoot: String, name: String, destination: String) throws {\n\tlet location = \"\\(symlinksPath)/\\(name)\"\n\tlet link = \"../../\\(destination)\"\n\tif (try? FileManager.default.destinationOfSymbolicLink(atPath: location)) != link {\n\t\t_ = try? FileManager.default.removeItem(atPath: location)\n\t\ttry FileManager.default.createSymbolicLink(atPath: location, withDestinationPath:\n\t\t\tlink)\n\t\tprint(\"Created symbolic link: \\(location) -> \\(link)\")\n\t}\n}\n\n// Recursively parse the dependency graph JSON, creating symlinks in our own location\nfunc createSymlinks(srcRoot: String, description: Dictionary<String, Any>, topLevelPath: String) throws {\n\tguard let dependencies = description[\"dependencies\"] as? [Dictionary<String, Any>] else { return }\n\tfor dependency in dependencies {\n\t\tlet path = dependency[\"path\"] as! String\n\t\tlet relativePath = path.substring(from: path.range(of: topLevelPath)!.upperBound)\n\t\tlet name = dependency[\"name\"] as! String\n\t\ttry createSymlink(srcRoot: srcRoot, name: name, destination: relativePath)\n\t\ttry createSymlinks(srcRoot: srcRoot, description: dependency, topLevelPath: topLevelPath)\n\t}\n}\n\n// STEP 2: create symlinks from fetched locations to somewhere stable\nlet descriptionString = launch(\"/usr/bin/swift\", [\"package\", \"show-dependencies\", \"--format\", \"json\"], directory: srcRoot)!\nlet descriptionData = descriptionString.data(using: .utf8)!\nlet description = try JSONSerialization.jsonObject(with: descriptionData, options: []) as! Dictionary<String, Any>\nlet topLevelPath = (description[\"path\"] as! String) + \"/\"\ndo {\n   try FileManager.default.createDirectory(atPath: symlinksPath, withIntermediateDirectories: true, attributes: nil)\n\ttry createSymlinks(srcRoot: srcRoot, description: description, topLevelPath: topLevelPath)\n\tprint(\"Complete.\")\n} catch {\n\tprint(error)\n}\n";
-			showEnvVarsInLog = 0;
+			shellPath = "/usr/bin/xcrun --sdk macosx swift -target x86_64-apple-macosx10.11";
+			shellScript = "//\n//  CwlPackageFetch.swift\n//  CwlPackageFetch\n//\n//  Created by Matt Gallagher on 2017/01/31.\n//  Copyright © 2017 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.\n//\n//  Permission to use, copy, modify, and/or distribute this software for any\n//  purpose with or without fee is hereby granted, provided that the above\n//  copyright notice and this permission notice appear in all copies.\n//\n//  THE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\n//  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\n//  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n//  SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\n//  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\n//  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR\n//  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n//\n\nimport Foundation\n\nlet buildName = \".build\"\nlet symlinksName = \"cwl_symlinks\"\n\nguard let srcRoot = ProcessInfo.processInfo.environment[\"SRCROOT\"].map({ URL(fileURLWithPath: $0) }) else {\n\tprint(\"Environment variable SRCROOT must be set\")\n\texit(1)\n}\n\n/// Launch a process and run to completion, returning the standard out on success.\nfunc launch(_ command: String, _ arguments: [String], directory: URL? = nil) -> String? {\n\tlet proc = Process()\n\tproc.launchPath = command\n\tproc.arguments = arguments\n\t_ = directory.map { proc.currentDirectoryPath = $0.path }\n\tlet pipe = Pipe()\n\tproc.standardOutput = pipe\n\tproc.launch()\n\tlet result = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8) ?? \"\"\n\tproc.waitUntilExit()\n\treturn proc.terminationStatus != 0 ? nil : result\n}\n\n// STEP 1: use `swift package fetch` to get all dependencies\nprint(\"Starting package fetch...\")\nif let fetchResult = launch(\"/usr/bin/swift\", [\"package\", \"fetch\"], directory: srcRoot) {\n\tif fetchResult == \"\" {\n\t\tprint(\"All dependencies up-to-date.\")\n\t} else {\n\t\tprint(fetchResult, terminator: \"\")\n\t}\n} else {\n\tprint(\"### swift package fetch failed\")\n\texit(1)\n}\n\n// Create a symlink only if it is not already present and pointing to the destination\nlet symlinksURL = srcRoot.appendingPathComponent(buildName).appendingPathComponent(symlinksName)\nfunc createSymlink(srcRoot: URL, name: String, destination: String) throws {\n\tlet location = symlinksURL.appendingPathComponent(name)\n\tlet link = URL(fileURLWithPath: \"../../\\(destination)\", relativeTo:location)\n\tlet current = try? FileManager.default.destinationOfSymbolicLink(atPath: location.path)\n\tif current == nil || current != link.relativePath {\n\t\t_ = try? FileManager.default.removeItem(at: location)\n\t\ttry FileManager.default.createSymbolicLink(atPath: location.path, withDestinationPath:\n\t\t\tlink.relativePath)\n\t\tprint(\"Created symbolic link: \\(location.path) -> \\(link.relativePath)\")\n\t}\n}\n\n// Recursively parse the dependency graph JSON, creating symlinks in our own location\nfunc createSymlinks(srcRoot: URL, description: Dictionary<String, Any>, topLevelPath: String) throws {\n\tguard let dependencies = description[\"dependencies\"] as? [Dictionary<String, Any>] else { return }\n\tfor dependency in dependencies {\n\t\tguard let path = dependency[\"path\"] as? String, let relativePath = (path.range(of: topLevelPath)?.upperBound).map({ path.substring(from: $0) }), let name = dependency[\"name\"] as? String else {\n\t\t\tthrow NSError(domain: \"CwlError\", code: 0, userInfo: [NSLocalizedFailureReasonErrorKey: \"Unable to parse dependency structure\"])\n\t\t}\n\t\ttry createSymlink(srcRoot: srcRoot, name: name, destination: relativePath)\n\t\ttry createSymlinks(srcRoot: srcRoot, description: dependency, topLevelPath: topLevelPath)\n\t}\n}\n\n// STEP 2: create symlinks from our stable locations to the fetched locations\nguard let descriptionString = launch(\"/usr/bin/swift\", [\"package\", \"show-dependencies\", \"--format\", \"json\"], directory: srcRoot) else {\n\tprint(\"### swift package show-dependencies failed\")\n\texit(1)\n}\ndo {\n\tguard let descriptionData = descriptionString.data(using: .utf8), let description = try JSONSerialization.jsonObject(with: descriptionData, options: []) as? Dictionary<String, Any>, let topLevelPath = (description[\"path\"] as? String).map({ $0 + \"/\" }) else {\n\t\tthrow NSError(domain: \"CwlError\", code: 0, userInfo: [NSLocalizedFailureReasonErrorKey: \"Unable to parse dependency structure\"])\n\t}\n   try FileManager.default.createDirectory(at: symlinksURL, withIntermediateDirectories: true, attributes: nil)\n\ttry createSymlinks(srcRoot: srcRoot, description: description, topLevelPath: topLevelPath)\n\tprint(\"Complete.\")\n} catch {\n\tprint(\"### symlink creation failed: \\(error)\")\n\texit(1)\n}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -746,6 +745,26 @@
 			isa = PBXTargetDependency;
 			target = C92A97C81C68A4F3008905C2 /* CwlPreconditionTesting_POSIX */;
 			targetProxy = C92A97E91C68A5A7008905C2 /* PBXContainerItemProxy */;
+		};
+		C945D7B01E503351009AFB8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C945D7AA1E50333A009AFB8E /* FetchDependencies */;
+			targetProxy = C945D7AF1E503351009AFB8E /* PBXContainerItemProxy */;
+		};
+		C945D7B21E503384009AFB8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C945D7AA1E50333A009AFB8E /* FetchDependencies */;
+			targetProxy = C945D7B11E503384009AFB8E /* PBXContainerItemProxy */;
+		};
+		C945D7B41E50338B009AFB8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C945D7AA1E50333A009AFB8E /* FetchDependencies */;
+			targetProxy = C945D7B31E50338B009AFB8E /* PBXContainerItemProxy */;
+		};
+		C945D7B61E503393009AFB8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C945D7AA1E50333A009AFB8E /* FetchDependencies */;
+			targetProxy = C945D7B51E503393009AFB8E /* PBXContainerItemProxy */;
 		};
 		C9604C8C1C40DD9A001A7517 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -889,6 +908,22 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cocoawithlove.CwlPreconditionTesting-POSIXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		C945D7AC1E50333A009AFB8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = S7YQ892G6G;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C945D7AD1E50333A009AFB8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = S7YQ892G6G;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1168,6 +1203,15 @@
 			buildConfigurations = (
 				C92A97E41C68A515008905C2 /* Debug */,
 				C92A97E51C68A515008905C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C945D7AB1E50333A009AFB8E /* Build configuration list for PBXAggregateTarget "FetchDependencies" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C945D7AC1E50333A009AFB8E /* Debug */,
+				C945D7AD1E50333A009AFB8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
