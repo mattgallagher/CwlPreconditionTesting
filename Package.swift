@@ -12,7 +12,9 @@ let package = Package(
 		.Package(url: "https://github.com/mattgallagher/CwlCatchException.git", majorVersion: 1),
 	],
 	exclude: [
-		"Sources/CwlPreconditionTesting/CwlPreconditionTesting.h",
-		"Sources/CwlPreconditionTesting/CwlCatchBadInstructionPosix.swift"
+		"Sources/CwlPreconditionTesting/Mach/CwlPreconditionTesting.h",
+		"Sources/CwlPreconditionTesting/Posix/CwlPreconditionTesting.h",
+		"Sources/CwlPreconditionTesting/CwlCatchBadInstructionPosix.swift",
+		"Sources/CwlMachBadInstructionHandler/include/mach_excServer.h"
 	]
 )

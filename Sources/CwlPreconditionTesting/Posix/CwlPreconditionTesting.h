@@ -25,6 +25,3 @@ FOUNDATION_EXPORT double CwlPreconditionTestingVersionNumber;
 
 //! Project version string for CwlUtils.
 FOUNDATION_EXPORT const unsigned char CwlAssertingTestingVersionString[];
-
-#import "CwlMachBadInstructionHandler.h"
-#import "CwlCatchException.h"
