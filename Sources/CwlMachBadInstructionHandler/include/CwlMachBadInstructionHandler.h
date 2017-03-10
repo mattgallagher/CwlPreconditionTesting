@@ -18,8 +18,6 @@
 //  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
 
-#if defined(__x86_64__)
-
 #import <Foundation/Foundation.h>
 #import <mach/mach.h>
 
@@ -70,5 +68,3 @@ typedef struct
 } bad_instruction_exception_reply_t;
 
 NS_ASSUME_NONNULL_END
-
-#endif
