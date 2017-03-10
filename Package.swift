@@ -15,6 +15,5 @@ let package = Package(
 		"Sources/CwlPreconditionTesting/Mach/CwlPreconditionTesting.h",
 		"Sources/CwlPreconditionTesting/Posix/CwlPreconditionTesting.h",
 		"Sources/CwlPreconditionTesting/CwlCatchBadInstructionPosix.swift",
-		"Sources/CwlMachBadInstructionHandler/include/mach_excServer.h"
 	]
 )

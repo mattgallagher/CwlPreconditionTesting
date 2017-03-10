@@ -161,7 +161,6 @@
 		C958F1011E3F698C008BE8E0 /* CwlDarwinDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlDarwinDefinitions.swift; sourceTree = "<group>"; };
 		C9604C801C40DD9A001A7517 /* CwlPreconditionTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CwlPreconditionTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9604C891C40DD9A001A7517 /* CwlPreconditionTesting_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CwlPreconditionTesting_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C986B0851E7244AC0032C9FA /* mach_excServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mach_excServer.h; path = Sources/CwlMachBadInstructionHandler/include/mach_excServer.h; sourceTree = "<group>"; };
 		C986B0931E724AE90032C9FA /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CwlPreconditionTesting.h; sourceTree = "<group>"; };
 		C986B09B1E724C250032C9FA /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwlPreconditionTesting.h; sourceTree = "<group>"; };
 		C986B0A21E724D760032C9FA /* mach_excServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mach_excServer.h; sourceTree = "<group>"; };
@@ -269,6 +268,7 @@
 				C958F0F91E3F698C008BE8E0 /* CwlMachBadInstructionHandler.m */,
 				C958F0FA1E3F698C008BE8E0 /* include */,
 				C958F0FD1E3F698C008BE8E0 /* mach_excServer.c */,
+				C986B0A21E724D760032C9FA /* mach_excServer.h */,
 				C98707901C3F8952009B413A /* mach_exc.defs */,
 			);
 			path = CwlMachBadInstructionHandler;
@@ -278,7 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				C958F0FB1E3F698C008BE8E0 /* CwlMachBadInstructionHandler.h */,
-				C986B0A21E724D760032C9FA /* mach_excServer.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -324,7 +323,6 @@
 		C987076C1C3F886F009B413A = {
 			isa = PBXGroup;
 			children = (
-				C986B0851E7244AC0032C9FA /* mach_excServer.h */,
 				C958F0EE1E3F6967008BE8E0 /* Package.swift */,
 				C958F0F61E3F698C008BE8E0 /* Sources */,
 				C958F0EF1E3F6977008BE8E0 /* Tests */,
