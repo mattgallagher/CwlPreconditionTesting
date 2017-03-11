@@ -807,6 +807,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				HEADER_SEARCH_PATHS = "$(SRC_ROOT)/Sources/CwlPreconditionTesting/Posix";
 				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -828,6 +829,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
+				HEADER_SEARCH_PATHS = "$(SRC_ROOT)/Sources/CwlPreconditionTesting/Posix";
 				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -851,6 +853,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
+				HEADER_SEARCH_PATHS = "$(SRC_ROOT)/Sources/CwlPreconditionTesting/Posix";
 				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
@@ -870,6 +873,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
+				HEADER_SEARCH_PATHS = "$(SRC_ROOT)/Sources/CwlPreconditionTesting/Posix";
 				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
@@ -929,6 +933,7 @@
 					"$(inherited)",
 					"PRODUCT_NAME=$(PRODUCT_NAME)",
 				);
+				HEADER_SEARCH_PATHS = "$(SRC_ROOT)/Sources/CwlPreconditionTesting/Mach";
 				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -953,6 +958,7 @@
 					"$(inherited)",
 					"PRODUCT_NAME=$(PRODUCT_NAME)",
 				);
+				HEADER_SEARCH_PATHS = "$(SRC_ROOT)/Sources/CwlPreconditionTesting/Mach";
 				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1103,6 +1109,7 @@
 					"$(inherited)",
 					"PRODUCT_NAME=$(PRODUCT_NAME)",
 				);
+				HEADER_SEARCH_PATHS = "$(SRC_ROOT)/Sources/CwlPreconditionTesting/Mach";
 				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
@@ -1127,6 +1134,7 @@
 					"$(inherited)",
 					"PRODUCT_NAME=$(PRODUCT_NAME)",
 				);
+				HEADER_SEARCH_PATHS = "$(SRC_ROOT)/Sources/CwlPreconditionTesting/Mach";
 				INFOPLIST_FILE = Sources/CwlPreconditionTesting/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
