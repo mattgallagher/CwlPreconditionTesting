@@ -1,19 +1,18 @@
+// swift-tools-version:4.0
 import PackageDescription
 
 let package = Package(
 	name: "CwlPreconditionTesting",
-	targets: [
-		Target(name: "CwlPreconditionTesting", dependencies: [
-			"CwlMachBadInstructionHandler"
-		]),
-		Target(name: "CwlMachBadInstructionHandler")
-	],
 	dependencies: [
-		.Package(url: "https://github.com/mattgallagher/CwlCatchException.git", Version(1, 0, 1)),
+		.package(url: "/Users/matt/Projects/CwlCatchException", .revision("2910c600e2a5a1cd33122bf825ba7e7740ad9ed7")),
 	],
-	exclude: [
-		"Sources/CwlPreconditionTesting/Mach/CwlPreconditionTesting.h",
-		"Sources/CwlPreconditionTesting/Posix/CwlPreconditionTesting.h",
-		"Sources/CwlPreconditionTesting/CwlCatchBadInstructionPosix.swift",
+	targets: [
+		.target(name: "CwlMachBadInstructionHandler"),
+		.target(name: "CwlPreconditionTesting", dependencies: ["CwlMachBadInstructionHandler", "CwlCatchException"], exclude: [
+				"Mach/CwlPreconditionTesting.h",
+				"Posix/CwlPreconditionTesting.h",
+				"CwlCatchBadInstructionPosix.swift"
+		]),
+		.testTarget(name: "CwlPreconditionTestingTests", dependencies: ["CwlPreconditionTesting"]),
 	]
 )

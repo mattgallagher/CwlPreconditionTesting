@@ -33,7 +33,7 @@ class CatchBadInstructionTests: XCTestCase {
 			reachedPoint1 = true
 			
 			// Fatal error raised
-			precondition(false, "EXC_BAD_INSTRUCTION raised here")
+			precondition(false, "THIS PRECONDITION FAILURE IS EXPECTED")
 
 			// Exception must be thrown so that this point is never reached
 			reachedPoint2 = true
