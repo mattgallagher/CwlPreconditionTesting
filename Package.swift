@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
 	name: "CwlPreconditionTesting",
+	products: [.library(name: "CwlPreconditionTesting", targets: ["CwlPreconditionTesting", "CwlMachBadInstructionHandler"])],
 	dependencies: [
 		.package(url: "/Users/matt/Projects/CwlCatchException", .revision("2910c600e2a5a1cd33122bf825ba7e7740ad9ed7")),
 	],
