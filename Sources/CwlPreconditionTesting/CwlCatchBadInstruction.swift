@@ -19,9 +19,9 @@
 //
 
 import Foundation
+import CwlCatchException
 
 #if SWIFT_PACKAGE
-	import CwlCatchException
 	import CwlMachBadInstructionHandler
 #endif
 
