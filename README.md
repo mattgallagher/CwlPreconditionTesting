@@ -6,66 +6,52 @@ For an extended discussion of this code, please see the Cocoa with Love article:
 	
 [Partial functions in Swift, Part 2: Catching precondition failures](http://cocoawithlove.com/blog/2016/02/02/partial-functions-part-two-catching-precondition-failures.html)
 
-## Usage
+## Adding to your project
 
-The short version is:
-    
+This project can be used by direct inclusion in your projects or through any of the Swift Package Manager, CocoaPods or Carthage.
+
+### Manual inclusion
+
 1. In a subdirectory of your project's directory, run `git clone https://github.com/mattgallagher/CwlPreconditionTesting.git`
-2. Drag the "CwlPreconditionTesting.xcodeproj" file from the Finder into your project's file tree in Xcode
-3. Click on your project in the file tree to access project settings and click on the target to which you want to add CwlUtils.
-4. Click on the "Build Phases" tab and if you don't already have a "Copy Files" build phase with a "Destination: Frameworks", add one using the "+" in the top left of the tab.
-5. Still on the "Build Phases" tab, add "CwlPreconditionTesting.framework" to the "Copy Files, Destination: Frameworks" step. NOTE: there may be multiple "CwlPreconditionTesting.framework" files in the list, including one for macOS and one for iOS. You should select the "CwlPreconditionTesting.framework" that appears *above* the corresponding CwlPreconditionTesting macOS or iOS testing target.
-6. *Optional step*: Adding the "CwlPreconditionTesting.xcodeproj" file to your project's file tree will also add all of its schemes to your scheme list in Xcode. You can hide these from your scheme list from the menubar by selecting "Product" -> "Scheme" -> "Manage Schemes" (or typing Command-Shift-,) and unselecting the checkboxes in the "Show" column next to the CwlPreconditionTesting scheme names.
-7. In Swift files where you want to use CwlPreconditionTesting code, write `import CwlPreconditionTesting` at the top.
+2. Drag the "CwlPreconditionTesting.xcodeproj" file from the Finder into your own project's file tree in Xcode
+3. Add the "CwlPreconditionTesting.framework" to the "Copy Files (Frameworks)" build phases of any target that you want to include this module.
+3. Drag the "CwlCatchException.framework" from the "Dependencies" group in the project's file tree onto the same "Copy Files (Frameworks)" build phase.
 
-### Project details
+That third step is a little tricky if you're unfamiliar with Xcode but it involves:
 
-The "CwlPreconditionTesting.xcodeproj" contains two targets:
-    
-* CwlPreconditionTesting_OSX
-* CwlPreconditionTesting_iOS
+a. click on your project in the file tree
+b. click on the target to whih you want to add this module
+c. select the "Build Phases" tab
+d. if you don't already have a "Copy File" build phase with a "Destination: Frameworks", add one using the "+" button in the top left of the tab
+e. click the "+" within the "Copy File (Frameworks)" phase and from the list that appears, select the "CwlPreconditionTesting.framework" (if there are multiple frameworks with the same name, look for the one that appears *above* the corresponding macOS or iOS CwlPreconditionTesting testing target).
 
-both build a framework named "CwlPreconditionTesting.framework". If you're linking manually, be certain to select the "CwlPreconditionTesting.framework" from the appropriate target.
+When building using this approach, the "FetchDependencies" target will use the Swift Package Manager to download the "CwlCatchException" project from github. The download is stored in the "Build intermediates" directory for your project. Normally, you can ignore its existence but if you get any errors from the "FetchDependencies" target, you might need to clean the build folder (Hold "Option" key while selecting "Product" &rarr; "Clean Build Folder..." from the Xcode menubar).
 
-Remember: the iOS build is useful only in the simulator. All Mach exception handling code will be conditionally excluded in any device build.
+If you want to download dependencies manually (instead of using this behind-the-scenes use of the Swift package manager), you should delete the "FetchDependencies" target and replace the "CwlCatchException" targets with alternatives that build the dependencies in accordance with your manual download.
 
-### Static inclusion
+### Swift Package Manager
 
-Due to the complications associated with needing to call into and out of Objective-C, static inclusion in other projects is not a single file nor a quick drag and drop. There's at least 7 files and you'll need to add some project settings.
+Add the following to the `dependencies` array in your "Package.swift" file:
 
-All of the following files:
+> .Package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", majorVersion: 1),
 
-* CwlCatchBadInstruction.swift
-* CwlCatchBadInstruction.h
-* CwlCatchBadInstruction.m
-* CwlCatchException.swift
-* CwlCatchException.h
-* CwlCatchException.m
+Or, if you're using the `swift-tools-version:4.0` package manager, add the following to the `dependencies` array in your "Package.swift" file:
 
-and either:
+> .package(url: "https://github.com/mattgallagher/CwlPreconditionTesting", majorVersion: 1)
 
-* $(SDKROOT)/usr/include/mach/mach_exc.defs
-* mach_excServer.c
+### CocoaPods
 
-need to be added to the testing target for OS X projects or iOS projects, respectively.
+Add the following to your target in your "Podfile":
 
-Your target will also need to have the following macros defined in the "Apple LLVM - Preprocessing" &rarr; "Preprocessor Macros" build setting:
-    
-    PRODUCT_NAME=$(PRODUCT_NAME)
+> pod 'CwlCatchException', :git => 'https://github.com/mattgallagher/CwlPreconditionTesting.git'
 
-This lets the Objective-C file generate the include directive for the autogenerated Swift header so it can call back into Swift during the Mach exception handler callbacks. This macro should stay in sync if you change the target name but if you do anything else in your project that changes the name of the autogenerated Swift header independent of the target name (or you want to add spaces or other command-line complications to the target name), you'll want to update "CwlCatchBadInstruction.m" directly with the correct include directive.
+### Carthage
 
-Additionally, you'll need a standard Objective-C "Bridging header" for your testing target and it will need to include the following import statements:
+Add the following line to your Cartfile:
 
-```
-#if defined(__x86_64__)
-#import <CwlPreconditionTesting/CwlCatchBadInstruction.h>
-#endif
+> git "https://github.com/mattgallagher/CwlPreconditionTesting.git" "master"
 
-#import <CwlPreconditionTesting/CwlCatchException.h>
-```
-
-### Using POSIX signals and setjmp/longjmp
+## Using POSIX signals and setjmp/longjmp
 
 For comparison or for anyone running this code on a platform without Mach exceptions or the Objective-C runtime, I've added a proof-of-concept implementation of `catchBadInstruction` that uses a POSIX SIGILL `sigaction` and `setjmp`/`longjmp` to perform the throw.
 
