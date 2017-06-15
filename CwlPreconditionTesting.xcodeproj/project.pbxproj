@@ -675,7 +675,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/bin/xcodebuild -project \"$OBJROOT/cwl_symlinks/CwlCatchException/CwlCatchException.xcodeproj\" -target CwlCatchException_macOS -sdk \"$SDKROOT\" -configuration \"$CONFIGURATION\" $ACTION SRCROOT=\"$SRCROOT\" SYMROOT=\"$SYMROOT\" OBJROOT=\"$OBJROOT\" ARCHS=\"$ARCHS\" ONLY_ACTIVE_ARCH=\"$ONLY_ACTIVE_ARCH\"";
+			shellScript = "if [ $CARTHAGE == \"YES\" ]; then exit; fi\n/usr/bin/xcodebuild -project \"$OBJROOT/cwl_symlinks/CwlCatchException/CwlCatchException.xcodeproj\" -target CwlCatchException_macOS -sdk \"$SDKROOT\" -configuration \"$CONFIGURATION\" $ACTION SRCROOT=\"$SRCROOT\" SYMROOT=\"$SYMROOT\" OBJROOT=\"$OBJROOT\" ARCHS=\"$ARCHS\" ONLY_ACTIVE_ARCH=\"$ONLY_ACTIVE_ARCH\" BITCODE_GENERATION_MODE=\"$BITCODE_GENERATION_MODE\"";
 		};
 		C997C33D1EC6E0C500F67C3B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -690,7 +690,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/bin/xcodebuild -project \"$OBJROOT/cwl_symlinks/CwlCatchException/CwlCatchException.xcodeproj\" -target CwlCatchException_iOS -sdk \"$SDKROOT\" -configuration \"$CONFIGURATION\" $ACTION SRCROOT=\"$SRCROOT\" SYMROOT=\"$SYMROOT\" OBJROOT=\"$OBJROOT\" ARCHS=\"$ARCHS\" ONLY_ACTIVE_ARCH=\"$ONLY_ACTIVE_ARCH\"";
+			shellScript = "if [ $CARTHAGE == \"YES\" ]; then exit; fi\n/usr/bin/xcodebuild -project \"$OBJROOT/cwl_symlinks/CwlCatchException/CwlCatchException.xcodeproj\" -target CwlCatchException_iOS -sdk \"$SDKROOT\" -configuration \"$CONFIGURATION\" $ACTION SRCROOT=\"$SRCROOT\" SYMROOT=\"$SYMROOT\" OBJROOT=\"$OBJROOT\" ARCHS=\"$ARCHS\" ONLY_ACTIVE_ARCH=\"$ONLY_ACTIVE_ARCH\" BITCODE_GENERATION_MODE=\"$BITCODE_GENERATION_MODE\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
