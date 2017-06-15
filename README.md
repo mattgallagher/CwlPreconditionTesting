@@ -1,6 +1,8 @@
 # CwlPreconditionTesting
 
-A Mach exception handler, written in Swift and Objective-C, that allows `EXC_BAD_INSTRUCTION` (as raised by Swift's `assertionFailure`/`preconditionFailure`/`fatalError`) to be caught and tested. 
+A Mach exception handler, written in Swift and Objective-C, that allows `EXC_BAD_INSTRUCTION` (as raised by Swift's `assertionFailure`/`preconditionFailure`/`fatalError`) to be caught and tested.
+
+NOTE: the iOS code runs in the simulator *only*. It is for logic testing and cannot be deployed to the device due to the Mach exception API being private on iOS.
 
 For an extended discussion of this code, please see the Cocoa with Love article:
 	
@@ -8,7 +10,9 @@ For an extended discussion of this code, please see the Cocoa with Love article:
 
 ## Adding to your project
 
-This project can be used by direct inclusion in your projects or through any of the Swift Package Manager, CocoaPods or Carthage.
+This project can be used by manual inclusion in your projects or through any of the Swift Package Manager, CocoaPods or Carthage.
+
+Minimum requirements are iOS 8 (simulator-only) or macOS 10.9. The project includes tvOS 9 and POSIX targets but these aren't regularly tested.
 
 ### Manual inclusion
 
@@ -33,23 +37,24 @@ If you want to download dependencies manually (instead of using this behind-the-
 
 Add the following to the `dependencies` array in your "Package.swift" file:
 
-> .Package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", majorVersion: 1),
+    .Package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", majorVersion: 1),
 
 Or, if you're using the `swift-tools-version:4.0` package manager, add the following to the `dependencies` array in your "Package.swift" file:
 
-> .package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", majorVersion: 1)
+    .package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", majorVersion: 1)
 
 ### CocoaPods
 
-Add the following to your target in your "Podfile":
+Add the following lines to your target in your "Podfile":
 
-> pod 'CwlCatchException', :git => 'https://github.com/mattgallagher/CwlPreconditionTesting.git'
+    pod 'CwlPreconditionTesting', :git => 'https://github.com/mattgallagher/CwlPreconditionTesting.git'
+    pod 'CwlCatchException', :git => 'https://github.com/mattgallagher/CwlCatchException.git'
 
 ### Carthage
 
 Add the following line to your Cartfile:
 
-> git "https://github.com/mattgallagher/CwlPreconditionTesting.git" "master"
+    git "https://github.com/mattgallagher/CwlPreconditionTesting.git" "master"
 
 ## Using POSIX signals and setjmp/longjmp
 
