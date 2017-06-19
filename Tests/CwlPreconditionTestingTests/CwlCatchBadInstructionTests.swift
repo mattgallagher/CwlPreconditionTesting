@@ -20,11 +20,20 @@
 
 import Foundation
 import XCTest
-import CwlPreconditionTesting
+
+#if USE_POSIX_SIGNALS
+	import CwlPreconditionTesting_POSIX
+#else
+	import CwlPreconditionTesting
+#endif
 
 class CatchBadInstructionTests: XCTestCase {
 	func testCatchBadInstruction() {
 	#if arch(x86_64)
+		#if USE_POSIX_SIGNALS
+			print("Running POSIX version of catchBadInstruction")
+		#endif
+
 		// Test catching an assertion failure
 		var reachedPoint1 = false
 		var reachedPoint2 = false
