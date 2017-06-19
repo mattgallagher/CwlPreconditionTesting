@@ -18,8 +18,8 @@ Minimum requirements are iOS 8 (simulator-only) or macOS 10.9. The project inclu
 
 1. In a subdirectory of your project's directory, run `git clone https://github.com/mattgallagher/CwlPreconditionTesting.git`
 2. Drag the "CwlPreconditionTesting.xcodeproj" file from the Finder into your own project's file tree in Xcode
-3. Add the "CwlPreconditionTesting.framework" to the "Copy Files (Frameworks)" build phases of any target that you want to include this module.
-3. Drag the "CwlCatchException.framework" from the "Dependencies" group in the project's file tree onto the same "Copy Files (Frameworks)" build phase.
+3. Add the "CwlPreconditionTesting.framework" from the "Products" folder of the CwlPreconditionTesting project's file tree to the "Copy Files (Frameworks)" build phases of any target that you want to include this module.
+4. Drag the "CwlCatchException.framework" from the "Dependencies" group (within the CwlPreconditionTesting project's file tree) onto the same "Copy Files (Frameworks)" build phase (this item may be red but that shouldn't be a problem).
 
 That third step is a little tricky if you're unfamiliar with Xcode but it involves:
 
@@ -31,7 +31,7 @@ e. click the "+" within the "Copy File (Frameworks)" phase and from the list tha
 
 When building using this approach, the "FetchDependencies" target will use the Swift Package Manager to download the "CwlCatchException" project from github. The download is stored in the "Build intermediates" directory for your project. Normally, you can ignore its existence but if you get any errors from the "FetchDependencies" target, you might need to clean the build folder (Hold "Option" key while selecting "Product" &rarr; "Clean Build Folder..." from the Xcode menubar).
 
-If you want to download dependencies manually (instead of using this behind-the-scenes use of the Swift package manager), you should delete the "FetchDependencies" target and replace the "CwlCatchException" targets with alternatives that build the dependencies in accordance with your manual download.
+You can use the "Package.swift" to manage the behavior of the Swift Package Manager or if you want to download dependencies manually (instead of using this behind-the-scenes use of the Swift package manager), you should delete the "FetchDependencies" target and replace the "CwlCatchException" targets with alternatives that build the dependencies in accordance with your manual download.
 
 ### Swift Package Manager
 
