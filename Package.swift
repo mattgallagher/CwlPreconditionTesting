@@ -9,7 +9,7 @@ let package = Package(
 		Target(name: "CwlMachBadInstructionHandler")
 	],
 	dependencies: [
-		.Package(url: "https://github.com/mattgallagher/CwlCatchException.git", majorVersion: 1),
+		.Package(url: "https://github.com/mattgallagher/CwlCatchException.git", Version(1, 0, 2, prereleaseIdentifiers: ["beta", "1"])),
 	],
 	exclude: [
 		"Sources/CwlPreconditionTesting/Mach/CwlPreconditionTesting.h",
