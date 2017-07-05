@@ -652,7 +652,7 @@
 				"$(OBJROOT)/dependencies-state.json",
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/CwlCatchException.framework",
+				"$(BUILT_PRODUCTS_DIR)/CwlCatchException.framework/CwlCatchException",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -667,7 +667,7 @@
 				"$(OBJROOT)/dependencies-state.json",
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/CwlCatchException.framework",
+				"$(BUILT_PRODUCTS_DIR)/CwlCatchException.framework/Versions/A/CwlCatchException",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
