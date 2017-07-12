@@ -38,16 +38,6 @@ import CwlCatchException
 		}
 	}
 	
-	extension execTypesCountTuple {
-		mutating func pointer<R>(in block: (UnsafeMutablePointer<T>) -> R) -> R {
-			return withUnsafeMutablePointer(to: &self) { p -> R in
-				return p.withMemoryRebound(to: T.self, capacity: EXC_TYPES_COUNT) { ptr -> R in
-					return block(ptr)
-				}
-			}
-		}
-	}
-	
 	extension request_mach_exception_raise_t {
 		mutating func withMsgHeaderPointer<R>(in block: (UnsafeMutablePointer<mach_msg_header_t>) -> R) -> R {
 			return withUnsafeMutablePointer(to: &self) { p -> R in
@@ -78,16 +68,20 @@ import CwlCatchException
 		var currentExceptionPort: mach_port_t = 0
 		var handlerThread: pthread_t? = nil
 		
-		mutating func withUnsafeMutablePointers<R>(in block: (UnsafeMutablePointer<exception_mask_t>, UnsafeMutablePointer<mach_port_t>, UnsafeMutablePointer<exception_behavior_t>, UnsafeMutablePointer<thread_state_flavor_t>) -> R) -> R {
-			return masks.pointer { masksPtr in
-				return ports.pointer { portsPtr in
-					return behaviors.pointer { behaviorsPtr in
-						return flavors.pointer { flavorsPtr in
+		static func internalMutablePointers<R>(_ m: UnsafeMutablePointer<execTypesCountTuple<exception_mask_t>>, _ p: UnsafeMutablePointer<execTypesCountTuple<mach_port_t>>, _ b: UnsafeMutablePointer<execTypesCountTuple<exception_behavior_t>>, _ f: UnsafeMutablePointer<execTypesCountTuple<thread_state_flavor_t>>, _ block: (UnsafeMutablePointer<exception_mask_t>, UnsafeMutablePointer<mach_port_t>, UnsafeMutablePointer<exception_behavior_t>, UnsafeMutablePointer<thread_state_flavor_t>) -> R) -> R {
+			return m.withMemoryRebound(to: exception_mask_t.self, capacity: 1) { masksPtr in
+				return p.withMemoryRebound(to: mach_port_t.self, capacity: 1) { portsPtr in
+					return b.withMemoryRebound(to: exception_behavior_t.self, capacity: 1) { behaviorsPtr in
+						return f.withMemoryRebound(to: thread_state_flavor_t.self, capacity: 1) { flavorsPtr in
 							return block(masksPtr, portsPtr, behaviorsPtr, flavorsPtr)
 						}
 					}
 				}
 			}
+		}
+		
+		mutating func withUnsafeMutablePointers<R>(in block: @escaping (UnsafeMutablePointer<exception_mask_t>, UnsafeMutablePointer<mach_port_t>, UnsafeMutablePointer<exception_behavior_t>, UnsafeMutablePointer<thread_state_flavor_t>) -> R) -> R {
+			return MachContext.internalMutablePointers(&masks, &ports, &behaviors, &flavors, block)
 		}
 	}
 	
