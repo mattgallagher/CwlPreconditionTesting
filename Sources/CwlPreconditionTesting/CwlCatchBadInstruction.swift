@@ -68,20 +68,22 @@ import CwlCatchException
 		var currentExceptionPort: mach_port_t = 0
 		var handlerThread: pthread_t? = nil
 		
-		static func internalMutablePointers<R>(_ m: UnsafeMutablePointer<execTypesCountTuple<exception_mask_t>>, _ p: UnsafeMutablePointer<execTypesCountTuple<mach_port_t>>, _ b: UnsafeMutablePointer<execTypesCountTuple<exception_behavior_t>>, _ f: UnsafeMutablePointer<execTypesCountTuple<thread_state_flavor_t>>, _ block: (UnsafeMutablePointer<exception_mask_t>, UnsafeMutablePointer<mach_port_t>, UnsafeMutablePointer<exception_behavior_t>, UnsafeMutablePointer<thread_state_flavor_t>) -> R) -> R {
+		static func internalMutablePointers<R>(_ m: UnsafeMutablePointer<execTypesCountTuple<exception_mask_t>>, _ c: UnsafeMutablePointer<mach_msg_type_number_t>, _ p: UnsafeMutablePointer<execTypesCountTuple<mach_port_t>>, _ b: UnsafeMutablePointer<execTypesCountTuple<exception_behavior_t>>, _ f: UnsafeMutablePointer<execTypesCountTuple<thread_state_flavor_t>>, _ block: (UnsafeMutablePointer<exception_mask_t>, UnsafeMutablePointer<mach_msg_type_number_t>,  UnsafeMutablePointer<mach_port_t>, UnsafeMutablePointer<exception_behavior_t>, UnsafeMutablePointer<thread_state_flavor_t>) -> R) -> R {
 			return m.withMemoryRebound(to: exception_mask_t.self, capacity: 1) { masksPtr in
-				return p.withMemoryRebound(to: mach_port_t.self, capacity: 1) { portsPtr in
-					return b.withMemoryRebound(to: exception_behavior_t.self, capacity: 1) { behaviorsPtr in
-						return f.withMemoryRebound(to: thread_state_flavor_t.self, capacity: 1) { flavorsPtr in
-							return block(masksPtr, portsPtr, behaviorsPtr, flavorsPtr)
+				return c.withMemoryRebound(to: mach_msg_type_number_t.self, capacity: 1) { countPtr in
+					return p.withMemoryRebound(to: mach_port_t.self, capacity: 1) { portsPtr in
+						return b.withMemoryRebound(to: exception_behavior_t.self, capacity: 1) { behaviorsPtr in
+							return f.withMemoryRebound(to: thread_state_flavor_t.self, capacity: 1) { flavorsPtr in
+								return block(masksPtr, countPtr, portsPtr, behaviorsPtr, flavorsPtr)
+							}
 						}
 					}
 				}
 			}
 		}
 		
-		mutating func withUnsafeMutablePointers<R>(in block: @escaping (UnsafeMutablePointer<exception_mask_t>, UnsafeMutablePointer<mach_port_t>, UnsafeMutablePointer<exception_behavior_t>, UnsafeMutablePointer<thread_state_flavor_t>) -> R) -> R {
-			return MachContext.internalMutablePointers(&masks, &ports, &behaviors, &flavors, block)
+		mutating func withUnsafeMutablePointers<R>(in block: @escaping (UnsafeMutablePointer<exception_mask_t>, UnsafeMutablePointer<mach_msg_type_number_t>, UnsafeMutablePointer<mach_port_t>, UnsafeMutablePointer<exception_behavior_t>, UnsafeMutablePointer<thread_state_flavor_t>) -> R) -> R {
+			return MachContext.internalMutablePointers(&masks, &count, &ports, &behaviors, &flavors, block)
 		}
 	}
 	
@@ -164,14 +166,15 @@ import CwlCatchException
 				mach_port_insert_right(mach_task_self_, context.currentExceptionPort, context.currentExceptionPort, MACH_MSG_TYPE_MAKE_SEND)
 			}
 			
-			try kernCheck { context.withUnsafeMutablePointers { masksPtr, portsPtr, behaviorsPtr, flavorsPtr in
+			let currentExceptionPtr = context.currentExceptionPort
+			try kernCheck { context.withUnsafeMutablePointers { masksPtr, countPtr, portsPtr, behaviorsPtr, flavorsPtr in
 				// 3. Apply the mach port as the handler for this thread
-				thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, context.currentExceptionPort, Int32(bitPattern: UInt32(EXCEPTION_STATE) | MACH_EXCEPTION_CODES), x86_THREAD_STATE64, masksPtr, &context.count, portsPtr, behaviorsPtr, flavorsPtr)
+				thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, currentExceptionPtr, Int32(bitPattern: UInt32(EXCEPTION_STATE) | MACH_EXCEPTION_CODES), x86_THREAD_STATE64, masksPtr, countPtr, portsPtr, behaviorsPtr, flavorsPtr)
 			} }
 			
-			defer { context.withUnsafeMutablePointers { masksPtr, portsPtr, behaviorsPtr, flavorsPtr in
+			defer { context.withUnsafeMutablePointers { masksPtr, countPtr, portsPtr, behaviorsPtr, flavorsPtr in
 				// 6. Unapply the mach port
-				_ = thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, 0, EXCEPTION_DEFAULT, THREAD_STATE_NONE, masksPtr, &context.count, portsPtr, behaviorsPtr, flavorsPtr)
+				_ = thread_swap_exception_ports(mach_thread_self(), EXC_MASK_BAD_INSTRUCTION, 0, EXCEPTION_DEFAULT, THREAD_STATE_NONE, masksPtr, countPtr, portsPtr, behaviorsPtr, flavorsPtr)
 			} }
 			
 			try withUnsafeMutablePointer(to: &context) { c throws in
