@@ -3,6 +3,9 @@ import PackageDescription
 
 let package = Package(
 	name: "CwlPreconditionTesting",
+	products: [
+		.library(name: "CwlPreconditionTesting", type: .dynamic, targets: ["CwlPreconditionTesting"]),
+	],
 	dependencies: [
 		.package(url: "https://github.com/mattgallagher/CwlCatchException.git", .branch("xcode10")),
 	],
@@ -10,15 +13,16 @@ let package = Package(
 		.target(
 			name: "CwlPreconditionTesting",
 			dependencies: [
-				"CwlMachBadInstructionHandler"
+				.target(name: "CwlMachBadInstructionHandler"),
+				.product(name: "CwlCatchException")
 			],
 			exclude: [
 				"./Mach/CwlPreconditionTesting.h",
 				"./Posix/CwlPreconditionTesting.h",
-				"./CwlCatchBadInstructionPosix.swift",
+				"./CwlCatchBadInstructionPosix.swift"
 			]
 		),
-		.target(name: "CwlMachBadInstructionHandler", dependencies: [.product(name: "CwlCatchException")]),
+		.target(name: "CwlMachBadInstructionHandler"),
 		.testTarget(name: "CwlPreconditionTestingTests", dependencies: ["CwlPreconditionTesting"])
 	]
 )

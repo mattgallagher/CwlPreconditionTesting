@@ -28,16 +28,6 @@ import XCTest
 #endif
 
 class CatchBadInstructionTests: XCTestCase {
-	override func setUp() {
-		// Suppress Swift runtime's direct triggering of the debugger.
-		_swift_reportFatalErrorsToDebugger = false
-	}
-	
-	override func tearDown() {
-		// Undo our debugger change.
-		_swift_reportFatalErrorsToDebugger = true
-	}
-	
 	func testCatchBadInstruction() {
 	#if arch(x86_64)
 		#if USE_POSIX_SIGNALS

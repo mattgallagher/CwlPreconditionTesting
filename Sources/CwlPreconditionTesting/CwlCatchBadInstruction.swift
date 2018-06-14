@@ -142,6 +142,16 @@ import CwlCatchException
 	/// - parameter block: a function without parameters that will be run
 	/// - returns: if an EXC_BAD_INSTRUCTION is raised during the execution of `block` then a BadInstructionException will be returned, otherwise `nil`.
 	public func catchBadInstruction(in block: @escaping () -> Void) -> BadInstructionException? {
+		// Suppress Swift runtime's direct triggering of the debugger and exclusivity checking which crashes when we throw past it
+		let previousExclusivity = _swift_disableExclusivityChecking
+		let previousReporting = _swift_reportFatalErrorsToDebugger
+		_swift_disableExclusivityChecking = true
+		_swift_reportFatalErrorsToDebugger = false
+		defer {
+			_swift_reportFatalErrorsToDebugger = previousReporting
+			_swift_disableExclusivityChecking = previousExclusivity
+		}
+		
 		var context = MachContext()
 		var result: BadInstructionException? = nil
 		do {
@@ -191,6 +201,7 @@ import CwlCatchException
 			// Should never be reached but this is testing code, don't try to recover, just abort
 			fatalError("Mach port error: \(error)")
 		}
+
 		return result
 	}
 	

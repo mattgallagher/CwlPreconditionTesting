@@ -22,6 +22,7 @@
 #import <CwlCatchException/CwlCatchException.h>
 
 extern bool _swift_reportFatalErrorsToDebugger;
+extern bool _swift_disableExclusivityChecking;
 
 //! Project version number for CwlUtils.
 FOUNDATION_EXPORT double CwlPreconditionTestingVersionNumber;
