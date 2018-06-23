@@ -370,9 +370,9 @@
 			isa = PBXGroup;
 			children = (
 				C958F0EE1E3F6967008BE8E0 /* Package.swift */,
+				C968EE8620DDDD4D0044C1BD /* Dependencies */,
 				C958F0F61E3F698C008BE8E0 /* Sources */,
 				C958F0EF1E3F6977008BE8E0 /* Tests */,
-				C968EE8620DDDD4D0044C1BD /* Dependencies */,
 				C98707771C3F886F009B413A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -738,14 +738,14 @@
 			files = (
 			);
 			inputPaths = (
-				"$(OBJROOT)/dependencies-state.json",
+				"$(SRCROOT)/Packages/dependencies-state.json",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/CwlCatchException.framework/CwlCatchException",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"$CARTHAGE\" == \"YES\" ]; then\n  cp -R \"$SRCROOT/Carthage/Build/iOS/CwlCatchException.framework\" \"$BUILT_PRODUCTS_DIR/\"\n  exit\nfi\n\"$DEVELOPER_BIN_DIR/xcodebuild\" -project \"$OBJROOT/cwl_symlinks/CwlCatchException/CwlCatchException.xcodeproj\" -target CwlCatchException_iOS -sdk \"$SDKROOT\" -configuration \"$CONFIGURATION\" $ACTION SRCROOT=\"$SRCROOT\" SYMROOT=\"$SYMROOT\" OBJROOT=\"$OBJROOT\" ARCHS=\"$ARCHS\" ONLY_ACTIVE_ARCH=\"$ONLY_ACTIVE_ARCH\" BITCODE_GENERATION_MODE=\"$BITCODE_GENERATION_MODE\" MODULE_CACHE_DIR=\"$MODULE_CACHE_DIR\" DSTROOT=\"$DSTROOT\" CACHE_ROOT=\"$CACHE_ROOT\"";
+			shellScript = "if [ \"$CARTHAGE\" == \"YES\" ]; then\n  rm -Rf \"$BUILT_PRODUCTS_DIR/CwlCatchException.framework\"\n  cp -R \"$SRCROOT/Carthage/Build/iOS/CwlCatchException.framework\" \"$BUILT_PRODUCTS_DIR/\"\n  exit\nfi\nif [ -z \"$CWL_FETCH_DIR\" ]; then\n  CWL_FETCH_DIR=\"$SRCROOT/Packages\"\nfi\n\"$DEVELOPER_BIN_DIR/xcodebuild\" -project \"$CWL_FETCH_DIR/symlinks/CwlCatchException/CwlCatchException.xcodeproj\" -target CwlCatchException_iOS -sdk \"$SDKROOT\" -configuration \"$CONFIGURATION\" $ACTION SRCROOT=\"$SRCROOT\" SYMROOT=\"$SYMROOT\" OBJROOT=\"$OBJROOT/Packages\" ARCHS=\"$ARCHS\" ONLY_ACTIVE_ARCH=\"$ONLY_ACTIVE_ARCH\" BITCODE_GENERATION_MODE=\"$BITCODE_GENERATION_MODE\" MODULE_CACHE_DIR=\"$MODULE_CACHE_DIR\" CWL_FETCH_DIR=\"$CWL_FETCH_DIR\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C93520691F0B7CFB0038F4E0 /* ShellScript */ = {
@@ -754,14 +754,14 @@
 			files = (
 			);
 			inputPaths = (
-				"$(OBJROOT)/dependencies-state.json",
+				"$(SRCROOT)/Packages/dependencies-state.json",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/CwlCatchException.framework/Versions/A/CwlCatchException",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"$CARTHAGE\" == \"YES\" ]; then\n  cp -R \"$SRCROOT/Carthage/Build/Mac/CwlCatchException.framework\" \"$BUILT_PRODUCTS_DIR/\"\n  exit\nfi\nif [ -z \"$CWL_FETCH_DIR\" ]; then\n  CWL_FETCH_DIR=\"$SRCROOT/Packages\"\nfi\n\"$DEVELOPER_BIN_DIR/xcodebuild\" -project \"$CWL_FETCH_DIR/symlinks/CwlCatchException/CwlCatchException.xcodeproj\" -target CwlCatchException_macOS -sdk \"$SDKROOT\" -configuration \"$CONFIGURATION\" $ACTION SRCROOT=\"$SRCROOT\" SYMROOT=\"$SYMROOT\" OBJROOT=\"$OBJROOT/Packages\" ARCHS=\"$ARCHS\" ONLY_ACTIVE_ARCH=\"$ONLY_ACTIVE_ARCH\" BITCODE_GENERATION_MODE=\"$BITCODE_GENERATION_MODE\" MODULE_CACHE_DIR=\"$MODULE_CACHE_DIR\" CWL_FETCH_DIR=\"$CWL_FETCH_DIR\"\n";
+			shellScript = "if [ \"$CARTHAGE\" == \"YES\" ]; then\n  rm -Rf \"$BUILT_PRODUCTS_DIR/CwlCatchException.framework\"\n  cp -R \"$SRCROOT/Carthage/Build/Mac/CwlCatchException.framework\" \"$BUILT_PRODUCTS_DIR/\"\n  exit\nfi\nif [ -z \"$CWL_FETCH_DIR\" ]; then\n  CWL_FETCH_DIR=\"$SRCROOT/Packages\"\nfi\n\"$DEVELOPER_BIN_DIR/xcodebuild\" -project \"$CWL_FETCH_DIR/symlinks/CwlCatchException/CwlCatchException.xcodeproj\" -target CwlCatchException_macOS -sdk \"$SDKROOT\" -configuration \"$CONFIGURATION\" $ACTION SRCROOT=\"$SRCROOT\" SYMROOT=\"$SYMROOT\" OBJROOT=\"$OBJROOT/Packages\" ARCHS=\"$ARCHS\" ONLY_ACTIVE_ARCH=\"$ONLY_ACTIVE_ARCH\" BITCODE_GENERATION_MODE=\"$BITCODE_GENERATION_MODE\" MODULE_CACHE_DIR=\"$MODULE_CACHE_DIR\" CWL_FETCH_DIR=\"$CWL_FETCH_DIR\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C945D7AE1E503344009AFB8E /* ShellScript */ = {
