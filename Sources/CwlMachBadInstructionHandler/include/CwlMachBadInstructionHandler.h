@@ -21,6 +21,9 @@
 #import <Foundation/Foundation.h>
 #import <mach/mach.h>
 
+extern bool _swift_disableExclusivityChecking;
+extern bool _swift_reportFatalErrorsToDebugger;
+
 NS_ASSUME_NONNULL_BEGIN
 
 extern boolean_t mach_exc_server(mach_msg_header_t *InHeadP, mach_msg_header_t *OutHeadP);

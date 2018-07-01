@@ -1,6 +1,6 @@
 //
-//  CwlPreconditionTesting.h
-//  CwlPreconditionTesting
+//  CwlCatchException.swift
+//  CwlAssertionTesting
 //
 //  Created by Matt Gallagher on 2016/01/10.
 //  Copyright © 2016 Matt Gallagher ( https://www.cocoawithlove.com ). All rights reserved.
@@ -18,13 +18,18 @@
 //  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
-#import <CwlCatchException/CwlCatchException.h>
+import Foundation
 
-//! Project version number for CwlUtils.
-FOUNDATION_EXPORT double CwlPreconditionTestingVersionNumber;
+#if SWIFT_PACKAGE
+	import CwlCatchExceptionSupport
+#endif
 
-//! Project version string for CwlUtils.
-FOUNDATION_EXPORT const unsigned char CwlAssertingTestingVersionString[];
+private func catchReturnTypeConverter<T: NSException>(_ type: T.Type, block: @escaping () -> Void) -> T? {
+	return catchExceptionOfKind(type, block) as? T
+}
 
-#include "CwlMachBadInstructionHandler.h"
+extension NSException {
+	public static func catchException(in block: @escaping () -> Void) -> Self? {
+		return catchReturnTypeConverter(self, block: block)
+	}
+}
