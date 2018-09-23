@@ -1,8 +1,8 @@
 //
-//  CwlCatchBadInstructionTests.swift
+//  CwlCatchExceptionTests.swift
 //  CwlPreconditionTesting
 //
-//  Created by Matt Gallagher on 2016/01/10.
+//  Created by Matt Gallagher on 11/2/16.
 //  Copyright © 2016 Matt Gallagher ( https://www.cocoawithlove.com ). All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
@@ -18,31 +18,35 @@
 //  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
 
-import Foundation
 import XCTest
+import CwlCatchException
 
-#if USE_POSIX_SIGNALS
-	import CwlPreconditionTesting_POSIX
-#else
-	import CwlPreconditionTesting
+#if SWIFT_PACKAGE
+import CwlCatchExceptionSupport
 #endif
 
-class CatchBadInstructionTests: XCTestCase {
-	func testCatchBadInstruction() {
-	#if arch(x86_64)
-		#if USE_POSIX_SIGNALS
-			print("Running POSIX version of catchBadInstruction")
-		#endif
+class TestException: NSException {
+	static var name: String = "com.cocoawithlove.TestException"
+	init() {
+		super.init(name: NSExceptionName(rawValue: TestException.name), reason: nil, userInfo: nil)
+	}
+	required public init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+	}
+}
 
+class CatchExceptionTests: XCTestCase {
+	func testCatchException() {
+	#if arch(x86_64)
 		// Test catching an assertion failure
 		var reachedPoint1 = false
 		var reachedPoint2 = false
-		let exception1: BadInstructionException? = catchBadInstruction {
+		let exception1: TestException? = TestException.catchException {
 			// Must invoke this block
 			reachedPoint1 = true
 			
-			// Fatal error raised
-			precondition(false, "THIS PRECONDITION FAILURE IS EXPECTED")
+			// Exception raised
+			TestException().raise()
 
 			// Exception must be thrown so that this point is never reached
 			reachedPoint2 = true
@@ -54,13 +58,24 @@ class CatchBadInstructionTests: XCTestCase {
 		
 		// Test without catching an assertion failure
 		var reachedPoint3 = false
-		let exception2: BadInstructionException? = catchBadInstruction {
-			// Must invoke this block
-			reachedPoint3 = true
+		var reachedPoint4 = false
+		var reachedPoint5 = false
+		var exception3: TestException? = nil
+		let exception4: NSException? = NSException.catchException {
+			exception3 = TestException.catchException {
+				// Must invoke this block
+				reachedPoint3 = true
+				NSException(name: NSExceptionName.rangeException, reason: nil, userInfo: nil).raise()
+				reachedPoint4 = true
+			}
+			reachedPoint5 = true
 		}
 		// We must not get a BadInstructionException without an assertion
+		XCTAssert(exception4 != nil)
+		XCTAssert(exception3 == nil)
 		XCTAssert(reachedPoint3)
-		XCTAssert(exception2 == nil)
+		XCTAssert(!reachedPoint4)
+		XCTAssert(!reachedPoint5)
 	#endif
 	}
 }

@@ -1,6 +1,6 @@
 //
-//  CwlPreconditionTesting.h
-//  CwlPreconditionTesting
+//  CwlCatchException.h
+//  CwlCatchException
 //
 //  Created by Matt Gallagher on 2016/01/10.
 //  Copyright © 2016 Matt Gallagher ( https://www.cocoawithlove.com ). All rights reserved.
@@ -19,12 +19,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CwlCatchException/CwlCatchException.h>
 
-//! Project version number for CwlUtils.
-FOUNDATION_EXPORT double CwlPreconditionTestingVersionNumber;
+//! Project version number for CwlCatchException.
+FOUNDATION_EXPORT double CwlCatchExceptionVersionNumber;
 
-//! Project version string for CwlUtils.
-FOUNDATION_EXPORT const unsigned char CwlAssertingTestingVersionString[];
+//! Project version string for CwlCatchException.
+FOUNDATION_EXPORT const unsigned char CwlCatchExceptionVersionString[];
 
-#include "CwlMachBadInstructionHandler.h"
+#if !SWIFT_PACKAGE && NON_SWIFT_PACKAGE
+__attribute__((visibility("hidden")))
+#endif
+NSException* __nullable catchExceptionOfKind(Class __nonnull type, void (^ __nonnull inBlock)(void));
+

@@ -3,7 +3,7 @@
 //  CwlPreconditionTesting
 //
 //  Created by Matt Gallagher on 2016/01/10.
-//  Copyright © 2016 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.
+//  Copyright © 2016 Matt Gallagher ( https://www.cocoawithlove.com ). All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
@@ -141,7 +141,17 @@ import CwlCatchException
 	/// NOTE: This function is only intended for use in test harnesses – use in a distributed build is almost certainly a bad choice. If a "BAD_INSTRUCTION" exception is raised, the block will be exited before completion via Objective-C exception. The risks associated with an Objective-C exception apply here: most Swift/Objective-C functions are *not* exception-safe. Memory may be leaked and the program will not necessarily be left in a safe state.
 	/// - parameter block: a function without parameters that will be run
 	/// - returns: if an EXC_BAD_INSTRUCTION is raised during the execution of `block` then a BadInstructionException will be returned, otherwise `nil`.
-	public func catchBadInstruction(in block: () -> Void) -> BadInstructionException? {
+	public func catchBadInstruction(in block: @escaping () -> Void) -> BadInstructionException? {
+		// Suppress Swift runtime's direct triggering of the debugger and exclusivity checking which crashes when we throw past it
+		let previousExclusivity = _swift_disableExclusivityChecking
+		let previousReporting = _swift_reportFatalErrorsToDebugger
+		_swift_disableExclusivityChecking = true
+		_swift_reportFatalErrorsToDebugger = false
+		defer {
+			_swift_reportFatalErrorsToDebugger = previousReporting
+			_swift_disableExclusivityChecking = previousExclusivity
+		}
+		
 		var context = MachContext()
 		var result: BadInstructionException? = nil
 		do {
@@ -191,6 +201,7 @@ import CwlCatchException
 			// Should never be reached but this is testing code, don't try to recover, just abort
 			fatalError("Mach port error: \(error)")
 		}
+
 		return result
 	}
 	

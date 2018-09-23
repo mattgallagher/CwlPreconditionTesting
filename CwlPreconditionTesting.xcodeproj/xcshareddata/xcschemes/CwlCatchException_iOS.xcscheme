@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C98707751C3F886F009B413A"
-               BuildableName = "CwlPreconditionTesting.framework"
-               BlueprintName = "CwlPreconditionTesting_macOS"
+               BlueprintIdentifier = "C978CA13211EEA9F005F8866"
+               BuildableName = "CwlCatchException.framework"
+               BlueprintName = "CwlCatchException_iOS"
                ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C987077F1C3F886F009B413A"
-               BuildableName = "CwlPreconditionTesting_macOSTests.xctest"
-               BlueprintName = "CwlPreconditionTesting_macOSTests"
+               BlueprintIdentifier = "C978CA1B211EEA9F005F8866"
+               BuildableName = "CwlCatchException_iOSTests.xctest"
+               BlueprintName = "CwlCatchException_iOSTests"
                ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C98707751C3F886F009B413A"
-            BuildableName = "CwlPreconditionTesting.framework"
-            BlueprintName = "CwlPreconditionTesting_macOS"
+            BlueprintIdentifier = "C978CA13211EEA9F005F8866"
+            BuildableName = "CwlCatchException.framework"
+            BlueprintName = "CwlCatchException_iOS"
             ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C98707751C3F886F009B413A"
-            BuildableName = "CwlPreconditionTesting.framework"
-            BlueprintName = "CwlPreconditionTesting_macOS"
+            BlueprintIdentifier = "C978CA13211EEA9F005F8866"
+            BuildableName = "CwlCatchException.framework"
+            BlueprintName = "CwlCatchException_iOS"
             ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C98707751C3F886F009B413A"
-            BuildableName = "CwlPreconditionTesting.framework"
-            BlueprintName = "CwlPreconditionTesting_macOS"
+            BlueprintIdentifier = "C978CA13211EEA9F005F8866"
+            BuildableName = "CwlCatchException.framework"
+            BlueprintName = "CwlCatchException_iOS"
             ReferencedContainer = "container:CwlPreconditionTesting.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

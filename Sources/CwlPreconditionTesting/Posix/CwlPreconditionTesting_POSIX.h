@@ -3,7 +3,7 @@
 //  CwlPreconditionTesting
 //
 //  Created by Matt Gallagher on 2016/01/10.
-//  Copyright © 2016 Matt Gallagher ( http://cocoawithlove.com ). All rights reserved.
+//  Copyright © 2016 Matt Gallagher ( https://www.cocoawithlove.com ). All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
@@ -19,8 +19,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
-extern bool _swift_reportFatalErrorsToDebugger;
 
 //! Project version number for CwlUtils.
 FOUNDATION_EXPORT double CwlPreconditionTesting_POSIXVersionNumber;
