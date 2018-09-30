@@ -306,7 +306,6 @@
 				C98707771C3F886F009B413A /* Products */,
 				C958F0F61E3F698C008BE8E0 /* Sources */,
 				C958F0EF1E3F6977008BE8E0 /* Tests */,
-				C9F904882160E15E00C8731F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -342,13 +341,6 @@
 				C9F904872160E13500C8731F /* CwlCatchException_iOSTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C9F904882160E15E00C8731F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
