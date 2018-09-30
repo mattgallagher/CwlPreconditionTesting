@@ -4,16 +4,17 @@ import PackageDescription
 let package = Package(
 	name: "CwlPreconditionTesting",
 	products: [
-		.library(name: "CwlPreconditionTesting", type: .dynamic, targets: ["CwlPreconditionTesting", "CwlMachBadInstructionHandler"]),
-		.library(name: "CwlCatchException", type: .dynamic, targets: ["CwlCatchException"])
+		.library(name: "CwlPreconditionTesting", type: .dynamic, targets: ["CwlPreconditionTesting", "CwlMachBadInstructionHandler"])
 	],
-	dependencies: [],
+	dependencies: [
+		.package(url: "https://github.com/mattgallagher/CwlCatchException.git", .branch("xcode10"))
+	],
 	targets: [
 		.target(
 			name: "CwlPreconditionTesting",
 			dependencies: [
 				.target(name: "CwlMachBadInstructionHandler"),
-				.target(name: "CwlCatchException")
+				.product(name: "CwlCatchException")
 			],
 			exclude: [
 				"./Mach/CwlPreconditionTesting.h",
@@ -21,15 +22,7 @@ let package = Package(
 				"./CwlCatchBadInstructionPosix.swift"
 			]
 		),
-		.target(
-			name: "CwlCatchException",
-			dependencies: [
-				.target(name: "CwlCatchExceptionSupport")
-			]
-		),
-		.target(name: "CwlCatchExceptionSupport"),
 		.target(name: "CwlMachBadInstructionHandler"),
-		.testTarget(name: "CwlPreconditionTestingTests", dependencies: ["CwlPreconditionTesting"]),
-		.testTarget(name: "CwlCatchExceptionTests", dependencies: ["CwlCatchException"])
+		.testTarget(name: "CwlPreconditionTestingTests", dependencies: ["CwlPreconditionTesting"])
 	]
 )
