@@ -21,7 +21,7 @@
 		C978CA2F211EEB64005F8866 /* CwlPreconditionTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98707761C3F886F009B413A /* CwlPreconditionTesting.framework */; };
 		C986B09E1E724C250032C9FA /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = C986B09B1E724C250032C9FA /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9A8AF9720E87B480068E99B /* CwlCatchBadInstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958F0F11E3F6977008BE8E0 /* CwlCatchBadInstructionTests.swift */; };
-		C9F904892160E15E00C8731F /* CwlCatchException.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F904812160E13500C8731F /* CwlCatchException.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C9F904892160E15E00C8731F /* CwlCatchException.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F904812160E13500C8731F /* CwlCatchException.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
