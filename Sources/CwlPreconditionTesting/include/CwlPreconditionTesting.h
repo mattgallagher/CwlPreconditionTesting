@@ -26,5 +26,13 @@ FOUNDATION_EXPORT double CwlPreconditionTestingVersionNumber;
 //! Project version string for CwlUtils.
 FOUNDATION_EXPORT const unsigned char CwlAssertingTestingVersionString[];
 
+#if TARGET_OS_OSX || TARGET_OS_IOS
+
 #import <CwlCatchException/CwlCatchException.h>
 #import "CwlMachBadInstructionHandler.h"
+
+#elif !TARGET_OS_TV
+
+#error Unsupported platform.
+
+#endif
