@@ -21,24 +21,16 @@
 import Foundation
 import Swift
 import XCTest
-
-#if USE_POSIX_SIGNALS
-	import CwlPreconditionTesting_POSIX
-#else
-	import CwlPreconditionTesting
-#endif
+import CwlPosixPreconditionTesting
+import CwlPreconditionTesting
 
 class CatchBadInstructionTests: XCTestCase {
 	func testCatchBadInstruction() {
-	#if arch(x86_64)
-		#if USE_POSIX_SIGNALS
-			print("Running POSIX version of catchBadInstruction")
-		#endif
-
+	#if os(macOS) || os(iOS)
 		// Test catching an assertion failure
 		var reachedPoint1 = false
 		var reachedPoint2 = false
-		let exception1: BadInstructionException? = catchBadInstruction {
+		let exception1: CwlPreconditionTesting.BadInstructionException? = CwlPreconditionTesting.catchBadInstruction {
 			// Must invoke this block
 			reachedPoint1 = true
 			
@@ -55,7 +47,7 @@ class CatchBadInstructionTests: XCTestCase {
 		
 		// Test without catching an assertion failure
 		var reachedPoint3 = false
-		let exception2: BadInstructionException? = catchBadInstruction {
+		let exception2: CwlPreconditionTesting.BadInstructionException? = CwlPreconditionTesting.catchBadInstruction {
 			// Must invoke this block
 			reachedPoint3 = true
 		}
@@ -63,5 +55,35 @@ class CatchBadInstructionTests: XCTestCase {
 		XCTAssert(reachedPoint3)
 		XCTAssert(exception2 == nil)
 	#endif
+	}
+
+	func testPosixCatchBadInstruction() {
+		// Test catching an assertion failure
+		var reachedPoint1 = false
+		var reachedPoint2 = false
+		let exception1: CwlPosixPreconditionTesting.BadInstructionException? = CwlPosixPreconditionTesting.catchBadInstruction {
+			// Must invoke this block
+			reachedPoint1 = true
+			
+			// Fatal error raised
+			precondition(false, "THIS PRECONDITION FAILURE IS EXPECTED")
+
+			// Exception must be thrown so that this point is never reached
+			reachedPoint2 = true
+		}
+		// We must get a valid BadInstructionException
+		XCTAssert(exception1 != nil)
+		XCTAssert(reachedPoint1)
+		XCTAssert(!reachedPoint2)
+		
+		// Test without catching an assertion failure
+		var reachedPoint3 = false
+		let exception2: CwlPosixPreconditionTesting.BadInstructionException? = CwlPosixPreconditionTesting.catchBadInstruction {
+			// Must invoke this block
+			reachedPoint3 = true
+		}
+		// We must not get a BadInstructionException without an assertion
+		XCTAssert(reachedPoint3)
+		XCTAssert(exception2 == nil)
 	}
 }

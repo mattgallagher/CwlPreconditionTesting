@@ -18,8 +18,6 @@
 //  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
 
-#if os(tvOS)
-
 import Foundation
 
 // This file is an alternative implementation to CwlCatchBadInstruction.swift that uses a SIGILL signal action and setenv/longjmp instead of a Mach exception handler and Objective-C exception raising.
@@ -104,5 +102,3 @@ public func catchBadInstruction(block: @escaping () -> Void) -> BadInstructionEx
 	
 	return caught ? BadInstructionException() : nil
 }
-	
-#endif
