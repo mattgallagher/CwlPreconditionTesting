@@ -10,17 +10,25 @@ For an extended discussion of this code, please see the Cocoa with Love article:
 
 ## Requirements
 
-From version 2.0.0-beta.1, building CwlPreconditionTesting requires Swift 5 or newer and the Swift Package Manager.
+From version 2.0.0-beta.1, building CwlPreconditionTesting requires Swift 5 or newer and the Swift Package Manager, or CocoaPods.
 
 For use with older versions of Swift or other package managers, [use version 1.2.0 or older](https://github.com/mattgallagher/CwlPreconditionTesting/tree/1.2.0).
 
 ## Adding to your project
+
+### Swift Package Manager
 
 Add the following to the `dependencies` array in your "Package.swift" file:
 
 	 .package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", from: Version("2.0.0-beta.1"))
 
 Or by adding `https://github.com/mattgallagher/CwlPreconditionTesting.git`, version 2.0.0-beta.1 or later, to the list of Swift packages for any project in Xcode.
+
+### CocoaPods
+
+CocoaPods is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate CwlPreconditionTesting into your Xcode project using CocoaPods, specify it in your Podfile:
+
+pod 'CwlPreconditionTesting', '~> 2.0'
 
 ## Usage
 
