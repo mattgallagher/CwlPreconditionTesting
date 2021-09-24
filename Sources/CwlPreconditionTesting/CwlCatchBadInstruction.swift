@@ -24,7 +24,7 @@ import CwlCatchException
 import Foundation
 import Swift
 
-#if SWIFT_PACKAGE
+#if SWIFT_PACKAGE || COCOAPODS
 	import CwlMachBadInstructionHandler
 #endif
 
