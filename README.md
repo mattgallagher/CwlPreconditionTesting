@@ -20,9 +20,9 @@ For use with older versions of Swift or other package managers, [use version 1.2
 
 Add the following to the `dependencies` array in your "Package.swift" file:
 
-	 .package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", from: Version("2.0.0-beta.1"))
+	 .package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", from: Version("2.0.0"))
 
-Or by adding `https://github.com/mattgallagher/CwlPreconditionTesting.git`, version 2.0.0-beta.1 or later, to the list of Swift packages for any project in Xcode.
+Or by adding `https://github.com/mattgallagher/CwlPreconditionTesting.git`, version 2.0.0 or later, to the list of Swift packages for any project in Xcode.
 
 ### CocoaPods
 
@@ -53,3 +53,7 @@ let e = catchBadInstruction {
 ```
 
 **Warning**: this POSIX version can't be used when lldb is attached since lldb's Mach exception handler blocks the SIGILL from ever occurring. You should disable the "Debug Executable" setting for the tests in Xcode. The POSIX version of the signal handler is also whole process (rather than correctly scoped to the thread where the "catch" occurs).
+
+## Thanks
+
+Includes contributions from @abbeycode, @dnkoutso, @jeffh and @ikesyo.

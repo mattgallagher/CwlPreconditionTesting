@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = 'CwlPosixPreconditionTesting'
-  s.version      = '2.0.1'
-  s.summary      = 'TODO'
+  s.version      = '2.0.2'
+  s.summary      = 'An alternate implementation of CwlPreconditionTesting using POSIX exceptions instead of Mach exceptions'
   s.homepage     = 'https://github.com/mattgallagher/CwlPreconditionTesting'
   s.license      = { :file => 'LICENSE.txt', :type => 'ISC' }
   s.author       = 'Matt Gallagher'
