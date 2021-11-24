@@ -52,10 +52,12 @@ public class BadInstructionException: NSException {
 		let new_stateCnt: UnsafeMutablePointer<mach_msg_type_number_t> = reply.new_stateCnt!
 		
 		// Make sure we've been given enough memory
-		guard old_stateCnt == nativeThreadStateCount,
-			  new_stateCnt.pointee >= nativeThreadStateCount else {
-				  return KERN_INVALID_ARGUMENT
-			  }
+		guard
+			old_stateCnt == nativeThreadStateCount,
+			new_stateCnt.pointee >= nativeThreadStateCount
+		else {
+			return KERN_INVALID_ARGUMENT
+		}
 		
 		// 0. Copy over the state.
 		new_state.pointee = old_state.pointee
