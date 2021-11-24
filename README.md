@@ -56,4 +56,4 @@ let e = catchBadInstruction {
 
 ## Thanks
 
-Includes contributions from @abbeycode, @dnkoutso, @jeffh and @ikesyo.
+Includes contributions from @abbeycode, @dnkoutso, @jeffh and @ikesyo. Extra thanks to @saagarjha for help with the ARM64 additions.
