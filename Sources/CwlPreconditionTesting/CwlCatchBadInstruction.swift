@@ -91,51 +91,8 @@ private struct MachContext {
 /// A function for receiving mach messages and parsing the first with mach_exc_server (and if any others are received, throwing them away).
 private func machMessageHandler(_ arg: UnsafeMutableRawPointer) -> UnsafeMutableRawPointer? {
 	let context = arg.assumingMemoryBound(to: MachContext.self).pointee
-	var request = request_mach_exception_raise_t()
-	var reply = reply_mach_exception_raise_state_t()
-	
-	var handledfirstException = false
-	repeat { do {
-		// Request the next mach message from the port
-		request.Head.msgh_local_port = context.currentExceptionPort
-		request.Head.msgh_size = UInt32(MemoryLayout<request_mach_exception_raise_t>.size)
-		let requestSize = request.Head.msgh_size
-		try kernCheck { request.withMsgHeaderPointer { requestPtr in
-			mach_msg(requestPtr, MACH_RCV_MSG | MACH_RCV_INTERRUPT, 0, requestSize, context.currentExceptionPort, 0, UInt32(MACH_PORT_NULL))
-		} }
-		
-		// Prepare the reply structure
-		reply.Head.msgh_bits = MACH_MSGH_BITS(MACH_MSGH_BITS_REMOTE(request.Head.msgh_bits), 0)
-		reply.Head.msgh_local_port = UInt32(MACH_PORT_NULL)
-		reply.Head.msgh_remote_port = request.Head.msgh_remote_port
-		reply.Head.msgh_size = UInt32(MemoryLayout<reply_mach_exception_raise_state_t>.size)
-		reply.NDR = mach_ndr_record()
-		
-		if !handledfirstException {
-			// Use the MiG generated server to invoke our handler for the request and fill in the rest of the reply structure
-			guard request.withMsgHeaderPointer(in: { requestPtr in reply.withMsgHeaderPointer { replyPtr in
-				mach_exc_server(requestPtr, replyPtr)
-			} }) != 0 else { throw MachExcServer.code(reply.RetCode) }
-			
-			handledfirstException = true
-		} else {
-			// If multiple fatal errors occur, don't handle subsquent errors (let the program crash)
-			reply.RetCode = KERN_FAILURE
-		}
-		
-		// Send the reply
-		let replySize = reply.Head.msgh_size
-		try kernCheck { reply.withMsgHeaderPointer { replyPtr in
-			mach_msg(replyPtr, MACH_SEND_MSG, replySize, 0, UInt32(MACH_PORT_NULL), 0, UInt32(MACH_PORT_NULL))
-		} }
-	} catch let error as NSError where (error.domain == NSMachErrorDomain && (error.code == Int(MACH_RCV_PORT_CHANGED) || error.code == Int(MACH_RCV_INVALID_NAME))) {
-		// Port was already closed before we started or closed while we were listening.
-		// This means the controlling thread shut down.
-		return nil
-	} catch {
-		// Should never be reached but this is testing code, don't try to recover, just abort
-		fatalError("Mach message error: \(error)")
-	} } while true
+	mach_msg_server(unsafeBitCast(mach_exc_server as (@convention(c) (UnsafeMutablePointer<mach_msg_header_t>, UnsafeMutablePointer<mach_msg_header_t>) -> boolean_t), to: (@convention(c) (UnsafeMutablePointer<mach_msg_header_t>?, UnsafeMutablePointer<mach_msg_header_t>?) -> boolean_t).self), 4096, context.currentExceptionPort, MACH_MSG_OPTION_NONE)
+	return nil
 }
 
 /// Run the provided block. If a mach "BAD_INSTRUCTION" exception is raised, catch it and return a BadInstructionException (which captures stack information about the throw site, if desired). Otherwise return nil.
