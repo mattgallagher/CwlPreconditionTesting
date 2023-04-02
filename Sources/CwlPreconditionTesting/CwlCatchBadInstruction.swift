@@ -128,7 +128,10 @@ public func catchBadInstruction(in block: @escaping () -> Void) -> BadInstructio
 		}
 		defer {
 			// 7. Cleanup the mach port
-			mach_port_destroy(mach_task_self_, context.currentExceptionPort)
+			// When the reference count for the right goes down to 0, it triggers the right to be deallocated
+			mach_port_mod_refs(mach_task_self_, context.currentExceptionPort, MACH_PORT_RIGHT_RECEIVE, -1)
+			// All rights deallocated, can deallocate the name/port
+			mach_port_deallocate(mach_task_self_, context.currentExceptionPort)
 		}
 		
 		try kernCheck {
