@@ -26,7 +26,7 @@ import CwlPreconditionTesting
 
 class CatchBadInstructionTests: XCTestCase {
 	func testCatchBadInstruction() {
-	#if os(macOS) || os(iOS)
+	#if os(macOS) || os(iOS) || os(visionOS)
 		// Test catching an assertion failure
 		var reachedPoint1 = false
 		var reachedPoint2 = false
