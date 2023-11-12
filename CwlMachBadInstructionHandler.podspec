@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'CwlMachBadInstructionHandler'
-  s.version      = '2.1.2'
+  s.version      = '2.2.0'
   s.summary      = 'A helper for CwlPreconditionTesting implementing a Mach exception handler'
   s.homepage     = 'https://github.com/mattgallagher/CwlPreconditionTesting'
   s.license      = { :file => 'LICENSE.txt', :type => 'ISC' }
