@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.swift_version = '5.5'
   
-  s.dependency 'CwlCatchException', '~> 2.1.2'
+  s.dependency 'CwlCatchException', '~> 2.2.0'
   s.dependency 'CwlMachBadInstructionHandler', '~> 2.2.0'
   s.dependency 'CwlPosixPreconditionTesting', '~> 2.2.0'
 
