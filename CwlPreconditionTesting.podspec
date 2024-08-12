@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'CwlPreconditionTesting'
-  s.version      = '2.2.1'
+  s.version      = '2.2.2'
   s.summary      = 'A Mach exception handler, written in Swift and Objective-C, that allows `EXC_BAD_INSTRUCTION` to be caught and tested.'
   s.homepage     = 'https://github.com/mattgallagher/CwlPreconditionTesting'
   s.license      = { :file => 'LICENSE.txt', :type => 'ISC' }
@@ -18,9 +18,9 @@ Pod::Spec.new do |s|
 
   s.swift_version = '5.5'
   
-  s.dependency 'CwlCatchException', '~> 2.2.0'
-  s.dependency 'CwlMachBadInstructionHandler', '~> 2.2.0'
-  s.dependency 'CwlPosixPreconditionTesting', '~> 2.2.0'
+  s.dependency 'CwlCatchException', '~> 2.2.1'
+  s.dependency 'CwlMachBadInstructionHandler', '~> 2.2.2'
+  s.dependency 'CwlPosixPreconditionTesting', '~> 2.2.2'
 
   s.test_spec 'Tests' do |test_spec|
     test_spec.source_files = 'Tests/**/*.swift'
