@@ -32,7 +32,7 @@ var raiseBadInstructionException = {
 
 /// A simple NSException subclass. It's not required to subclass NSException (since the exception type is represented in the name) but this helps for identifying the exception through runtime type.
 @objc(BadInstructionException)
-public class BadInstructionException: NSException {
+public class BadInstructionException: NSException, @unchecked Sendable {
 	static var name: String = "com.cocoawithlove.BadInstruction"
 	
 	init() {
